@@ -1,0 +1,68 @@
+<!-- <link rel="stylesheet" href="css/laboratorios.css"> -->
+<div id="app-labo-detalles" class="container-fluid container-fluid_max">
+	<div class="row">
+		<span id="back" class="mega-octicon octicon-chevron-left texto-azul_oscuro"></span>
+
+		<div id="labo-detalles" class="col-xs-12">
+            <div class="row">
+                <div id="labo-img-top" class="hidden-xs col-sm-6 col-md-5">
+		                <figure>
+		                    <img src="<%= img_grande %>" alt="" class="loading"/>
+		                </figure>
+		            </div>
+
+					<div id="labo-textos" class="col-xs-12 col-sm-6 col-md-6">
+                        <div id="labo-titulo">
+                            <h5 class="texto-azul">Sede <%= sede %></h5>
+                            <h6 class="texto-violeta"><%= tipo %></h6>
+                        </div>
+                        <div id="labo-contacto">
+                            <span class="labo-direccion texto-negro">
+                                <i class="fa fa-map-marker texto-azul"></i>
+                                <%= direccion %>, Bahía Blanca
+                            </span>
+                            <span class="labo-telefono texto-negro">
+                                <i class="fa fa-phone texto-azul"></i>
+                                <%= telefono %>
+                            </span>
+                            <% if (typeof(mail) != "undefined") { %>
+                            <span class="labo-mail texto-negro">
+                                <i class="fa fa-envelope-o texto-azul"></i>
+                                <%= mail %>
+                            </span>
+                            <% } %>
+                        </div>
+                        <div id="labo-horarios">
+                            <span class="texto-azul_oscuro"><strong>Horarios de atención: </strong></span>
+                            <span class="texto-negro"><%= horario_semana %></span>
+                            <span class="texto-negro"><%= horario_finde %></span>
+                        </div>
+                        <div id="labo-info">
+                            <p class="info1 hidden-xs texto-negro"><%= info1 %></p>
+                            <p class="info2 texto-negro"><%= info2 %></p>
+                        </div>
+                        <div id="labo-link">
+                            <span class="labo-mail">
+                                <a class="external-link" data-href='<%= link %>'>Ver sitio web <i class="fa fa-external-link"></i></a>
+                            </span>
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+		<div class="clearfix"></div>
+	</div>
+	<div id="map">
+		<a id="reload">Cargar mapa</a>
+		<div id="map_canvas"></div>
+	</div>
+	<!--<div class="row visible-xs">-->
+		<!--<div id="labo-img-bottom" class="col-xs-12">-->
+			<!--<figure>-->
+				<!--<img src="<%= img_grande %>" alt="" class="loading"/>-->
+			<!--</figure>-->
+		<!--</div>-->
+	<!--</div>-->
+
+</div>
+

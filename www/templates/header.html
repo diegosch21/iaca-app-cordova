@@ -1,0 +1,103 @@
+<div id="app-header" class="container-fluid">
+	<div class="row">
+		<div class="menu-top-bg">
+			<div class="container-fluid app-header-top">
+				<div class="menu-top">
+					<ul id="nav-top" class="list-inline row">
+						<li class="col-md-3 col-sm-4 hidden-xs redes-sociales">
+							<a href="#"><i class="fa fa-lg fa-external-link"></i> </a>
+							<a href="#"><i class="fa fa-lg fa-facebook"></i> </a>
+							<a href="#"><i class="fa fa-lg fa-twitter"></i> </a>
+						</li>
+
+						<li class="col-md-offset-3 col-md-6 col-sm-8 col-xs-12 menu-profesional">
+							<div class="dropdown text-right">
+								<% if (logueado) { %>
+								<a data-toggle="dropdown" id="menuUserLogueado" >
+									<i class="fa fa-lg fa-user"></i>
+									<span class="hidden-xs">Bienvenido, </span><strong> <%= user %></strong>&nbsp;&nbsp;<i class="fa fa-bars fa-lg"></i>
+								</a>
+								<% } else { %>
+								<a href="#login">
+									<i class="fa fa-lg fa-user"></i>
+									<strong> Iniciar sesión</strong>&nbsp;&nbsp;
+								</a>
+								<a data-toggle="dropdown" id="menuUserDeslogueado">
+									<i class="fa fa-bars fa-lg"></i>
+								</a>
+								<% } %>
+
+								<% if (logueado) { %>
+								<ul class="list-unstyled dropdown-menu pull-right" role="menu" aria-labelledby="menuUserLogueado">
+									<!-- <li role="presentation"><a role="menuitem" href="#datos"><strong>Mis datos</strong></a></li> -->
+									<li role="presentation"><a role="menuitem" href="#configuracion"><strong>Configuración</strong></a></li>
+									<li role="presentation"><a role="menuitem" href="#changeuser"><strong>Cambiar usuario</strong></a></li>
+									<li role="presentation" class="divider"></li>
+									<li role="presentation"><a role="menuitem" id="logout" href="#logout"><i class="fa fa-lg fa-sign-out texto-azul">&nbsp;&nbsp;</i><strong class="texto-azul">Cerrar Sesión</strong></a></li>
+								</ul>
+								<% } else { %>
+								<ul class="list-unstyled dropdown-menu pull-right" role="menu" aria-labelledby="menuUserDeslogueado">
+									<li role="presentation"><a role="menuitem" href="#configuracion"><strong>Configuración</strong></a></li>
+									<li role="presentation"><a role="menuitem" href="#changeuser"><strong>Cambiar usuario</strong></a></li>
+								</ul>
+								<% } %>	
+							</div>
+						</li>
+					</ul> <!-- nav-top-->
+				</div> <!--/menu-top-->
+			</div> <!--/container-->
+		</div> <!--/menu-top-bg (azul, nombre usuario)-->
+		<div id="app-header-menu" class="container-fluid">
+			<div class="row">
+				<div class="col-xs-4 col-sm-4 col-md-4">
+					<div class="logo-container"><a class="text-hide" href="#home"></a></div>
+				</div>
+				<div class="col-xs-8 col-sm-8 col-md-7">
+					<nav class="menu-principal hidden-xs">  <!-- menu estirado -->
+						<ul id="main-nav" class="list-inline">
+							<li id='menuitem-inicio'>
+								<a href="#home">Inicio</a>
+							</li>
+							<li id='menuitem-resultados'>
+								<a href="#resultados">Mis análisis</a>
+							</li>
+							<li id='menuitem-configuracion'>
+								<a href="#configuracion">Configuración</a>
+							</li>
+							<li id='menuitem-laboratorios'>
+								<a href="#laboratorios">Laboratorios</a>
+							</li>
+							<li id='menuitem-info'>
+								<a href="#info">Información</a>
+							</li>
+						</ul>
+					</nav> 
+					<div class="dropdown visible-xs"> <!-- menu select -->
+						<a data-toggle="dropdown" id="menu-principal-xs" >
+							<span class='menu-principal-xs-activo' id='menu-principal-xs-inicio'>INICIO</span>
+							<span class='menu-principal-xs-activo' id='menu-principal-xs-resultados'>MIS ANÁLISIS</span>
+							<span class='menu-principal-xs-activo' id='menu-principal-xs-configuracion'>CONFIGURACIÓN</span>
+							<span class='menu-principal-xs-activo' id='menu-principal-xs-laboratorios'>LABORATORIOS</span>
+							<span class='menu-principal-xs-activo' id='menu-principal-xs-info'>INFORMACIÓN</span>
+							<span class="caret"></span>
+						</a>
+
+						<ul class="dropdown-menu list-unstyled pull-right" role="menu" aria-labelledby="menu-principal-xs">
+							<li role="presentation"><a role="menuitem" href="#home">Inicio</a></li>
+							<li role="presentation" class="divider"></li>
+							<li role="presentation"><a role="menuitem" href="#resultados">Mis análisis</a></li>
+							<li role="presentation" class="divider"></li>
+							<li role="presentation"><a role="menuitem" href="#configuracion">Configuración</a></li>
+							<li role="presentation" class="divider"></li>
+							<li role="presentation"><a role="menuitem" href="#laboratorios">Laboratorios</a></li>
+							<li role="presentation" class="divider"></li>
+							<li role="presentation"><a role="menuitem" href="#info">Información</a></li>
+						</ul>
+					</div>
+				</div>  
+				<div class="clearfix visible-xs-block"></div>
+			</div>
+		</div>	<!--/container-fluid (logo, nav)-->
+	</div>
+	
+</div>	<!-- /app-header -->

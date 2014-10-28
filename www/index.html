@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <title>IACA Laboratorios</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+            
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/estilo.css">
+        
+        <script type="text/javascript" src="cordova.js"></script>
+        <script data-main="js/main" src="js/vendor/requirejs-2.1.14.min.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <header id="header">
+
+            </header>
+
+            <div id="content-wrapper" >  
+
+                <div id="content" class="scroller">
+
+                </div>
+                <div id="page-loading"></div>
+                <div id="loading-results"></div>
+               
+            </div>
+
+            <!-- Div fixed (toda la pantalla) para mostrar las imagenes -->
+            <div id="imgs-wrapper">
+                <div id="results-imgs" class="scroller" >
+                
+                </div>
+                <!-- Boton para cerrar scroller de imgs -->
+                <div id="close-imgs-wrapper">
+                    <i id="close-imgs" class="fa fa-2x fa-times"></i>
+                </div> 
+            </div>
+            
+        </div>
+        
+        <script>
+            document.addEventListener('deviceready', onDeviceReady, false);
+            function onDeviceReady() {
+                console.log('deviceready en index.html');
+                window.deviceready = true;
+            }
+        </script>
+        
+    </body>
+</html>

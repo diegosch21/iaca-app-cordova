@@ -1,0 +1,81 @@
+<div id="app-login" class="container-fluid container-fluid_max">
+	<div class="row">
+		<div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+	
+			<% if (!logueado) { %>
+				<section class="acceso acceso_login contenedor--blanco">
+
+				    <div class="header--banner contenedor--azul contenedor-con-punta">
+				        <p class="h3 texto-invertido">Login</p>
+				        <div class="punta--derecha punta--azul"></div>
+				    </div>
+
+				    <form id="login">
+
+				        <ul class="list-unstyled row">
+
+				            <li class="col-xs-12 col-sm-8 col-sm-offset-2 input-login">
+				                <label class="contenedor-con-punta fondo-azul_oscuro" for="usuario">
+				                    <i class="fa fa-user texto-invertido">&nbsp;</i>
+				                    <div class="punta--derecha punta--azul_oscuro"></div>
+				                </label>
+
+				                <input id="usuario" name="usuario" type="text" placeholder="Usuario" title="Usuario" required value="18277932"/>
+				            </li> <!--nombre-->
+
+				            <li class="col-xs-12 col-sm-8 col-sm-offset-2 input-login">
+				                <label class="contenedor-con-punta fondo-azul_oscuro" for="pass">
+				                    <i class="fa fa-asterisk texto-invertido">&nbsp;</i>
+				                    <div class="punta--derecha punta--azul_oscuro"></div>
+				                </label>
+
+				                <input id="pass" name="clave" type="password" placeholder="Clave" title="Clave" required value="992225249"/>
+				            </li> <!--password-->
+
+				            <li class="col-xs-12 col-sm-8 col-sm-offset-2 mensaje--alerta">
+				                
+				            </li> <!--/.mensaje--alerta-->
+
+				            <li class="col-xs-12 col-sm-8 col-sm-offset-2 mensaje--satisfactorio">
+				                <div class="alert alert-success alert-dismissable hidden">
+				                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				                    <p>Mensaje satisfactorio</p>
+				                </div>
+				            </li> <!--/.mensaje--satisfactorio-->
+
+				            <li class="col-xs-12">
+				                <input class="boton--enviar boton_centrado" type="submit" value="Login"/>
+				            </li> <!--botones-->
+
+				        </ul>
+
+				    </form>
+				</section>
+			<% } 
+			if (guardados) { %>
+				<section class="acceso usuarios-guardados contenedor--blanco">
+
+				    <div class="header--banner contenedor--azul contenedor-con-punta">
+				        <p class="h4 texto-invertido">Usuarios guardados</p>
+				        <div class="punta--derecha punta--azul"></div>
+				    </div>
+					<div id="error-login-guardado">
+					    	
+					</div>
+				    <div class="list-group lista-guardados">
+				    	<% for (var i = 0;i<usuarios.length;i++) { %>
+				    		<a data-id="<%= usuarios[i].id %>" class="list-group-item usuario-guardado">
+				    			<%= usuarios[i].name %>  
+				    			<span class="badge delete-guardado" data-id="<%= usuarios[i].id %>"><i class="fa fa-times-circle"></i></span>
+			    			</a>
+				    	<% } %>
+				    </div>
+					
+				</section>
+				
+			<% } %>
+
+		</div>
+
+	</div>
+</div>
