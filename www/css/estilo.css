@@ -5056,9 +5056,6 @@ a:active {
   font-size: 14px;
   font-size: 0.9rem;
 }
-.columna-tabla a:hover {
-  color: #76b5e6;
-}
 
 ul.lista_resultados {
   padding: 0;
@@ -5453,6 +5450,9 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo .punta--izquierd
     white-space: normal;
     margin-top: -16px;
     margin-top: -1rem;
+  }
+  #app-login li.input-login input {
+    width: 70%;
   }
 
   #app-resultados .header-resultados .h3 {

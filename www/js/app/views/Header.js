@@ -22,9 +22,11 @@ define([
 		events: {
 			'touchstart #logout' 	: 'logout',
 			// 'click #logout' 	: 'logout'
-			'touchstart a.toggle-dropdown'	: 'dropdownMenu',
+			'click a' : 'disableClick',
+			//'touchstart a.toggle-dropdown'	: 'dropdownMenu',
 			'touchstart a.classic-link' : 	'classicLink',
-			'touchend ul.dropdown-menu' : 'closeDropdown'
+			'touchend ul.dropdown-menu' : 'closeDropdown',
+			'touchstart .external-link' : 'externalLink'
 		},
 
 
@@ -65,11 +67,12 @@ define([
     		Backbone.history.navigate("home",true);
     	},
     	dropdownMenu: function(evt) {
+    		if(evt)
+    			evt.preventDefault();
     		var dropdown= ($(evt.currentTarget).data('dropdown'));
     		console.log("Toggle dropdown "+dropdown);
     		$('#'+dropdown).dropdown('toggle');
-			if(evt)
-    			evt.preventDefault();
+			
     	},
     	classicLink: function(evt) {
     		var url= ($(evt.currentTarget).attr('href'));
@@ -80,7 +83,15 @@ define([
     		console.log('Close dropdown '+evt.currentTarget.id);
     		$("#"+evt.currentTarget.id).dropdown('toggle');
     		evt.preventDefault();
-    	}
+    	},
+    	disableClick: function(evt) {
+    		console.log('click');
+    		evt.preventDefault();
+    	},
+    	externalLink: function(event) {
+			var url= ($(event.currentTarget).data('href'));
+			window.open(url, '_system');
+		} 
 
 	});
 

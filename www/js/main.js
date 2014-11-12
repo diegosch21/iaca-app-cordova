@@ -123,6 +123,7 @@ function eventHandlersGenerales() {
 
 function eventHandlersPhoneGap() {
 	console.log('eventHandlersPhoneGap');
+	
 	// Evento boton atrás celu
 	$(document).on('backbutton',function(e) {
 		console.log('backbutton');
@@ -139,16 +140,39 @@ function eventHandlersPhoneGap() {
 				console.log('Go to home');
 				Backbone.history.navigate("home",true);
 			}
-			// De cualquier lugar que no sea home, voy al url anterior
-			else if (actualURL != 'home' && actualURL != '' ) {
+			// Si es home, exit app
+			else if (actualURL == 'home' || actualURL == '' ) {
+				console.log('Exit app??');
+
+				navigator.notification.confirm(
+				    '¿Desea cerrar la aplicación?', // message
+				     exitApp,            // callback to invoke with index of button pressed
+				    'SALIR',           // title
+				    ['NO','SÍ']     // buttonLabels
+				);
+			}
+			// En cualquier otro ado, voy atrás
+			else {
 				console.log('window.history.back()');
 				window.history.back();
-			}
-			// Si estoy en home me quedo ahí
-			else
-				console.log('Stay here');
-			// TO DO: salir de la app
+			}	
 		}
 	});
+
+	//Evento boton menu celu
+	$(document).on('menubutton',function(e) {
+		console.log('menubutton: Toggle dropdown menuUser-list');
+		$('#menuUser-list').dropdown('toggle');
+	});
+
+}
+
+function exitApp(buttonIndex) {
+	console.log('confirm-boton: '+buttonIndex);
+	if(buttonIndex == 2) {
+		console.log('exitApp')
+		navigator.app.exitApp();				
+	}
+		
 }
 
