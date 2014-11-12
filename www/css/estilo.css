@@ -4279,17 +4279,9 @@ a:active {
 }
 
 #header {
-  padding: 0;
-  right: 0;
-  left: 0;
-  top: 0;
   border-width: 0 0 1px;
-  z-index: 9999;
-  background-color: #FFF;
   margin-bottom: 0;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
-  position: absolute;
-  width: 100%;
 }
 
 #content-wrapper {
@@ -5098,7 +5090,7 @@ ul.lista_resultados .item--resultado_paciente {
 ul.lista_resultados .item--resultado_paciente:nth-of-type(even) {
   background-color: #eef3fa;
 }
-ul.lista_resultados .item--resultado_paciente:hover, ul.lista_resultados .item--resultado_paciente.activo {
+ul.lista_resultados .item--resultado_paciente.activo {
   background-color: #8fa9ce !important;
 }
 ul.lista_resultados .item--resultado_paciente .info--resultado {

@@ -20,8 +20,11 @@ define([
 		},
 
 		events: {
-			'touchstart #logout' 	: 'logout'
+			'touchstart #logout' 	: 'logout',
 			// 'click #logout' 	: 'logout'
+			'touchstart a.toggle-dropdown'	: 'dropdownMenu',
+			'touchstart a.classic-link' : 	'classicLink',
+			'touchend ul.dropdown-menu' : 'closeDropdown'
 		},
 
 
@@ -60,6 +63,23 @@ define([
     			evt.preventDefault();
     		Sesion.logout();
     		Backbone.history.navigate("home",true);
+    	},
+    	dropdownMenu: function(evt) {
+    		var dropdown= ($(evt.currentTarget).data('dropdown'));
+    		console.log("Toggle dropdown "+dropdown);
+    		$('#'+dropdown).dropdown('toggle');
+			if(evt)
+    			evt.preventDefault();
+    	},
+    	classicLink: function(evt) {
+    		var url= ($(evt.currentTarget).attr('href'));
+			console.log("touchstart classic-link href:"+url);
+			Backbone.history.navigate(url,true);
+    	},
+    	closeDropdown: function(evt) {
+    		console.log('Close dropdown '+evt.currentTarget.id);
+    		$("#"+evt.currentTarget.id).dropdown('toggle');
+    		evt.preventDefault();
     	}
 
 	});

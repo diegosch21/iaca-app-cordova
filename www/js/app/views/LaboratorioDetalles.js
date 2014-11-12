@@ -13,7 +13,7 @@ define([
 			// 'click #back' : 'botonBack',
 			'touchstart .external-link' : 'externalLink',
 			// 'click .external-link' : 'externalLink',
-			'click #reload' : 'mapaLabo'
+			'touchstart #reload' : 'mapaLabo'
 		},
 
 		initialize: function(options) {

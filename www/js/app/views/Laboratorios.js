@@ -12,7 +12,7 @@ define([
 		events: {
 			'touchend .labos-boton' : 'pressBoton',
 			// 'click .labos-boton' : 'pressBoton',
-			'click #reload' : 'reloadMapa'
+			'touchstart #reload' : 'reloadMapa'
 		},
 
 		initialize: function(options) {

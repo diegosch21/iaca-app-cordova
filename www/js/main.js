@@ -93,12 +93,12 @@ function eventHandlersGenerales() {
     	// console.log("touchstart "+event.target.tagName +' '+event.target.id +' '+ event.target.className);
 	});
 
-	$('body').on("touchend", function (event) {
+	//$('body').on("touchend", function (event) {
 		// console.log("touchend "+event.target.tagName +' '+event.target.id +' '+ event.target.className);    
-	});
-    $('body').on("click", function (event) {
+	//});
+    //$('body').on("click", function (event) {
 	    // console.log("click "+event.target.tagName +' '+event.target.id +' '+ event.target.className);    
-	});
+	//});
 	// $('body').on("mousedown touchstart",'.boton', function (e) {
 	$('body').on("touchstart",'.boton', function (e) {
 		$(e.currentTarget).addClass('activo');
@@ -118,10 +118,12 @@ function eventHandlersGenerales() {
 		$('.boton').removeClass('activo');
 	});
 
+
 }
 
 function eventHandlersPhoneGap() {
 	console.log('eventHandlersPhoneGap');
+	// Evento boton atrás celu
 	$(document).on('backbutton',function(e) {
 		console.log('backbutton');
 		if($('#imgs-wrapper').is(":visible")) {
@@ -131,16 +133,21 @@ function eventHandlersPhoneGap() {
 		else {
 			var actualURL = Backbone.history.fragment;
 			console.log('actualURL: '+actualURL);
-			if (actualURL == 'laboratorios') {
+			// Desde laboratorios siempre voy a home (para evitar que si vi vengo de un lab vuelva a ese)
+			// Desde login también va a home
+			if (actualURL == 'laboratorios' || actualURL.substring(0, 5) == 'login') {
 				console.log('Go to home');
 				Backbone.history.navigate("home",true);
 			}
+			// De cualquier lugar que no sea home, voy al url anterior
 			else if (actualURL != 'home' && actualURL != '' ) {
 				console.log('window.history.back()');
 				window.history.back();
 			}
+			// Si estoy en home me quedo ahí
 			else
 				console.log('Stay here');
+			// TO DO: salir de la app
 		}
 	});
 }

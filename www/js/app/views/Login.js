@@ -105,6 +105,7 @@ define([
 			}
 			else {
 				$('#page-loading').hide();
+				this.scroller.refresh();
 			}
 		},
 		deleteGuardado: function(evt) {
