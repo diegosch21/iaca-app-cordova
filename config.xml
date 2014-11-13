@@ -1,12 +1,19 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.imotionconsulting.iaca-laboratorios" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.imotionconsulting.iacalaboratorios" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>IACALaboratorios</name>
     <description>
-        IACA Laboratorios
+        IACA Laboratorios - Consulta de resultados de análisis de pacientes
     </description>
-    <author email="diego.sch21@gmail.com" href="http://imotionconsulting.com.ar">
+    <author email="info@imotionconsulting.com.ar" href="http://imotionconsulting.com.ar">
         IMotion Consulting
     </author>
     <content src="index.html" />
     <access origin="*" />
+	
+	<preference name="SplashScreen" value="screen.9" />
+	<preference name="SplashScreenDelay" value="3000" />
+    <platform name="android">
+		<icon src="www/res/icon.png" />
+		<splash src='www/res/screen.9.png' />
+    </platform>
 </widget>
