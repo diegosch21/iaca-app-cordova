@@ -78,6 +78,7 @@ define([
     		var url= ($(evt.currentTarget).attr('href'));
 			console.log("touchstart classic-link href:"+url);
 			Backbone.history.navigate(url,true);
+			//evt.preventDefault();
     	},
     	closeDropdown: function(evt) {
     		console.log('Close dropdown '+evt.currentTarget.id);

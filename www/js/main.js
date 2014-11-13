@@ -151,7 +151,7 @@ function eventHandlersPhoneGap() {
 				    ['NO','SÍ']     // buttonLabels
 				);
 			}
-			// En cualquier otro ado, voy atrás
+			// En cualquier otro lado, voy atrás
 			else {
 				console.log('window.history.back()');
 				window.history.back();
@@ -164,6 +164,10 @@ function eventHandlersPhoneGap() {
 		console.log('menubutton: Toggle dropdown menuUser-list');
 		$('#menuUser-list').dropdown('toggle');
 	});
+
+	//oculto splash
+	// navigator.splashscreen.hide();
+	// se oculta desp de 3 segs
 
 }
 
