@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.imotionconsulting.iacalaboratorios" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>IACALaboratorios</name>
+    <name>IACA Laboratorios</name>
     <description>
         IACA Laboratorios - Consulta de resultados de análisis de pacientes
     </description>
@@ -10,7 +10,7 @@
     <content src="index.html" />
     <access origin="*" />
 	
-	<preference name="SplashScreen" value="screen" />
+	<preference name="SplashScreen" value="screen"/>
 	<preference name="SplashScreenDelay" value="3000" />
     <platform name="android">
 		<icon src="res/icon/android/icon.png" />
