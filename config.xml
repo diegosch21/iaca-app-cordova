@@ -11,7 +11,7 @@
     <access origin="*" />
 	
 	<preference name="SplashScreen" value="screen"/>
-	<preference name="SplashScreenDelay" value="3000" />
+	<preference name="SplashScreenDelay" value="5000" />
     <platform name="android">
     	<!-- Icon -->
 		<icon src="res/icon/android/icon-ldpi.png" density="ldpi" />
