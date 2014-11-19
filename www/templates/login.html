@@ -10,46 +10,51 @@
 				        <div class="punta--derecha punta--azul"></div>
 				    </div>
 
-				    <form id="login">
+				    <div class="row">
+				    	<div class="col-xs-12 col-sm-8">
+				    		<form id="login" role="form">
 
-				        <ul class="list-unstyled row">
+			    		        <div class="input-group input-login">
+			    		            <label class="contenedor-con-punta fondo-azul_oscuro" for="usuario">
+			    		                <i class="fa fa-user texto-invertido">&nbsp;</i>
+			    		                <div class="punta--derecha punta--azul_oscuro"></div>
+			    		            </label>
 
-				            <li class="col-xs-12 col-sm-8 col-sm-offset-2 input-login">
-				                <label class="contenedor-con-punta fondo-azul_oscuro" for="usuario">
-				                    <i class="fa fa-user texto-invertido">&nbsp;</i>
-				                    <div class="punta--derecha punta--azul_oscuro"></div>
-				                </label>
+			    		            <input id="usuario" class="form-control" name="usuario" type="text" placeholder="Usuario" required="required" />
+			    		        </div> <!--nombre-->
 
-				                <input id="usuario" name="usuario" type="text" placeholder="Usuario" title="Usuario"  />
-				            </li> <!--nombre-->
+			    		        <div class="input-group input-login">
+			    		            <label class="contenedor-con-punta fondo-azul_oscuro" for="pass">
+			    		                <i class="fa fa-asterisk texto-invertido">&nbsp;</i>
+			    		                <div class="punta--derecha punta--azul_oscuro"></div>
+			    		            </label>
 
-				            <li class="col-xs-12 col-sm-8 col-sm-offset-2 input-login">
-				                <label class="contenedor-con-punta fondo-azul_oscuro" for="pass">
-				                    <i class="fa fa-asterisk texto-invertido">&nbsp;</i>
-				                    <div class="punta--derecha punta--azul_oscuro"></div>
-				                </label>
+			    		            <input id="pass" class="form-control" name="clave" type="password" placeholder="Clave" required="required"/>
+			    		        </div> <!--password-->
 
-				                <input id="pass" name="clave" type="password" placeholder="Clave" title="Clave" />
-				            </li> <!--password-->
+			    		        <div class="mensaje--alerta">
+			    		            
+			    		        </div> <!--/.mensaje--alerta-->
 
-				            <li class="col-xs-12 col-sm-8 col-sm-offset-2 mensaje--alerta">
-				                
-				            </li> <!--/.mensaje--alerta-->
+			    		        <div class="mensaje--satisfactorio">
+			    		            <div class="alert alert-success alert-dismissable hidden">
+			    		                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			    		                <p>Mensaje satisfactorio</p>
+			    		            </div>
+			    		        </div> <!--/.mensaje--satisfactorio-->
 
-				            <li class="col-xs-12 col-sm-8 col-sm-offset-2 mensaje--satisfactorio">
-				                <div class="alert alert-success alert-dismissable hidden">
-				                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-				                    <p>Mensaje satisfactorio</p>
-				                </div>
-				            </li> <!--/.mensaje--satisfactorio-->
+			    		        <div class="input-login">
+			    		        	<input class="boton--enviar" type="submit" value="Login"/>
+			    		        </div>
 
-				            <li class="col-xs-12">
-				                <input class="boton--enviar boton_centrado" type="submit" value="Login"/>
-				            </li> <!--botones-->
+				    		    
+				    	
+				    		</form>
+				    		
+				    	</div>
+				    </div>
 
-				        </ul>
 
-				    </form>
 				</section>
 			<% } 
 			if (guardados) { %>

@@ -4746,6 +4746,10 @@ a:active {
 }
 
 /******** Template Login ********/
+#app-login .acceso_login {
+  margin-bottom: 16px;
+  margin-bottom: 1rem;
+}
 #app-login .acceso_login .contenedor-con-punta {
   height: 80px;
   height: 5rem;
@@ -4820,6 +4824,11 @@ a:active {
   margin: 16px;
   margin: 1rem;
 }
+#app-login .usuarios-guardados span.delete-guardado {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+}
 #app-login .contenedor-con-punta {
   margin-bottom: 32px;
   margin-bottom: 2rem;
@@ -4833,16 +4842,19 @@ a:active {
   line-height: 1.2;
   white-space: nowrap;
 }
-#app-login ul.row, #app-login ul.banner-horizontal, #app-login ul.home-boton {
-  margin-left: 0;
-  margin-right: 0;
+#app-login form {
+  padding: 16px;
+  padding: 1rem;
 }
-#app-login li.input-login .contenedor-con-punta {
+#app-login .input-login {
+  text-align: center;
+}
+#app-login .input-login .contenedor-con-punta {
   height: 48px;
   height: 3rem;
   position: relative;
 }
-#app-login li.input-login .contenedor-con-punta .punta--derecha {
+#app-login .input-login .contenedor-con-punta .punta--derecha {
   position: absolute;
   width: 0px;
   height: 0px;
@@ -4860,7 +4872,7 @@ a:active {
   border-top-color: transparent;
   border-bottom-color: transparent;
 }
-#app-login li.input-login .header--banner {
+#app-login .input-login .header--banner {
   width: 100%;
   width: 100%;
   margin-right: 24px;
@@ -4868,20 +4880,31 @@ a:active {
   padding: 20px 0;
   padding: 1.25rem 0;
 }
-#app-login li.input-login label {
+#app-login .input-login label {
   display: inline;
   padding-left: 24px;
   padding-left: 1.5rem;
 }
-#app-login li.input-login label i {
+#app-login .input-login label i {
   width: 32px;
   width: 2rem;
 }
-#app-login li.input-login input {
-  height: 48px;
-  height: 3rem;
-  padding: 8px 24px;
-  padding: 0.5rem 1.5rem;
+#app-login .input-login input[type="password"], #app-login .input-login input[type="text"] {
+  height: 40px;
+  height: 2.5rem;
+  padding-left: 24px;
+  padding-left: 1.5rem;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  margin-left: -8px;
+  margin-left: -0.5rem;
+  width: 80%;
+  max-width: 384px;
+  max-width: 24rem;
+  display: inline-block;
+}
+#app-login .input-login .boton--enviar {
+  margin: 0;
 }
 #app-login input[type="password"], #app-login input[type="text"] {
   position: relative;
@@ -5381,7 +5404,7 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo .punta--izquierd
     margin-top: -16px;
     margin-top: -1rem;
   }
-  #app-login li.input-login input {
+  #app-login .input-login input[type="password"], #app-login .input-login input[type="text"] {
     width: 70%;
   }
 

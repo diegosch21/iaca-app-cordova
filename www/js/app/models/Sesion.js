@@ -134,7 +134,7 @@ define([
         	}).fail(function( jqXHR, textStatus, errorThrown ) {
         		console.log(jqXHR +" "+ textStatus +" "+ errorThrown);
         		if (callback && 'error' in callback) {
-        			callback.error('No se pudo comunicar con el servidor. Intente de nuevo',0);
+        			callback.error('No se pudo comunicar con el servidor. Verifique su conexión a internet.',0);
         		} 
         	}).always(function(){
         		if (callback && 'complete' in callback) {
@@ -149,7 +149,7 @@ define([
 			if(!Usuarios.get(id))
 				this.crearUsuario(id,data.name,pass);
             else {
-                console.log("El usuario ya existe en la coleccion");
+                console.log("El usuario ya existe en la colección");
             }
 			console.log("Set usuario logueado: "+id+" "+data.name+" ,token: "+data.token);
 			this.set("userID",id);
@@ -227,7 +227,7 @@ define([
                 else {
                     self.reintentoResultados = false;
                     if (callback && 'error' in callback) {
-                        callback.error('Error al actualizar lista de resultados: No se pudo comunicar con el servidor. Intente de nuevo');
+                        callback.error('Error al actualizar lista de resultados. Verifique su conexión a internet.');
                     }
                     
                 } 
