@@ -64,6 +64,9 @@ define([
     		if(evt)
     			evt.preventDefault();
     		Sesion.logout();
+    		if (window.deviceready) { 
+    			window.plugins.toast.showShortCenter('Usuario deslogueado');
+    		}
     		Backbone.history.navigate("home",true);
     	},
     	dropdownMenu: function(evt) {

@@ -32,14 +32,24 @@ define([
 		mapaTodos: function() {
 			//console.log(6);
 			self = this;
-			require(['lib/gmaps'], function(mapa) {
-				$('#reload').hide();
-				//console.log(7);
-				mapa.setCenter(-38.717607, -62.265389);  //Bahia Blanca
-				mapa.setZoom(13);
-				mapa.render(self.$('#map_canvas')[0]);
-				mapa.setMarkers(self.collection.toJSON());
-			});	
+			self.$el.find('#loading-map').show();
+			require(['lib/gmaps'], 
+				function(mapa) {
+					self.$el.find('#reload').hide();
+					self.$el.find('#loading-map').hide();
+					//console.log(7);
+					mapa.setCenter(-38.717607, -62.265389);  //Bahia Blanca
+					mapa.setZoom(13);
+					mapa.render(self.$('#map_canvas')[0]);
+					mapa.setMarkers(self.collection.toJSON());
+				},
+				function(err) {
+					self.$el.find('#loading-map').hide();
+					if (window.deviceready && window.plugins && window.plugins.toast) { 
+    					window.plugins.toast.showLongBottom('No se puede cargar el mapa: verifique la conexión a internet');
+    				}
+				}
+			);	
 		},
 		pressBoton: function(e) {
 			console.log('pressBoton (dragging: '+window.dragging+')');

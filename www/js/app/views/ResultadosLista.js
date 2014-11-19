@@ -186,7 +186,12 @@ define([
 				},
 				error: function(error) {
 					console.log(error);
-					self.$el.find('#error-get-results').html(self.templateAlert({msj: error}));
+					if (window.deviceready && window.plugins && window.plugins.toast) { 
+						window.plugins.toast.showLongCenter(error);
+					}
+					else {
+						self.$el.find('#error-get-results').html(self.templateAlert({msj: error}));
+					}					
 				},
 				complete: function() {
 					self.updating(false);

@@ -18,7 +18,7 @@ define([
 			else
 				this.redireccion = 'home';
 			this.options = options || {};
-			_.bindAll(this,'login','loginGuardado','deleteGuardado');
+			_.bindAll(this,'login','loginGuardado','deleteGuardado','alerta');
 		},
 
 		events: {
@@ -53,21 +53,40 @@ define([
 			var password = this.$("#pass").val();
 			self.$('.mensaje--alerta').html('');
 			
-			if(username!="" && password!="") {
+			if(username=="" || username==" ") {
+				this.alerta("Ingrese su número de usuario",'.mensaje--alerta');
+			}
+			else if (password=="" || password==" ") {
+				this.alerta("Ingrese su contraseña",'.mensaje--alerta');
+			}
+			else {
 				this.loading(true);
 				Sesion.login(username,password,{
 					success: function(data) {
 						console.log("Logueado: "+Sesion.get("logueado")+" Redirecciona a: "+self.redireccion);
+						self.alerta('Logueado correctamente');
 						Backbone.history.navigate(self.redireccion,true);
 					},
 					error: function(error) {
 						console.log(error);
-						self.$('.mensaje--alerta').html(self.templateAlert({msj: error}));
+						self.alerta(error,'.mensaje--alerta',true);
 					},
 					complete: function() {
 						self.loading(false);
 					}
 				});
+			}
+		},
+		alerta: function(msj,selector,long) {
+			if (window.deviceready && window.plugins && window.plugins.toast) { 
+				if(long)
+					window.plugins.toast.showLongCenter(msj);
+				else
+					window.plugins.toast.showShortCenter(msj);
+			}
+			else {
+				if (selector)
+					this.$(selector).html(this.templateAlert({msj: msj}));
 			}
 		},
 
@@ -83,10 +102,11 @@ define([
 				Sesion.login(id,pass,{
 					success: function(data) {
 						console.log("Usuario guardado Logueado: "+Sesion.get("logueado")+" Redirecciona a: "+self.redireccion);
+						self.alerta('Logueado correctamente');
 						Backbone.history.navigate(self.redireccion,true);
 					},
 					error: function(error) {
-						self.$("#error-login-guardado").html(self.templateAlert({msj: error}));
+						self.alerta(error,'#error-login-guardado',true);
 					},
 					complete: function() {
 						self.loading(false);
@@ -94,7 +114,7 @@ define([
 				});
 			}
 			else
-				this.$("#error-login-guardado").html(this.templateAlert({msj: "Información guardada inválida"}))
+				this.alerta("Información guardada inválida",'#error-login-guardado');
 			
 
 		},

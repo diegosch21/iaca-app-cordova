@@ -4560,6 +4560,11 @@ a:active {
   padding-top: 20px;
   font-size: 18px;
 }
+#map #loading-map {
+  padding-top: 20px;
+  text-align: center;
+  display: none;
+}
 
 #map_canvas {
   width: 90%;
@@ -5143,6 +5148,13 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo .punta--izquierd
   color: #54676d;
   padding: 16px;
   padding: 1rem;
+}
+#imgs-wrapper #loading-img {
+  position: fixed;
+  width: 100%;
+  top: 40%;
+  text-align: center;
+  color: #dadeec;
 }
 #imgs-wrapper .result-img {
   text-align: center;
