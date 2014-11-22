@@ -4882,8 +4882,8 @@ a:active {
 }
 #app-login .input-login label {
   display: inline;
-  padding-left: 24px;
-  padding-left: 1.5rem;
+  padding-left: 12px;
+  padding-left: 0.75rem;
 }
 #app-login .input-login label i {
   width: 32px;
