@@ -4204,7 +4204,7 @@ a:active {
 
 #content-wrapper {
   position: absolute;
-  top: 110px;
+  top: 109px;
   padding-top: 5px;
   left: 0px;
   right: 0px;
@@ -4691,8 +4691,8 @@ a:active {
   border-bottom-width: 4rem;
   border-left-width: 32px;
   border-left-width: 2rem;
-  right: -35px;
-  right: -2.2rem;
+  right: -34px;
+  right: -2.15rem;
   border-right-color: transparent;
   border-top-color: transparent;
   border-bottom-color: transparent;
@@ -4767,8 +4767,8 @@ a:active {
   border-bottom-width: 2.5rem;
   border-left-width: 20px;
   border-left-width: 1.25rem;
-  right: -23px;
-  right: -1.45rem;
+  right: -22px;
+  right: -1.4rem;
   border-right-color: transparent;
   border-top-color: transparent;
   border-bottom-color: transparent;
@@ -4802,8 +4802,8 @@ a:active {
   border-bottom-width: 2rem;
   border-left-width: 16px;
   border-left-width: 1rem;
-  right: -19px;
-  right: -1.2rem;
+  right: -18px;
+  right: -1.15rem;
   border-right-color: transparent;
   border-top-color: transparent;
   border-bottom-color: transparent;
@@ -4866,8 +4866,8 @@ a:active {
   border-bottom-width: 1.5rem;
   border-left-width: 12px;
   border-left-width: 0.75rem;
-  right: -15px;
-  right: -0.95rem;
+  right: -14px;
+  right: -0.9rem;
   border-right-color: transparent;
   border-top-color: transparent;
   border-bottom-color: transparent;
@@ -5189,6 +5189,10 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo .punta--izquierd
 ***** Estilos para dispositivos de  360px de ancho, ├│ superior *******
 **********************************************************************/
 @media (max-width: 360px) {
+  #content-wrapper {
+    top: 104px;
+  }
+
   .hidden-xxs {
     display: none !important;
   }
@@ -5494,6 +5498,7 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo .punta--izquierd
 @media (min-width: 768px) {
   #content-wrapper {
     padding-top: 10px;
+    top: 115px;
   }
 
   .home-item {
@@ -5630,7 +5635,7 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo .punta--izquierd
 **********************************************************************/
 @media (min-width: 992px) {
   #content-wrapper {
-    top: 135px;
+    top: 137px;
   }
 
   #app-header {
@@ -5714,7 +5719,7 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo .punta--izquierd
   }
 
   #content-wrapper {
-    top: 150px;
+    top: 153px;
   }
 
   #map_canvas {
