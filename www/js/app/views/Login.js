@@ -78,15 +78,19 @@ define([
 			}
 		},
 		alerta: function(msj,selector,long) {
-			if (window.deviceready && window.plugins && window.plugins.toast) { 
-				if(long)
-					window.plugins.toast.showLongCenter(msj);
-				else
-					window.plugins.toast.showShortCenter(msj);
-			}
-			else {
-				if (selector)
-					this.$(selector).html(this.templateAlert({msj: msj}));
+			try {
+				if (window.deviceready && window.plugins && window.plugins.toast) { 
+					if(long)
+						window.plugins.toast.showLongCenter(msj);
+					else
+						window.plugins.toast.showShortCenter(msj);
+				}
+				else {
+					if (selector)
+						this.$(selector).html(this.templateAlert({msj: msj}));
+				}
+			} catch(err) {
+				console.log(err);
 			}
 		},
 

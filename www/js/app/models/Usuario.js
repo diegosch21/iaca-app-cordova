@@ -8,7 +8,10 @@ define([
         defaults:{
         	id: 0,
         	name: "",
-        	pass: ""
+        	pass: "",
+            logueado: false,
+        	notificar: false,
+            notifID: 0
         }
     });
     return userModel;

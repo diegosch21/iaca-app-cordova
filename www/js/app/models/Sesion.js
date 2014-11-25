@@ -41,7 +41,7 @@ define([
         initialize: function() {
             
         	console.log("Initialize Sesion");
-        	_.bindAll(this,'getAuth','login','crearUsuario','setUsuario',"relogin",'checkTimestamp');
+        	_.bindAll(this,'getAuth','login','crearUsuario','setUsuario',"relogin",'checkTimestamp','setNotificar','setNotifID','enviarNotifID');
             var self = this;
             this.set("timestamp",new Date().getTime());
 
@@ -151,16 +151,51 @@ define([
             else {
                 console.log("El usuario ya existe en la colección");
             }
+                       
 			console.log("Set usuario logueado: "+id+" "+data.name+" ,token: "+data.token);
-			this.set("userID",id);
-			this.set("username",data.name);
+		
+            this.set("userID",id);
+            this.set("username",data.name);
 			this.set("token",data.token);
 			this.set("logueado",true);
             this.set("timestamp",new Date().getTime());
         	this.save();
+
+            // Cambios en modelo usuario para actualizar estado notificacion en el server
+            var cambioLogin = false;
+            var user = Usuarios.get(id);
+            if (!user.get("logueado")) {
+                console.log("setUsuario: nuevo estado logueado usuario");
+                cambioLogin = true;
+                user.save({logueado: true});
+            }
+
+            var cambioID = false;
+            var actualID = user.get('notifID');
+            var notifID = "";
+            if (window.localStorage['iaca-notificationsID']) { 
+                notifID = window.localStorage.getItem('iaca-notificationsID');
+            }
+            if (notifID != "" && notifID != actualID) {
+                console.log("setUsuario: nuevo notifID"); 
+                user.save({'notifID': notifID});
+            }
+
+            var notificar = user.get('notificar');
+
+            if (cambioLogin || cambioID) {
+                this.enviarNotifID(notificar,id,notifID); // actualizo estado en el server
+            }
+           
         },
 
         logout: function() {
+            var id = this.get("userID");
+            var user = Usuarios.get(id);
+            user.save({logueado: false});
+
+            this.enviarNotifID(false,id,user.get('notifID'));  // aviso al server que estoy logout, para que no envie notificaciones
+
         	this.set("token","");
         	this.set("userID",-1);
 			this.set("username","");
@@ -168,6 +203,7 @@ define([
             this.set("timestamp",new Date().getTime());
         	this.save();
         	console.log("Logueado: "+false);
+
         },
 
         crearUsuario: function(id,name,pass) {
@@ -256,11 +292,53 @@ define([
             else {
                 this.relogin(callback);
             }
+        },
+
+        setNotificar: function(notificar) { //param: boolean
+            var userID = this.get("userID");
+            if (userID =! -1 && Usuarios.get(userID)) {
+                var user = Usuarios.get(userID);
+                var actualNotificar = user.get('notificar');
+                if (notificar != actualNotificar) {
+                    console.log('setNotificaciones: cambio opcion notificar')
+                    user.save({
+                        'notificar': notificar
+                    });
+                    this.enviarNotifID(notificar,userID,user.get("notifID"));  // Actualizo opcion en el server (si estoy logueado y cambió)
+                }
+            }
+
+        },
+
+        setNotifID: function(notifID) {
+            var userID = this.get("userID");
+            if (userID =! -1 && Usuarios.get(userID)) {
+                var user = Usuarios.get(userID);
+                var actualID = user.get('notifID');
+                if (notifID != actualID) {
+                    console.log("setNotifID: nuevo regID"); 
+                    user.save({
+                        'notifID': notifID
+                    });
+
+                    this.enviarNotifID(user.get("notificar"),userID,notifID); // Actualizo id en el server (si estoy logueado y cambió)
+                }
+                
+            }            
+        },
+
+        enviarNotifID: function(notificar,userID,notifID) {
+            var platform = "";
+            if (window.device)
+                platform = device.platform;
+
+            console.log("enviarNotifID: notificar="+notificar+" userID="+userID+" platform="+platform+" regID="+notifID);
+            //TODO AJAX POST SERVER
+            //    data:  userID, platform, regID, notificar, login
+
         }
 
-        
-
     });
-    return new sesionModel;
+    return new sesionModel; //SINGLETON
 
 });

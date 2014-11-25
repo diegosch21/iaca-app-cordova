@@ -18,24 +18,24 @@
 									<span class="hidden-xs">Bienvenido, </span><strong> <%= user %></strong>&nbsp;&nbsp;<i class="fa fa-bars fa-lg"></i>
 								</a>
 								<% } else { %>
-								<a href="#login" class="classic-link">
+								<a href="#login" class="classic-link header-login">
 									<i class="fa fa-lg fa-user"></i>
-									<strong> Iniciar sesión</strong>&nbsp;&nbsp;
+									<strong> INICIAR SESIÓN</strong>&nbsp;&nbsp;
 								</a>
-								<a data-toggle="dropdown" id="menuUser" class="toggle-dropdown" data-dropdown="menuUser-list">
+								<!-- <a data-toggle="dropdown" id="menuUser" class="toggle-dropdown" data-dropdown="menuUser-list">
 									<i class="fa fa-bars fa-lg"></i>
-								</a>
+								</a> -->
 								<% } %>
 
+								<% if (logueado) { %>	
 								<ul id="menuUser-list" class="list-unstyled dropdown-menu pull-right" role="menu" aria-labelledby="menuUser">
 									<!-- <li role="presentation"><a role="menuitem" href="#datos"><strong>Mis datos</strong></a></li> -->
-									<li role="presentation"><a role="menuitem" href="#configuracion" class="classic-link"><strong>Configuración</strong></a></li>
-								<% if (logueado) { %>	
+									<!-- <li role="presentation"><a role="menuitem" href="#configuracion" class="classic-link"><strong>Configuración</strong></a></li> -->
 									<li role="presentation"><a role="menuitem" href="#changeuser" class="classic-link"><strong>Cambiar usuario</strong></a></li>
 									<li role="presentation" class="divider"></li>
 									<li role="presentation"><a role="menuitem" id="logout" href="#logout" class="classic-link"><i class="fa fa-lg fa-sign-out texto-azul">&nbsp;&nbsp;</i><strong class="texto-azul">Cerrar Sesión</strong></a></li>
-								<% } %>		
 								</ul>								
+								<% } %>		
 								
 							</div>
 						</li>
@@ -57,9 +57,9 @@
 							<li id='menuitem-resultados'>
 								<a href="#resultados" class="classic-link">Mis análisis</a>
 							</li>
-							<li id='menuitem-configuracion'>
+							<!-- <li id='menuitem-configuracion'>
 								<a href="#configuracion" class="classic-link">Configuración</a>
-							</li>
+							</li> -->
 							<li id='menuitem-laboratorios'>
 								<a href="#laboratorios" class="classic-link">Laboratorios</a>
 							</li>
@@ -72,7 +72,7 @@
 						<a data-toggle="dropdown" id="menu-principal-xs" class="toggle-dropdown" data-dropdown="menu-principal-xs-list" >
 							<span class='menu-principal-xs-activo' id='menu-principal-xs-inicio'>INICIO</span>
 							<span class='menu-principal-xs-activo' id='menu-principal-xs-resultados'>MIS ANÁLISIS</span>
-							<span class='menu-principal-xs-activo' id='menu-principal-xs-configuracion'>CONFIGURACIÓN</span>
+							<!-- <span class='menu-principal-xs-activo' id='menu-principal-xs-configuracion'>CONFIGURACIÓN</span> -->
 							<span class='menu-principal-xs-activo' id='menu-principal-xs-laboratorios'>LABORATORIOS</span>
 							<span class='menu-principal-xs-activo' id='menu-principal-xs-info'>INFORMACIÓN</span>
 							<span class="caret"></span>
@@ -83,8 +83,8 @@
 							<li role="presentation" class="divider"></li>
 							<li role="presentation"><a role="menuitem" href="#resultados" class="classic-link dropdown-link">Mis análisis</a></li>
 							<li role="presentation" class="divider"></li>
-							<li role="presentation"><a role="menuitem" href="#configuracion" class="classic-link dropdown-link">Configuración</a></li>
-							<li role="presentation" class="divider"></li>
+							<!-- <li role="presentation"><a role="menuitem" href="#configuracion" class="classic-link dropdown-link">Configuración</a></li>
+							<li role="presentation" class="divider"></li> -->
 							<li role="presentation"><a role="menuitem" href="#laboratorios" class="classic-link dropdown-link">Laboratorios</a></li>
 							<li role="presentation" class="divider"></li>
 							<li role="presentation"><a role="menuitem" href="#info" class="classic-link dropdown-link">Información</a></li>

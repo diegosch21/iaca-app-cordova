@@ -11,7 +11,7 @@
 				    </div>
 
 				    <div class="row">
-				    	<div class="col-xs-12 col-sm-8">
+				    	<div class="col-xs-12 col-sm-8 col-sm-offset-2">
 				    		<form id="login" role="form">
 
 			    		        <div class="input-group input-login">
@@ -67,9 +67,9 @@
 					<div id="error-login-guardado">
 					    	
 					</div>
-				    <div class="list-group lista-guardados">
+				    <div class="list-group lista-guardados row">
 				    	<% for (var i = 0;i<usuarios.length;i++) { %>
-				    		<a data-id="<%= usuarios[i].id %>" class="list-group-item usuario-guardado">
+				    		<a data-id="<%= usuarios[i].id %>" class="list-group-item usuario-guardado col-sm-8 col-sm-offset-2">
 				    			<%= usuarios[i].name %>  
 				    			<span class="badge delete-guardado" data-id="<%= usuarios[i].id %>"><i class="fa fa-times-circle"></i></span>
 			    			</a>

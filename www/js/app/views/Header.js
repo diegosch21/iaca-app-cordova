@@ -65,7 +65,12 @@ define([
     			evt.preventDefault();
     		Sesion.logout();
     		if (window.deviceready) { 
-    			window.plugins.toast.showShortCenter('Usuario deslogueado');
+    			try {
+    				window.plugins.toast.showShortCenter('Usuario deslogueado');
+    			}
+    			catch(err) {
+    				console.log(err);
+    			}
     		}
     		Backbone.history.navigate("home",true);
     	},

@@ -3638,7 +3638,7 @@ span.texto--normal {
   color: #54676d;
 }
 
-.texto-gris, .home-boton .banner-horizontal.activo .contenido--banner span, html.no-touch .home-boton .banner-horizontal:hover .contenido--banner span {
+.texto-gris, .home-boton .banner-horizontal.activo .contenido--banner span, html.no-touch .home-boton .banner-horizontal:hover .contenido--banner span, .home-boton.destacado .banner-horizontal.activo .contenido--banner span, html.no-touch .home-boton.destacado .banner-horizontal:hover .contenido--banner span {
   color: #8fa9ce;
 }
 
@@ -3864,7 +3864,7 @@ Browse Happy prompt
   border-color: #657bc3;
 }
 
-.punta--gris, .home-boton .banner-horizontal.activo .header--banner .punta--izquierda, .home-boton .banner-horizontal.activo .header--banner .punta--derecha, .home-boton .banner-horizontal.activo .contenedor-con-punta .punta--izquierda, .home-boton .banner-horizontal.activo .contenedor-con-punta .punta--derecha, html.no-touch .home-boton .banner-horizontal:hover .header--banner .punta--izquierda, html.no-touch .home-boton .banner-horizontal:hover .header--banner .punta--derecha, html.no-touch .home-boton .banner-horizontal:hover .contenedor-con-punta .punta--izquierda, html.no-touch .home-boton .banner-horizontal:hover .contenedor-con-punta .punta--derecha {
+.punta--gris, .home-boton .banner-horizontal.activo .header--banner .punta--izquierda, .home-boton .banner-horizontal.activo .header--banner .punta--derecha, .home-boton .banner-horizontal.activo .contenedor-con-punta .punta--izquierda, .home-boton .banner-horizontal.activo .contenedor-con-punta .punta--derecha, html.no-touch .home-boton .banner-horizontal:hover .header--banner .punta--izquierda, html.no-touch .home-boton .banner-horizontal:hover .header--banner .punta--derecha, html.no-touch .home-boton .banner-horizontal:hover .contenedor-con-punta .punta--izquierda, html.no-touch .home-boton .banner-horizontal:hover .contenedor-con-punta .punta--derecha, .home-boton.destacado .banner-horizontal.activo .header--banner .punta--izquierda, .home-boton.destacado .banner-horizontal.activo .header--banner .punta--derecha, .home-boton.destacado .banner-horizontal.activo .contenedor-con-punta .punta--izquierda, .home-boton.destacado .banner-horizontal.activo .contenedor-con-punta .punta--derecha, html.no-touch .home-boton.destacado .banner-horizontal:hover .header--banner .punta--izquierda, html.no-touch .home-boton.destacado .banner-horizontal:hover .header--banner .punta--derecha, html.no-touch .home-boton.destacado .banner-horizontal:hover .contenedor-con-punta .punta--izquierda, html.no-touch .home-boton.destacado .banner-horizontal:hover .contenedor-con-punta .punta--derecha {
   border-color: #8fa9ce;
 }
 
@@ -3913,7 +3913,7 @@ Browse Happy prompt
   border-color: #dadeec;
 }
 
-.contenedor--gris, .home-boton .banner-horizontal.activo .header--banner, .home-boton .banner-horizontal.activo .contenedor-con-punta, html.no-touch .home-boton .banner-horizontal:hover .header--banner, html.no-touch .home-boton .banner-horizontal:hover .contenedor-con-punta, .fondo-gris {
+.contenedor--gris, .home-boton .banner-horizontal.activo .header--banner, .home-boton .banner-horizontal.activo .contenedor-con-punta, html.no-touch .home-boton .banner-horizontal:hover .header--banner, html.no-touch .home-boton .banner-horizontal:hover .contenedor-con-punta, .home-boton.destacado .banner-horizontal.activo .header--banner, .home-boton.destacado .banner-horizontal.activo .contenedor-con-punta, html.no-touch .home-boton.destacado .banner-horizontal:hover .header--banner, html.no-touch .home-boton.destacado .banner-horizontal:hover .contenedor-con-punta, .fondo-gris {
   background-color: #8fa9ce;
   border-color: #8fa9ce;
 }
@@ -4333,6 +4333,10 @@ a:active {
 #nav-top .dropdown-menu li > a {
   display: block;
 }
+#nav-top .header-login {
+  padding-right: 24px;
+  padding-right: 1.5rem;
+}
 
 /** Logo y menu principal **/
 #app-header-menu {
@@ -4411,13 +4415,23 @@ a:active {
 #app-home {
   width: 100%;
 }
+#app-home .home-item {
+  margin: 32px 0;
+  margin: 2rem 0;
+}
+#app-home .home-item.destacado {
+  margin-top: 48px;
+  margin-top: 3rem;
+  margin-bottom: 64px;
+  margin-bottom: 4rem;
+}
 
 .home-item {
   /** Clase usada tambien para los botones de la secci├│n informaci├│n **/
   padding-left: 0;
   padding-right: 0;
-  margin: 16px 0 8px;
-  margin: 1rem 0 0.5rem;
+  margin: 16px 0;
+  margin: 1rem 0;
 }
 
 .home-boton {
@@ -4476,6 +4490,76 @@ a:active {
 }
 .home-boton .banner-horizontal.activo .header--banner .punta--derecha, .home-boton .banner-horizontal.activo .contenedor-con-punta .punta--derecha, html.no-touch .home-boton .banner-horizontal:hover .header--banner .punta--derecha, html.no-touch .home-boton .banner-horizontal:hover .contenedor-con-punta .punta--derecha {
   border-right-color: transparent;
+}
+.home-boton .banner-horizontal .header--banner span {
+  font-size: 21px;
+  font-size: 1.3rem;
+}
+.home-boton.destacado .banner-horizontal {
+  height: 160px;
+  height: 10rem;
+}
+.home-boton.destacado .banner-horizontal .contenedor-con-punta {
+  height: 160px;
+  height: 10rem;
+  position: relative;
+}
+.home-boton.destacado .banner-horizontal .contenedor-con-punta .punta--derecha, .home-boton.destacado .banner-horizontal .contenedor-con-punta .punta--izquierda {
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  top: 0;
+  border-style: solid;
+  border-top-width: 80px;
+  border-top-width: 5rem;
+  border-bottom-width: 80px;
+  border-bottom-width: 5rem;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+}
+.home-boton.destacado .banner-horizontal .contenedor-con-punta .punta--derecha {
+  border-left-width: 53px;
+  border-left-width: 3.33333rem;
+  right: -53px;
+  right: -3.33333rem;
+  border-right-color: transparent;
+}
+.home-boton.destacado .banner-horizontal .contenedor-con-punta .punta--izquierda {
+  border-right-width: 53px;
+  border-right-width: 3.33333rem;
+  left: -53px;
+  left: -3.33333rem;
+  border-left-color: transparent;
+}
+.home-boton.destacado .banner-horizontal .contenedor-con-punta .punta--derecha {
+  border-left-width: 32px;
+  border-left-width: 2rem;
+  right: -34px;
+  right: -2.1rem;
+}
+.home-boton.destacado .banner-horizontal .contenedor-con-punta .punta--izquierda {
+  border-right-width: 32px;
+  border-right-width: 2rem;
+  left: -34px;
+  left: -2.1rem;
+}
+.home-boton.destacado .banner-horizontal.activo .header--banner .punta--izquierda, .home-boton.destacado .banner-horizontal.activo .header--banner .punta--derecha, .home-boton.destacado .banner-horizontal.activo .contenedor-con-punta .punta--izquierda, .home-boton.destacado .banner-horizontal.activo .contenedor-con-punta .punta--derecha, html.no-touch .home-boton.destacado .banner-horizontal:hover .header--banner .punta--izquierda, html.no-touch .home-boton.destacado .banner-horizontal:hover .header--banner .punta--derecha, html.no-touch .home-boton.destacado .banner-horizontal:hover .contenedor-con-punta .punta--izquierda, html.no-touch .home-boton.destacado .banner-horizontal:hover .contenedor-con-punta .punta--derecha {
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+}
+.home-boton.destacado .banner-horizontal.activo .header--banner .punta--izquierda, .home-boton.destacado .banner-horizontal.activo .contenedor-con-punta .punta--izquierda, html.no-touch .home-boton.destacado .banner-horizontal:hover .header--banner .punta--izquierda, html.no-touch .home-boton.destacado .banner-horizontal:hover .contenedor-con-punta .punta--izquierda {
+  border-left-color: transparent;
+}
+.home-boton.destacado .banner-horizontal.activo .header--banner .punta--derecha, .home-boton.destacado .banner-horizontal.activo .contenedor-con-punta .punta--derecha, html.no-touch .home-boton.destacado .banner-horizontal:hover .header--banner .punta--derecha, html.no-touch .home-boton.destacado .banner-horizontal:hover .contenedor-con-punta .punta--derecha {
+  border-right-color: transparent;
+}
+.home-boton.destacado .banner-horizontal .header--banner span {
+  font-size: 24px;
+  font-size: 1.5rem;
+}
+.home-boton.destacado .banner-horizontal .contenido--banner span {
+  font-size: 80px;
+  font-size: 5rem;
 }
 
 /***** Fin home *****/
@@ -4665,7 +4749,18 @@ a:active {
   padding-bottom: 150px;
 }
 
-.app-info_contacto .banner_contacto {
+.app-info_contacto {
+  margin-top: 48px;
+  margin-top: 3rem;
+}
+
+.app-info_contacto, .app-wrapper-certificaciones {
+  text-align: center;
+  padding-left: 0;
+  padding-right: 0;
+}
+.app-info_contacto .banner_contacto, .app-info_contacto .app_certificaciones, .app-wrapper-certificaciones .banner_contacto, .app-wrapper-certificaciones .app_certificaciones {
+  max-width: 450px;
   margin: 16px auto;
   margin: 1rem auto;
   /*.contenido--banner{
@@ -4674,48 +4769,21 @@ a:active {
     padding-bottom: 0;
   }*/
 }
-.app-info_contacto .banner_contacto .contenedor-con-punta {
-  height: 128px;
-  height: 8rem;
-  position: relative;
+.app-info_contacto .banner_contacto .header--banner, .app-info_contacto .app_certificaciones .header--banner, .app-wrapper-certificaciones .banner_contacto .header--banner, .app-wrapper-certificaciones .app_certificaciones .header--banner {
+  width: 100%;
 }
-.app-info_contacto .banner_contacto .contenedor-con-punta .punta--derecha {
-  position: absolute;
-  width: 0px;
-  height: 0px;
-  top: 0;
-  border-style: solid;
-  border-top-width: 64px;
-  border-top-width: 4rem;
-  border-bottom-width: 64px;
-  border-bottom-width: 4rem;
-  border-left-width: 32px;
-  border-left-width: 2rem;
-  right: -34px;
-  right: -2.15rem;
-  border-right-color: transparent;
-  border-top-color: transparent;
-  border-bottom-color: transparent;
+.app-info_contacto .banner_contacto .h3, .app-info_contacto .app_certificaciones .h3, .app-wrapper-certificaciones .banner_contacto .h3, .app-wrapper-certificaciones .app_certificaciones .h3 {
+  margin: 8px 0;
+  margin: 0.5rem 0;
 }
-.app-info_contacto .banner_contacto .header--banner {
-  width: 30%;
-  width: 30%;
-  margin-right: 24px;
-  margin-right: 1.5rem;
-  padding: 20px 0;
-  padding: 1.25rem 0;
-}
-.app-info_contacto .banner_contacto .h3 {
-  margin: 24px 0;
-  margin: 1.5rem 0;
-}
-.app-info_contacto .banner_contacto .contenedor_sede {
+.app-info_contacto .banner_contacto .contenedor_sede, .app-info_contacto .app_certificaciones .contenedor_sede, .app-wrapper-certificaciones .banner_contacto .contenedor_sede, .app-wrapper-certificaciones .app_certificaciones .contenedor_sede {
+  text-align: left;
   display: inline-block;
   vertical-align: top;
   padding: 8px 16px;
   padding: 0.5rem 1rem;
 }
-.app-info_contacto .banner_contacto .contenedor_sede p {
+.app-info_contacto .banner_contacto .contenedor_sede p, .app-info_contacto .app_certificaciones .contenedor_sede p, .app-wrapper-certificaciones .banner_contacto .contenedor_sede p, .app-wrapper-certificaciones .app_certificaciones .contenedor_sede p {
   margin: 0;
   padding: 0 0 0.5em 0;
 }
@@ -5186,9 +5254,9 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo .punta--izquierd
 
 /*********************** Fin app.scss ************************/
 /*********************************************************************
-***** Estilos para dispositivos de  360px de ancho, ├│ superior *******
+***** Estilos para dispositivos de  359px de ancho, ├│ inferior *******
 **********************************************************************/
-@media (max-width: 360px) {
+@media (max-width: 359px) {
   #content-wrapper {
     top: 104px;
   }
@@ -5256,9 +5324,27 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo .punta--izquierd
   }
 
   .home-item {
-    padding: 8px;
-    padding: 0.5rem;
+    padding: 16px 8px;
+    padding: 1rem 0.5rem;
     margin: 0;
+  }
+  .home-item.destacado {
+    padding-bottom: 32px;
+    padding-bottom: 2rem;
+  }
+
+  #app-home .home-item {
+    margin: 8px 0;
+    margin: 0.5rem 0;
+  }
+  #app-home .home-item.destacado {
+    margin: 8px 0;
+    margin: 0.5rem 0;
+  }
+
+  #app-info .home-item {
+    padding: 8px 8px;
+    padding: 0.5rem 0.5rem;
   }
 
   .home-boton .banner-horizontal {
@@ -5315,6 +5401,62 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo .punta--izquierd
   .home-boton .banner-horizontal .contenido--banner span {
     font-size: 32px;
     font-size: 2rem;
+  }
+  .home-boton.destacado .banner-horizontal {
+    height: 96px;
+    height: 6rem;
+  }
+  .home-boton.destacado .banner-horizontal .contenedor-con-punta {
+    height: 96px;
+    height: 6rem;
+    position: relative;
+  }
+  .home-boton.destacado .banner-horizontal .contenedor-con-punta .punta--derecha, .home-boton.destacado .banner-horizontal .contenedor-con-punta .punta--izquierda {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    top: 0;
+    border-style: solid;
+    border-top-width: 48px;
+    border-top-width: 3rem;
+    border-bottom-width: 48px;
+    border-bottom-width: 3rem;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+  }
+  .home-boton.destacado .banner-horizontal .contenedor-con-punta .punta--derecha {
+    border-left-width: 32px;
+    border-left-width: 2rem;
+    right: -32px;
+    right: -2rem;
+    border-right-color: transparent;
+  }
+  .home-boton.destacado .banner-horizontal .contenedor-con-punta .punta--izquierda {
+    border-right-width: 32px;
+    border-right-width: 2rem;
+    left: -32px;
+    left: -2rem;
+    border-left-color: transparent;
+  }
+  .home-boton.destacado .banner-horizontal .contenedor-con-punta .punta--derecha {
+    border-left-width: 20px;
+    border-left-width: 1.25rem;
+    right: -22px;
+    right: -1.35rem;
+  }
+  .home-boton.destacado .banner-horizontal .contenedor-con-punta .punta--izquierda {
+    border-right-width: 20px;
+    border-right-width: 1.25rem;
+    left: -22px;
+    left: -1.35rem;
+  }
+  .home-boton.destacado .banner-horizontal .header--banner span {
+    font-size: 21px;
+    font-size: 1.3rem;
+  }
+  .home-boton.destacado .banner-horizontal .contenido--banner span {
+    font-size: 40px;
+    font-size: 2.5rem;
   }
 
   .labos-item {
@@ -5397,10 +5539,17 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo .punta--izquierd
 
   .app-info_contacto .banner_contacto .header--banner {
     width: 100%;
+    padding: 16px 0;
+    padding: 1rem 0;
     text-align: center;
+    height: 32px;
+    height: 2rem;
   }
   .app-info_contacto .banner_contacto .contenedor_sede {
     display: block;
+  }
+  .app-info_contacto .banner_contacto .h3 {
+    margin: 0;
   }
 
   #app-login .contenedor-con-punta .h4 {
@@ -5506,6 +5655,11 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo .punta--izquierd
     height: 7rem;
     padding-left: 20px;
     padding-right: 20px;
+  }
+
+  #app-home .home-item {
+    margin: 80px 0;
+    margin: 5rem 0;
   }
 
   .labos-boton .banner-horizontal {
@@ -5629,6 +5783,56 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo .punta--izquierd
     left: -26px;
     left: -1.6rem;
   }
+
+  .app-info_contacto, .app-wrapper-certificaciones {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .app-info_contacto .banner_contacto, .app-info_contacto .app_certificaciones, .app-wrapper-certificaciones .banner_contacto, .app-wrapper-certificaciones .app_certificaciones {
+    max-width: 100%;
+    margin: 16px auto;
+    margin: 1rem auto;
+    /*.contenido--banner{
+      width: 73%;
+      padding-top: 0;
+      padding-bottom: 0;
+    }*/
+  }
+  .app-info_contacto .banner_contacto .contenedor-con-punta, .app-info_contacto .app_certificaciones .contenedor-con-punta, .app-wrapper-certificaciones .banner_contacto .contenedor-con-punta, .app-wrapper-certificaciones .app_certificaciones .contenedor-con-punta {
+    height: 128px;
+    height: 8rem;
+    position: relative;
+  }
+  .app-info_contacto .banner_contacto .contenedor-con-punta .punta--derecha, .app-info_contacto .app_certificaciones .contenedor-con-punta .punta--derecha, .app-wrapper-certificaciones .banner_contacto .contenedor-con-punta .punta--derecha, .app-wrapper-certificaciones .app_certificaciones .contenedor-con-punta .punta--derecha {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    top: 0;
+    border-style: solid;
+    border-top-width: 64px;
+    border-top-width: 4rem;
+    border-bottom-width: 64px;
+    border-bottom-width: 4rem;
+    border-left-width: 32px;
+    border-left-width: 2rem;
+    right: -34px;
+    right: -2.15rem;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+  }
+  .app-info_contacto .banner_contacto .header--banner, .app-info_contacto .app_certificaciones .header--banner, .app-wrapper-certificaciones .banner_contacto .header--banner, .app-wrapper-certificaciones .app_certificaciones .header--banner {
+    width: 30%;
+    width: 30%;
+    margin-right: 24px;
+    margin-right: 1.5rem;
+    padding: 20px 0;
+    padding: 1.25rem 0;
+  }
+  .app-info_contacto .banner_contacto .h3, .app-info_contacto .app_certificaciones .h3, .app-wrapper-certificaciones .banner_contacto .h3, .app-wrapper-certificaciones .app_certificaciones .h3 {
+    margin: 24px 0;
+    margin: 1.5rem 0;
+  }
 }
 /*********************************************************************
 ****** Estilos para dispositivos de  990px de ancho, ├│ superior ******
@@ -5655,6 +5859,23 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo .punta--izquierd
   #app-header #app-header-menu .menu-principal ul li a {
     font-size: 18px;
     font-size: 1.15rem;
+  }
+
+  .home-item {
+    padding: 0 32px;
+    padding: 0 2rem;
+  }
+
+  .home-boton {
+    max-width: 600px;
+  }
+  .home-boton .banner-horizontal .header--banner span {
+    font-size: 24px;
+    font-size: 1.5rem;
+  }
+  .home-boton.destacado .banner-horizontal .header--banner span {
+    font-size: 29px;
+    font-size: 1.8rem;
   }
 
   .labos-boton {

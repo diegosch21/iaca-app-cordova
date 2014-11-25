@@ -32,6 +32,8 @@ define([
 			// 'click #update' : 'updateUsuario'
 		},
 
+		// AGREGAR EVENTO A CHECKBOX NOTIFICACIONES
+
 		render: function() {
 			console.log("Render ResultadosListaView");
 			//console.log(this.itemsViews);
