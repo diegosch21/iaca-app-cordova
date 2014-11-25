@@ -192,9 +192,10 @@ define([
         logout: function() {
             var id = this.get("userID");
             var user = Usuarios.get(id);
-            user.save({logueado: false});
-
-            this.enviarNotifID(false,id,user.get('notifID'));  // aviso al server que estoy logout, para que no envie notificaciones
+            if(user) {
+            	user.save({logueado: false});
+	            this.enviarNotifID(false,id,user.get('notifID'));  // aviso al server que estoy logout, para que no envie notificaciones
+	        }
 
         	this.set("token","");
         	this.set("userID",-1);

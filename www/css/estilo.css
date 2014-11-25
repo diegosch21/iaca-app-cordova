@@ -4433,6 +4433,10 @@ a:active {
   margin: 16px 0;
   margin: 1rem 0;
 }
+.home-item span {
+  padding: 0 8px;
+  padding: 0 0.5rem;
+}
 
 .home-boton {
   max-width: 450px;
@@ -5327,10 +5331,6 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo .punta--izquierd
     padding: 16px 8px;
     padding: 1rem 0.5rem;
     margin: 0;
-  }
-  .home-item.destacado {
-    padding-bottom: 32px;
-    padding-bottom: 2rem;
   }
 
   #app-home .home-item {
