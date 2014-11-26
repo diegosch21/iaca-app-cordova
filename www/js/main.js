@@ -113,7 +113,7 @@ function eventHandlersGenerales() {
 	});	
 	// $('body').on('mouseup touchend touchmove', function(e) {
 	$('body').on('touchend touchmove', function(e) {
-		$('.boton').removeClass('activo');
+		//$('.boton').removeClass('activo');
 	});
 
 
