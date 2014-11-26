@@ -80,7 +80,7 @@ define([
 						{"badge":"true",
 						"sound":"true",
 						"alert":"true",
-						"ecb":"onNotificationAPN"}
+						"ecb":"window.callbacks.onNotificationAPN"}
 					);
 				}
 				catch(err) 	{

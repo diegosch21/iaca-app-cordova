@@ -330,12 +330,14 @@ define([
 
         enviarNotifID: function(notificar,userID,notifID) {
             var platform = "";
-            if (window.device)
+            if (window.device) {
                 platform = device.platform;
+                uuid = device.uuid;
+            }
 
-            console.log("enviarNotifID: notificar="+notificar+" userID="+userID+" platform="+platform+" regID="+notifID);
+            console.log("enviarNotifID: notificar="+notificar+" userID="+userID+" platform="+platform+" uuid="+uuid+" regID="+notifID);
             //TODO AJAX POST SERVER
-            //    data:  userID, platform, regID, notificar, login
+            //    data:  userID, platform, regID, notificar, uuid
 
         }
 

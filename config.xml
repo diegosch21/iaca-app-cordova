@@ -12,6 +12,8 @@
 	
 	<preference name="SplashScreen" value="screen"/>
 	<preference name="SplashScreenDelay" value="5000" />
+    <preference name="StatusBarOverlaysWebView" value="true" /> 
+    <preference name="StatusBarBackgroundColor" value="#28427e" />
     <platform name="android">
     	<!-- Icon -->
 		<icon src="res/icon/android/icon-ldpi.png" density="ldpi" />

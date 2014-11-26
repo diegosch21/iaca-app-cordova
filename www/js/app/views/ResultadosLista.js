@@ -234,7 +234,7 @@ define([
 
 		crearScrollerImgs: function() {
 
-			$('#close-imgs').on('touchstart',function() {
+			$('#close-imgs, #back-imgs').on('touchstart',function() {
 				$('#imgs-wrapper').fadeOut();
 			});
 
