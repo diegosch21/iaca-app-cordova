@@ -90,7 +90,7 @@ define([
 
 			var tokenHandlerApple = function(token) {
 				console.log("PushPlugin: Success handler register en Apple. token: "+token);
-				alert("PushPlugin: Success handler register en Apple. token: "+token);
+				//alert("PushPlugin: Success handler register en Apple. token: "+token);
 				addCallback('onNotificationAPN',onNotificationAPN);	
 				localStorage.setItem("iaca-notificationID", token);
 				Sesion.setNotifID(token);

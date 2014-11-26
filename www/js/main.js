@@ -83,7 +83,7 @@ define(['jquery', 'underscore', 'backbone', 'iscroll','bootstrap'], //'modernizr
 function eventHandlersGenerales() {
 	window.dragging = false;
 	$('body').on('touchmove', function (e) {
-		window.dragging = true;
+		//window.dragging = true;
 		// console.log("touchmove "+event.target.tagName +' '+event.target.id +' '+ event.target.className);
 	});
 	$('body').on('touchstart', function(e){
