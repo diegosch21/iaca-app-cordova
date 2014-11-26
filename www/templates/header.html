@@ -4,12 +4,11 @@
 			<div class="container-fluid app-header-top">
 				<div class="menu-top">
 					<ul id="nav-top" class="list-inline row">
-						<li class="col-xs-1 back">
+						<li class="col-xs-1 back hidden">
 							<i class="fa fa-3x fa-angle-left header-back hidden-xxs"></i>
 							<i class="fa fa-2x fa-angle-left header-back visible-xxs-inline-block"></i>
 						</li>
-						
-						<li class="col-xs-11 menu-profesional">
+						<li class="col-xs-12 menu-profesional">
 							<div class="dropdown text-right">
 								<% if (logueado) { %>
 								<a data-toggle="dropdown" id="menuUser" class="toggle-dropdown" data-dropdown="menuUser-list" >
@@ -32,7 +31,7 @@
 									<!-- <li role="presentation"><a role="menuitem" href="#configuracion" class="classic-link"><strong>Configuración</strong></a></li> -->
 									<li role="presentation"><a role="menuitem" href="#changeuser" class="classic-link"><strong>Cambiar usuario</strong></a></li>
 									<li role="presentation" class="divider"></li>
-									<li role="presentation"><a role="menuitem" id="logout" href="#logout" class="classic-link"><i class="fa fa-lg fa-sign-out texto-azul">&nbsp;&nbsp;</i><strong class="texto-azul">Cerrar Sesión</strong></a></li>
+									<li role="presentation"><a role="menuitem" id="logout" href="#logout" class=""><i class="fa fa-lg fa-sign-out texto-azul">&nbsp;&nbsp;</i><strong class="texto-azul">Cerrar Sesión</strong></a></li>
 								</ul>								
 								<% } %>		
 								

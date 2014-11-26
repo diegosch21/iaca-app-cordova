@@ -90,6 +90,7 @@ define([
 
 			var tokenHandlerApple = function(token) {
 				console.log("PushPlugin: Success handler register en Apple. token: "+token);
+				alert("PushPlugin: Success handler register en Apple. token: "+token);
 				addCallback('onNotificationAPN',onNotificationAPN);	
 				localStorage.setItem("iaca-notificationID", token);
 				Sesion.setNotifID(token);
@@ -104,11 +105,9 @@ define([
 			var onNotificationAPN = function(e) {
 				console.log("onNotificationGCM");
                 if (e.alert) {
-                     
-                    //TODO
+                    console.log(e.alert);
                 }
-                    
-                
+                alerta('Nuevo resultado','Hay un nuevo resultado de análisis disponible');
                 if (e.badge) {
                     pushNotification.setApplicationIconBadgeNumber(successHandlerBadge, e.badge);
                 }

@@ -32,7 +32,6 @@ define([
 
 
 		render: function() {
-			
 			this.$el.html(this.template({logueado: this.logueado, user: this.username}));
 			return this;
 		},
@@ -60,6 +59,16 @@ define([
 	            $('#menuitem-' + menuItem).addClass('activo');
 	            $('#menu-principal-xs-'+ menuItem).show();
         	}
+        	var actualURL = Backbone.history.fragment;
+        	console.log(actualURL);
+        	if (actualURL == 'home' || actualURL == '' ) {
+        		$('li.back').addClass('hidden');
+        		$('li.menu-profesional').removeClass('col-xs-11').addClass('col-xs-12');
+        	}
+        	else {
+        		$('li.back').removeClass('hidden');
+        		$('li.menu-profesional').removeClass('col-xs-12').addClass('col-xs-11');	
+        	}
     	},
     	logout: function(evt) {
     		if(evt)
@@ -81,7 +90,6 @@ define([
     		var dropdown= ($(evt.currentTarget).data('dropdown'));
     		console.log("Toggle dropdown "+dropdown);
     		$('#'+dropdown).dropdown('toggle');
-			
     	},
     	classicLink: function(evt) {
     		var url= ($(evt.currentTarget).attr('href'));
@@ -107,20 +115,13 @@ define([
 			console.log('actualURL: '+actualURL);
 			// Desde laboratorios siempre voy a home (para evitar que si vi vengo de un lab vuelva a ese)
 			// Desde login también va a home
-			if (actualURL == 'laboratorios' || actualURL.substring(0, 5) == 'login') {
+			if (actualURL == 'laboratorios' || actualURL.substring(0, 5) == 'login' || actualURL == 'info') {
 				console.log('Go to home');
 				Backbone.history.navigate("home",true);
 			}
-			// Si es home, exit app
+			// Si es home, no hago nada
 			else if (actualURL == 'home' || actualURL == '' ) {
-				console.log('Exit app??');
-
-				navigator.notification.confirm(
-				    '¿Desea cerrar la aplicación?', // message
-				     exitApp,            // callback to invoke with index of button pressed
-				    'SALIR',           // title
-				    ['NO','SÍ']     // buttonLabels
-				);
+				
 			}
 			// En cualquier otro lado, voy atrás
 			else {

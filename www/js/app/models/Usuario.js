@@ -10,7 +10,7 @@ define([
         	name: "",
         	pass: "",
             logueado: false,
-        	notificar: false,
+        	notificar: true,
             notifID: 0
         }
     });

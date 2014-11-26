@@ -152,59 +152,63 @@ define([
 			console.log("Actualizo lista de resultados...")
 			this.updating(true);
 			var self = this;
-			Sesion.getResultados({
-				success: function(data) {
-					if(data.list != null) {
-						console.log("Cantidad resultados: "+data.list.length);
-						var result = {}; 
-						var hayNuevo = false;  //si no hay nuevo no vuelvo a hacer renderList 
-						for (var i = data.list.length - 1; i >= 0; i--) {
-							var elem = data.list[i];
-							// Si en la colecc no está el result de ese protocolo (id) lo creo y guardo en storage
-							if(!self.resultadosGuardados.get(elem['protocolo'])) {
-								// cambio nombres de algunas keys
-								_.each(elem, function(value, key) {
-								    key = self.mapKeysResultado[key] || key;
-								    result[key] = value;
-								});
-								var fecha = (result['fecha'].replace(/(\d{2})(\d{2})(\d{2})/,'$1-$2-$3'));
-								result['fecha'] = fecha;
-								console.log("Nuevo resultado: ")
-								console.log(result);
-								self.resultadosGuardados.create(result);
-								hayNuevo = true;
+			try {
+				Sesion.getResultados({
+					success: function(data) {
+						if(data.list != null) {
+							console.log("Cantidad resultados: "+data.list.length);
+							var result = {}; 
+							var hayNuevo = false;  //si no hay nuevo no vuelvo a hacer renderList 
+							for (var i = data.list.length - 1; i >= 0; i--) {
+								var elem = data.list[i];
+								// Si en la colecc no está el result de ese protocolo (id) lo creo y guardo en storage
+								if(!self.resultadosGuardados.get(elem['protocolo'])) {
+									// cambio nombres de algunas keys
+									_.each(elem, function(value, key) {
+									    key = self.mapKeysResultado[key] || key;
+									    result[key] = value;
+									});
+									var fecha = (result['fecha'].replace(/(\d{2})(\d{2})(\d{2})/,'$1-$2-$3'));
+									result['fecha'] = fecha;
+									console.log("Nuevo resultado: ")
+									console.log(result);
+									self.resultadosGuardados.create(result);
+									hayNuevo = true;
+								}
+								// Si ya estaba actualizo direccion pdf e imgs
+								else {
+									self.resultadosGuardados.get(elem['protocolo']).save({
+										pdf: elem['pdf'],
+										jpg: elem['jpg']
+									});
+								}
 							}
-							// Si ya estaba actualizo direccion pdf e imgs
-							else {
-								self.resultadosGuardados.get(elem['protocolo']).save({
-									pdf: elem['pdf'],
-									jpg: elem['jpg']
-								});
-							}
+							if(hayNuevo)
+								self.renderList(true,9);
 						}
-						if(hayNuevo)
-							self.renderList(true,9);
+					},
+					error: function(error) {
+						console.log(error);
+						if (window.deviceready && window.plugins && window.plugins.toast) { 
+							window.plugins.toast.showLongCenter(error);
+						}
+						else {
+							self.$el.find('#error-get-results').html(self.templateAlert({msj: error}));
+						}					
+					},
+					complete: function() {
+						self.updating(false);
+						//console.log(self.itemsViews);
+						_.each(self.itemsViews, function(item, key) {
+							item.delegateEvents();
+						//	console.log("delegateEvents "+item);
+						});
 					}
-				},
-				error: function(error) {
-					console.log(error);
-					if (window.deviceready && window.plugins && window.plugins.toast) { 
-						window.plugins.toast.showLongCenter(error);
-					}
-					else {
-						self.$el.find('#error-get-results').html(self.templateAlert({msj: error}));
-					}					
-				},
-				complete: function() {
-					self.updating(false);
-					//console.log(self.itemsViews);
-					_.each(self.itemsViews, function(item, key) {
-						item.delegateEvents();
-					//	console.log("delegateEvents "+item);
-					});
-				}
-					
-			});
+						
+				});
+			} catch(err) {
+				console.log(err);
+			}
 		},
 		mapKeysResultado: {
 		    documento: "userID",
