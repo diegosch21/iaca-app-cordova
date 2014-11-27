@@ -81,19 +81,48 @@ define(['jquery', 'underscore', 'backbone', 'iscroll','bootstrap'], //'modernizr
 );
 
 function eventHandlersGenerales() {
+	// variables para controlar distancia de touchmove
+	// var startX = 0;	var startY = 0;
+	// var moveX = 0;	var moveY = 0;
+	// var difX = 0; var difY = 0;
+	// var minSwipe = 20;
 	window.dragging = false;
-	$('body').on('touchmove', function (e) {
-		//window.dragging = true;
-		// console.log("touchmove "+event.target.tagName +' '+event.target.id +' '+ event.target.className);
-	});
-	$('body').on('touchstart', function(e){
-    	window.dragging = false;
-    	// console.log("touchstart "+event.target.tagName +' '+event.target.id +' '+ event.target.className);
-	});
 
-	//$('body').on("touchend", function (event) {
+	document.addEventListener('touchmove', function (e) {
+		// if (e.changedTouches) {
+		// 	var touchobj = e.changedTouches[0];
+	 //    	moveX = touchobj.pageX; 
+	 //    	moveY = touchobj.pageY;
+	 //    	console.log("touchmove "+moveX+" "+moveY);
+	 //    	difX = Math.abs(moveX - startX);
+	 //    	difY = Math.abs(moveY - startY);
+	 //    	if (difX > minSwipe || difY > minSwipe)
+		// 		window.dragging = true;
+		// }
+		// else
+		window.dragging = true;	
+		//console.log("touchmove "+e.target.tagName +' '+e.target.id +' '+ e.target.className+' '+e.touches);
+	},false);
+
+
+
+	document.addEventListener('touchstart', function(e){
+    	window.dragging = false;
+    	// if (e.changedTouches) {
+    	// 	var touchobj = e.changedTouches[0];
+    	// 	startX = touchobj.pageX; 
+    	// 	startY = touchobj.pageY;
+    	// 	console.log("touchstart "+startX+" "+startY);
+    	// }
+
+    	// console.log("touchstart "+e.target.tagName +' '+e.target.id +' '+ e.target.className);
+	},false);
+
+	document.addEventListener("touchend", function (e) {
+		window.dragging = false;
 		// console.log("touchend "+event.target.tagName +' '+event.target.id +' '+ event.target.className);    
-	//});
+	},false);
+	
     //$('body').on("click", function (event) {
 	    // console.log("click "+event.target.tagName +' '+event.target.id +' '+ event.target.className);    
 	//});
