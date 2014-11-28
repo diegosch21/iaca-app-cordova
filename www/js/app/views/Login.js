@@ -24,7 +24,8 @@ define([
 		events: {
 			'submit form#login'	: 'login',
 			'touchend a.usuario-guardado' : 'loginGuardado',
-			'touchend span.delete-guardado' : 'deleteGuardado'
+			'touchend span.delete-guardado' : 'deleteGuardado',
+			'touchend #content-logout' : 'logout'
 			// 'click a.usuario-guardado' : 'loginGuardado',
 			// 'click span.delete-guardado' : 'deleteGuardado'
 		},
@@ -137,6 +138,18 @@ define([
 			var id = $(evt.currentTarget).data("id");
 			Usuarios.get(id).destroy();
 			this.render();
+		},
+		logout: function() {
+			Sesion.logout();
+    		if (window.deviceready) { 
+    			try {
+    				window.plugins.toast.showShortCenter('Usuario deslogueado');
+    			}
+    			catch(err) {
+    				console.log(err);
+    			}
+    		}
+    		this.render();	
 		}
 
 

@@ -9,8 +9,9 @@ define([
 		template: _.template(homeTemplate),
 
 		events: {
-			'touchend .home-boton' : 'pressBoton'
+			'touchend .home-boton' : 'pressBoton',
 			// 'click .home-boton' : 'pressBoton'
+			'touchend .external-link' : 'externalLink'
 		},
 
 		initialize: function() {
@@ -24,6 +25,10 @@ define([
 			console.log('pressBoton (dragging: '+window.dragging+')');
 			if(!window.dragging)
 				Backbone.history.navigate($(e.currentTarget).data('href'),true);
+		},
+		externalLink: function(event) {
+			var url= ($(event.currentTarget).data('href'));
+			window.open(url, '_system');
 		}
 		
 	});

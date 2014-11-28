@@ -82,25 +82,24 @@ define(['jquery', 'underscore', 'backbone', 'iscroll','bootstrap'], //'modernizr
 
 function eventHandlersGenerales() {
 	// variables para controlar distancia de touchmove
-	// var startX = 0;	var startY = 0;
-	// var moveX = 0;	var moveY = 0;
-	// var difX = 0; var difY = 0;
-	// var minSwipe = 20;
+	var startX = 0;	var startY = 0;
+	var moveX = 0;	var moveY = 0;
+
+	var minSwipe = 20;
+	
 	window.dragging = false;
 
 	document.addEventListener('touchmove', function (e) {
-		// if (e.changedTouches) {
-		// 	var touchobj = e.changedTouches[0];
-	 //    	moveX = touchobj.pageX; 
-	 //    	moveY = touchobj.pageY;
-	 //    	console.log("touchmove "+moveX+" "+moveY);
-	 //    	difX = Math.abs(moveX - startX);
-	 //    	difY = Math.abs(moveY - startY);
-	 //    	if (difX > minSwipe || difY > minSwipe)
-		// 		window.dragging = true;
-		// }
-		// else
-		window.dragging = true;	
+		if (e.changedTouches) {
+			var touchobj = e.changedTouches[0];
+	    	moveX = Math.abs(touchobj.pageX - startX);
+	    	moveY = Math.abs(touchobj.pageY - startY);
+	    	if (moveX > minSwipe || moveY > minSwipe)
+				window.dragging = true;
+			//console.log("touchmove "+moveX+" "+moveY);
+		}
+		else
+			window.dragging = true;	
 		//console.log("touchmove "+e.target.tagName +' '+e.target.id +' '+ e.target.className+' '+e.touches);
 	},false);
 
@@ -108,12 +107,12 @@ function eventHandlersGenerales() {
 
 	document.addEventListener('touchstart', function(e){
     	window.dragging = false;
-    	// if (e.changedTouches) {
-    	// 	var touchobj = e.changedTouches[0];
-    	// 	startX = touchobj.pageX; 
-    	// 	startY = touchobj.pageY;
-    	// 	console.log("touchstart "+startX+" "+startY);
-    	// }
+    	if (e.changedTouches) {
+    	 	var touchobj = e.changedTouches[0];
+    	 	startX = touchobj.pageX; 
+    	 	startY = touchobj.pageY;
+    	 	//console.log("touchstart "+startX+" "+startY);
+    	}
 
     	// console.log("touchstart "+e.target.tagName +' '+e.target.id +' '+ e.target.className);
 	},false);
@@ -127,15 +126,15 @@ function eventHandlersGenerales() {
 	    // console.log("click "+event.target.tagName +' '+event.target.id +' '+ event.target.className);    
 	//});
 	// $('body').on("mousedown touchstart",'.boton', function (e) {
-	$('body').on("touchstart",'.boton', function (e) {
+	$('body').on("touchstart",'.boton,.activar', function (e) {
 		$(e.currentTarget).addClass('activo');
 		//	e.stopPropagation();
 		//	e.preventDefault();
 		//	console.log("activo "+e.target.tagName +' '+e.target.id +' '+ e.target.className);    
 	});
 	// $('body').on("mouseup touchend",'.boton', function (e) {
-	$('body').on("touchend",'.boton', function (e) {
-		$('.boton').removeClass('activo');
+	$('body').on("touchend",'.boton,.activar', function (e) {
+		$(e.currentTarget).removeClass('activo');
 		// e.stopPropagation();
 		// e.preventDefault();
 		// console.log("desactivo "+e.target.tagName +' '+e.target.id +' '+ e.target.className);    

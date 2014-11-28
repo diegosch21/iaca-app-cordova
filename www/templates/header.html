@@ -4,19 +4,19 @@
 			<div class="container-fluid app-header-top">
 				<div class="menu-top">
 					<ul id="nav-top" class="list-inline row">
-						<li class="col-xs-1 back hidden">
+						<li class="col-xs-1 back hidden activar">
 							<i class="fa fa-3x fa-angle-left header-back hidden-xxs"></i>
 							<i class="fa fa-2x fa-angle-left header-back visible-xxs-inline-block"></i>
 						</li>
 						<li class="col-xs-12 menu-profesional">
 							<div class="dropdown text-right">
 								<% if (logueado) { %>
-								<a data-toggle="dropdown" id="menuUser" class="toggle-dropdown" data-dropdown="menuUser-list" >
+								<a data-toggle="dropdown" id="menuUser" class="toggle-dropdown activar" data-dropdown="menuUser-list" >
 									<i class="fa fa-lg fa-user hidden-xxs"></i>
 									<span class="hidden-xs">Bienvenido, </span><strong> <%= user %></strong>&nbsp;&nbsp;<i class="fa fa-bars fa-lg"></i>
 								</a>
 								<% } else { %>
-								<a href="#login" class="classic-link header-login">
+								<a href="#login" class="classic-link header-login activar">
 									<i class="fa fa-lg fa-user"></i>
 									<strong> INICIAR SESIÓN</strong>&nbsp;&nbsp;
 								</a>
@@ -67,7 +67,7 @@
 						</ul>
 					</nav> 
 					<div class="dropdown visible-xs"> <!-- menu select -->
-						<a data-toggle="dropdown" id="menu-principal-xs" class="toggle-dropdown" data-dropdown="menu-principal-xs-list" >
+						<a data-toggle="dropdown" id="menu-principal-xs" class="toggle-dropdown activar" data-dropdown="menu-principal-xs-list" >
 							<span class='menu-principal-xs-activo' id='menu-principal-xs-inicio'>INICIO</span>
 							<span class='menu-principal-xs-activo' id='menu-principal-xs-resultados'>MIS ANÁLISIS</span>
 							<!-- <span class='menu-principal-xs-activo' id='menu-principal-xs-configuracion'>CONFIGURACIÓN</span> -->

@@ -26,8 +26,8 @@ define([
 			//'touchstart a.toggle-dropdown'	: 'dropdownMenu',
 			'touchstart a.classic-link' : 	'classicLink',
 			'touchend ul.dropdown-menu' : 'closeDropdown',
-			'touchstart .external-link' : 'externalLink',
-			'touchstart .header-back' : 'back'
+			'touchend .external-link' : 'externalLink',
+			'touchend .back' : 'back'
 		},
 
 
@@ -115,7 +115,7 @@ define([
 			console.log('actualURL: '+actualURL);
 			// Desde laboratorios siempre voy a home (para evitar que si vi vengo de un lab vuelva a ese)
 			// Desde login también va a home
-			if (actualURL == 'laboratorios' || actualURL.substring(0, 5) == 'login' || actualURL == 'info') {
+			if (actualURL == 'laboratorios' || actualURL == 'resultados' || actualURL.substring(0, 5) == 'login' || actualURL == 'info') {
 				console.log('Go to home');
 				Backbone.history.navigate("home",true);
 			}
