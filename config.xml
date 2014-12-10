@@ -1,6 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.imotionconsulting.iacalaboratorios" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>IACA Laboratorios</name>
+<widget id="com.imotionconsulting.iacalaboratorios"
+    version="1.0.1" 
+    xmlns="http://www.w3.org/ns/widgets" 
+    xmlns:cdv="http://cordova.apache.org/ns/1.0"
+    android-versionCode="1"
+    ios-CFBundleVersion="1.0.1" >
+
+    <name>IACA Lab</name>
     <description>
         IACA Laboratorios - Consulta de resultados de análisis de pacientes
     </description>
@@ -16,6 +22,7 @@
     <preference name="StatusBarBackgroundColor" value="#28427e" />
     <platform name="android">
     	<!-- Icon -->
+        <icon src="res/icon/icon.png"/>
 		<icon src="res/icon/android/icon-ldpi.png" density="ldpi" />
         <icon src="res/icon/android/icon-mdpi.png" density="mdpi" />
         <icon src="res/icon/android/icon-hdpi.png" density="hdpi" />
@@ -28,9 +35,11 @@
         <splash src="res/screen/android/land-480x320.9.png" density="land-mdpi"/>
         <splash src="res/screen/android/land-800x480.9.png" density="land-hdpi"/>
         <splash src="res/screen/android/land-1280x720.9.png" density="land-xhdpi"/>
+        <splash src="res/screen/android/land-1920x1080.9.png" density="land-xxhdpi"/>
         <splash src="res/screen/android/port-200x320.9.png" density="port-ldpi"/>
         <splash src="res/screen/android/port-320x480.9.png" density="port-mdpi"/>
         <splash src="res/screen/android/port-480x800.9.png" density="port-hdpi"/>
         <splash src="res/screen/android/port-720x1280.9.png" density="port-xhdpi"/>
+        <splash src="res/screen/android/port-1080x1920.9.png" density="port-xxhdpi"/>
     </platform>
 </widget>
