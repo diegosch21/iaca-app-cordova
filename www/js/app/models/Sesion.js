@@ -25,11 +25,13 @@ define([
         },
 
         urls: {
-        	login: 'http://iaca3.web.vianetcon.com.ar/ws.json!login!',
+        	//login: 'http://iaca3.web.vianetcon.com.ar/ws.json!login!',
+            login: 'https://www.iaca.com.ar/ws.json!login!',
         	//login: 'http://localhost/iaca/iaca-www/proxy_login.php?',
             //login: 'proxy_login.php?',
             //login: 'proxy/login_18277932.json?',
-        	results: 'http://iaca3.web.vianetcon.com.ar/ws.json!list-results!'
+        	//results: 'http://iaca3.web.vianetcon.com.ar/ws.json!list-results!'
+            results: 'https://www.iaca.com.ar/ws.json!list-results!'
         	//results: 'http://localhost/iaca/iaca-www/proxy_results.php?'
             //results: 'proxy_results.php?'
             //results: 'proxy/results_18277932_2.json?'

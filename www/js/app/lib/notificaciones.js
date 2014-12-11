@@ -11,6 +11,7 @@ define([
  			};
 
 			this.registrarAndroid = function() {
+				logger.toggleConsole(true);   // DEBUG
 				console.log("PushPlugin: registrarAndroid");
 				try {
 					window.plugins.pushNotification.register(
@@ -23,15 +24,21 @@ define([
 				catch(err) {
 					console.log("PushPlugin error: "+err);
 				}	
+				logger.toggleConsole(false);   // NO DEBUG
 			};
 			var successHandlerAndroid = function(result) {
+				logger.toggleConsole(true);   // DEBUG
 				console.log("PushPlugin: Success handler register en android. Result: "+result);
 				addCallback('onNotificationGCM',onNotificationGCM);	
+				logger.toggleConsole(false);   // NO DEBUG
 			};
 			var errorHandlerAndroid = function(error) {
+				logger.toggleConsole(true);   // DEBUG
 				console.log("PushPlugin: Error handler register en android. Error: "+error);
+				logger.toggleConsole(false);   // NO DEBUG
 			};
 			var onNotificationGCM = function (e) {
+				logger.toggleConsole(true);   // DEBUG
 				console.log("onNotificationGCM");
 				switch( e.event )
 				{
@@ -70,9 +77,11 @@ define([
                         console.log("PushPlugin - onNotificationGCM: evento desconocido");
                         break;
                 }
+                logger.toggleConsole(false);   // NO DEBUG
             };
 
 			this.registrarApple = function() {
+				logger.toggleConsole(true);   // DEBUG
 				try {
 					window.plugins.pushNotification.register(
 						tokenHandlerApple, 
@@ -86,23 +95,31 @@ define([
 				catch(err) 	{
 					console.log("PushPlugin error: "+err);
 				}
+				logger.toggleConsole(false);   // NO DEBUG
 			};
 
 			var tokenHandlerApple = function(token) {
+				logger.toggleConsole(true);   // DEBUG
 				console.log("PushPlugin: Success handler register en Apple. token: "+token);
 				//alert("PushPlugin: Success handler register en Apple. token: "+token);
 				addCallback('onNotificationAPN',onNotificationAPN);	
 				localStorage.setItem("iaca-notificationID", token);
 				Sesion.setNotifID(token);
+				logger.toggleConsole(false);   // NO DEBUG
 			};
 			var errorHandlerApple = function(error) {
+				logger.toggleConsole(true);   // DEBUG
 				console.log("PushPlugin: Error handler register en Apple. Error: "+error);
+				logger.toggleConsole(false);   // NO DEBUG
 			};
 			var successHandlerBadge = function() {
+				logger.toggleConsole(true);   // DEBUG
 				console.log("PushPlugin: Success handler icon badge en Apple");
+				logger.toggleConsole(false);   // NO DEBUG
 			};
 
 			var onNotificationAPN = function(e) {
+				logger.toggleConsole(true);   // DEBUG
 				console.log("onNotificationGCM");
                 if (e.alert) {
                     console.log(e.alert);
@@ -111,6 +128,7 @@ define([
                 if (e.badge) {
                     pushNotification.setApplicationIconBadgeNumber(successHandlerBadge, e.badge);
                 }
+                logger.toggleConsole(false);   // NO DEBUG
             }
 
 
