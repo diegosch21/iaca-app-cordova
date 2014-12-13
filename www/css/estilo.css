@@ -5390,7 +5390,7 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo .punta--izquierd
   #nav-top > li.menu-profesional div.dropdown {
     font-size: 14px;
   }
-  #nav-top > li.menu-profesional div.dropdown #menuUser {
+  #nav-top > li.menu-profesional div.dropdown a {
     padding: 4px;
     padding: 0.25rem;
   }
