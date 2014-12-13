@@ -5106,6 +5106,9 @@ div.botones-social div.redes-sociales a.activo {
   padding-right: 16px;
   padding-right: 1rem;
 }
+#app-resultados .header-resultados span {
+  white-space: nowrap;
+}
 #app-resultados .barra-tabla {
   max-width: 600px;
   margin: auto;
@@ -5178,15 +5181,10 @@ ul.lista_resultados .item--resultado_paciente .info--resultado {
   font-weight: 700;
   padding: 0;
   margin: 0;
+  white-space: nowrap;
 }
 ul.lista_resultados .item--resultado_paciente .info--resultado.text-left-xs {
   text-align: left;
-  padding-left: 8px;
-  padding-left: 0.5rem;
-}
-ul.lista_resultados .item--resultado_paciente .info--resultado.text-left-xs i.fa {
-  padding-left: 8px;
-  padding-left: 0.5rem;
 }
 ul.lista_resultados .item--resultado_paciente .leido i {
   padding: 16px;
@@ -5215,8 +5213,8 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf .punta--izquierda {
   border-color: #0056a0;
 }
 ul.lista_resultados .item--resultado_paciente .boton_img {
-  padding-right: 16px;
-  padding-right: 1rem;
+  padding-right: 12px;
+  padding-right: 0.75rem;
   background-color: #76b5e6;
 }
 ul.lista_resultados .item--resultado_paciente .boton_img .punta--izquierda {
@@ -5331,7 +5329,7 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo .punta--izquierd
 **********************************************************************/
 @media (max-width: 359px) {
   #content-wrapper {
-    top: 104px;
+    top: 78px;
   }
 
   .hidden-xxs {
@@ -5387,16 +5385,28 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo .punta--izquierd
   }
 
   #nav-top > li.menu-profesional {
-    line-height: 1.5;
+    line-height: 1.25;
   }
   #nav-top > li.menu-profesional div.dropdown {
     font-size: 14px;
   }
+  #nav-top > li.menu-profesional div.dropdown #menuUser {
+    padding: 4px;
+    padding: 0.25rem;
+  }
+  #nav-top > li.back i.fa {
+    font-weight: 700;
+  }
 
+  #app-header-menu {
+    height: 45px;
+    max-height: 45px;
+  }
   #app-header-menu .dropdown #menu-principal-xs {
     font-size: 16px;
     font-size: 1rem;
-    padding: 0.75em 0.25em;
+    padding: 4px 4px;
+    padding: 0.25rem 0.25rem;
   }
   #app-header-menu .dropdown .dropdown-menu {
     font-size: 16px;
@@ -5728,6 +5738,10 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo .punta--izquierd
     line-height: 4;
     height: 100%;
   }
+  ul.lista_resultados .item--resultado_paciente .leido i {
+    padding-left: 12px;
+    padding-left: 0.75rem;
+  }
 }
 /*********************************************************************
 ****** Estilos para dispositivos de  768px de ancho, ├│ superior ******
@@ -5831,8 +5845,8 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo .punta--izquierd
     padding-left: 0;
   }
   ul.lista_resultados .item--resultado_paciente .info--resultado.text-left-xs i.fa {
-    padding-left: 16px;
-    padding-left: 1rem;
+    padding-left: 24px;
+    padding-left: 1.5rem;
   }
   ul.lista_resultados .item--resultado_paciente .contenedor-con-punta {
     height: 64px;
