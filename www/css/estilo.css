@@ -4322,11 +4322,11 @@ a:active {
   text-align: left;
   margin: 0;
   padding: 0;
-  padding-left: 10px;
+  padding-left: 5px;
 }
 #nav-top > li.back i.fa {
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
   font-weight: 500;
   margin: 0;
 }
@@ -5329,7 +5329,7 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo .punta--izquierd
 **********************************************************************/
 @media (max-width: 359px) {
   #content-wrapper {
-    top: 78px;
+    top: 87px;
   }
 
   .hidden-xxs {
@@ -5391,13 +5391,15 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo .punta--izquierd
     font-size: 14px;
   }
   #nav-top > li.menu-profesional div.dropdown a {
-    padding: 4px;
-    padding: 0.25rem;
+    padding: 8px;
+    padding: 0.5rem;
   }
   #nav-top > li.back i.fa {
     font-weight: 700;
-    padding: 4px;
-    padding: 0.25rem;
+    padding: 0 8px;
+    padding: 0 0.5rem;
+    padding-left: 4px;
+    padding-left: 0.25rem;
   }
 
   #app-header-menu {
