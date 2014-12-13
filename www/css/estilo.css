@@ -5396,6 +5396,8 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo .punta--izquierd
   }
   #nav-top > li.back i.fa {
     font-weight: 700;
+    padding: 4px;
+    padding: 0.25rem;
   }
 
   #app-header-menu {

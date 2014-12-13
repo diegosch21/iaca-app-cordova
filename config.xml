@@ -21,6 +21,7 @@
     <preference name="StatusBarOverlaysWebView" value="true" /> 
     <preference name="StatusBarBackgroundColor" value="#28427e" />
     <platform name="android">
+        <preference name="LogLevel" value="WARN"/>
     	<!-- Icon -->
         <icon src="res/icon/icon.png"/>
 		<icon src="res/icon/android/icon-ldpi.png" density="ldpi" />
