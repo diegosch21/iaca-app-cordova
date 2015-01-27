@@ -55,6 +55,8 @@ define([
 			var pri = this.actualItem +1;
 			console.log("Primer item: #"+pri+" Último item: #"+ult);
 
+			var hayImagenes = false;
+
 			for (var i = pri; i <=ult; i++) {
 				var result = this.resultadosGuardados.at(i);
 				//console.log("Creo view resultado, id: "+result.id);
@@ -62,7 +64,14 @@ define([
 				this.$el.find('#lista-resultados').append(view.render().el);
 				this.itemsViews[result.id] = view;
 				this.actualItem = i;
+				hayImagenes = hayImagenes || result.get("jpg").length > 0;
 			};
+			if(hayImagenes) {
+				this.$el.find('.ver-imagenes').show();
+			}
+			else {
+				this.$el.find('.ver-imagenes').hide();
+			}
 			if(this.resultadosGuardados.length>0) 
 				this.$el.find('#no-results').hide();
 			else
@@ -163,6 +172,9 @@ define([
 								var elem = data.list[i];
 								// Si en la colecc no está el result de ese protocolo (id) lo creo y guardo en storage
 								if(!self.resultadosGuardados.get(elem['protocolo'])) {
+									console.log(elem);
+									if(typeof elem['jpg'] == 'undefined')
+										elem['jpg'] = [];
 									// cambio nombres de algunas keys
 									_.each(elem, function(value, key) {
 									    key = self.mapKeysResultado[key] || key;

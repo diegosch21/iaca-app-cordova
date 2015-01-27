@@ -5186,6 +5186,12 @@ ul.lista_resultados .item--resultado_paciente .info--resultado {
 ul.lista_resultados .item--resultado_paciente .info--resultado.text-left-xs {
   text-align: left;
 }
+ul.lista_resultados .item--resultado_paciente .info--resultado.dont-show {
+  background-color: transparent;
+}
+ul.lista_resultados .item--resultado_paciente .info--resultado.dont-show > div, ul.lista_resultados .item--resultado_paciente .info--resultado.dont-show span, ul.lista_resultados .item--resultado_paciente .info--resultado.dont-show i {
+  display: none;
+}
 ul.lista_resultados .item--resultado_paciente .leido i {
   padding: 16px;
   padding: 1rem;
@@ -5273,6 +5279,9 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo, ul.lista_result
 }
 ul.lista_resultados .item--resultado_paciente .boton_pdf.activo .punta--izquierda, ul.lista_resultados .item--resultado_paciente .boton_img.activo .punta--izquierda {
   border-right-color: #28427e !important;
+}
+ul.lista_resultados .item--resultado_paciente .boton_pdf.activo.dont-show, ul.lista_resultados .item--resultado_paciente .boton_img.activo.dont-show {
+  background-color: transparent !important;
 }
 
 /****** Fin resultados **********/
@@ -5382,6 +5391,10 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo .punta--izquierd
 
   .col-xxs-offset-1 {
     margin-left: 8.33333% !important;
+  }
+
+  .col-xxs-offset-2 {
+    margin-left: 16.66667% !important;
   }
 
   #nav-top > li.menu-profesional {
@@ -5740,7 +5753,6 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo .punta--izquierd
   }
   ul.lista_resultados .item--resultado_paciente .boton_img, ul.lista_resultados .item--resultado_paciente .boton_pdf, ul.lista_resultados .item--resultado_paciente .leido {
     line-height: 4;
-    height: 100%;
   }
   ul.lista_resultados .item--resultado_paciente .leido i {
     padding-left: 12px;

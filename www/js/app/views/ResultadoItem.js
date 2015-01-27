@@ -17,8 +17,8 @@ define([
 		},
 		events: {
 			'touchend .leido i' : 	'changeLeido',
-			'touchend .boton_pdf': 'openPDF',
-			'touchend .boton_img': 'verImgs'
+			'touchend .boton_pdf:not(.dont-show)': 'openPDF',
+			'touchend .boton_img:not(.dont-show)': 'verImgs'
 			// 'click .leido i' : 	'changeLeido',
 			// 'click .boton_pdf': 'openPDF',
 			// 'click .boton_img': 'verImgs'
@@ -28,6 +28,7 @@ define([
 			console.log("Render ResultadoItemView id: "+this.model.id);
 			this.$el.html(this.template(this.model.toJSON()));
 			this.marcarLeido();
+			this.ocultarBotonImg();
 			return this;
 		},
 
@@ -54,10 +55,15 @@ define([
 				this.$el.removeClass('leido_si');
 			}
 		},
+		ocultarBotonImg: function() {
+			if(typeof this.model.get("jpg") == 'undefined' || this.model.get("jpg").length == 0) {
+				this.$el.find('.boton_img').addClass('dont-show');
+			}
+		},
 		openPDF: function() {
 			console.log('pressBoton (dragging: '+window.dragging+')');
 			if(!window.dragging)
-				Sesion.checkTimestamp({ complete: this._openPDF});
+				Sesion.checkTimestamp({ success: this._openPDF});
 		},
 		_openPDF: function(event) {
 			//CAMBIA EL TOKEN DEL URL POR EL ACTUAL
@@ -75,7 +81,7 @@ define([
 		verImgs: function(event) {
 			console.log('pressBoton (dragging: '+window.dragging+')');
 			if(!window.dragging)
-				Sesion.checkTimestamp({ complete: this._verImgs } );
+				Sesion.checkTimestamp({ success: this._verImgs } );
 		},
 		_verImgs: function() {
 			console.log("Ver imagenes");

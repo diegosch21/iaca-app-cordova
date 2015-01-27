@@ -26,13 +26,11 @@ define([
 
         urls: {
         	//login: 'http://iaca3.web.vianetcon.com.ar/ws.json!login!',
-            login: 'https://www.iaca.com.ar/ws.json!login!',
-        	//login: 'http://localhost/iaca/iaca-www/proxy_login.php?',
+        	login: 'http://localhost/iaca/iaca-www/proxy_login.php?',
             //login: 'proxy_login.php?',
             //login: 'proxy/login_18277932.json?',
         	//results: 'http://iaca3.web.vianetcon.com.ar/ws.json!list-results!'
-            results: 'https://www.iaca.com.ar/ws.json!list-results!'
-        	//results: 'http://localhost/iaca/iaca-www/proxy_results.php?'
+        	results: 'http://localhost/iaca/iaca-www/proxy_results.php?'
             //results: 'proxy_results.php?'
             //results: 'proxy/results_18277932_2.json?'
             //results: 'proxy/results_vacio.json?'
@@ -198,7 +196,7 @@ define([
             	user.save({logueado: false});
 	            this.enviarNotifID(false,id,user.get('notifID'));  // aviso al server que estoy logout, para que no envie notificaciones
 	        }
-
+     
         	this.set("token","");
         	this.set("userID",-1);
 			this.set("username","");
@@ -332,6 +330,7 @@ define([
 
         enviarNotifID: function(notificar,userID,notifID) {
             var platform = "";
+            var uuid = "";
             if (window.device) {
                 platform = device.platform;
                 uuid = device.uuid;
