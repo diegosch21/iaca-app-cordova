@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.imotionconsulting.iacalaboratorios"
-    version="1.0.2" 
+    version="1.1.2" 
     xmlns="http://www.w3.org/ns/widgets" 
     xmlns:cdv="http://cordova.apache.org/ns/1.0"
     android-versionCode="2"
-    ios-CFBundleVersion="1.0.2" >
+    ios-CFBundleVersion="1.1.2" >
 
     <name>IACA Lab</name>
     <description>
@@ -21,7 +21,7 @@
     <preference name="StatusBarOverlaysWebView" value="true" /> 
     <preference name="StatusBarBackgroundColor" value="#28427e" />
     <platform name="android">
-        <preference name="LogLevel" value="WARN"/>
+        <preference name="LogLevel" value="DEBUG"/>
     	<!-- Icon -->
         <icon src="res/icon/icon.png"/>
 		<icon src="res/icon/android/icon-ldpi.png" density="ldpi" />
