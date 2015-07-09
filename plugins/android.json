@@ -9,6 +9,10 @@
                 "parents": {
                     "/*": [
                         {
+                            "xml": "<feature name=\"AppAvailability\"><param name=\"android-package\" value=\"com.ohh2ahh.appavailability.AppAvailability\" /></feature>",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"PushPlugin\"><param name=\"android-package\" value=\"com.plugin.gcm.PushPlugin\" /></feature>",
                             "count": 1
                         },
@@ -26,10 +30,6 @@
                         },
                         {
                             "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"AppAvailability\"><param name=\"android-package\" value=\"com.ohh2ahh.appavailability.AppAvailability\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -86,6 +86,9 @@
         }
     },
     "installed_plugins": {
+        "com.ohh2ahh.plugins.appavailability": {
+            "PACKAGE_NAME": "com.imotionconsulting.iacalaboratorios"
+        },
         "com.phonegap.plugins.PushPlugin": {
             "PACKAGE_NAME": "com.imotionconsulting.iacalaboratorios"
         },
@@ -99,9 +102,6 @@
             "PACKAGE_NAME": "com.imotionconsulting.iacalaboratorios"
         },
         "org.apache.cordova.inappbrowser": {
-            "PACKAGE_NAME": "com.imotionconsulting.iacalaboratorios"
-        },
-        "com.ohh2ahh.plugins.appavailability": {
             "PACKAGE_NAME": "com.imotionconsulting.iacalaboratorios"
         }
     },
