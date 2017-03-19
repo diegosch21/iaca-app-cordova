@@ -1,5 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="5" id="com.imotionconsulting.iacalaboratorios" ios-CFBundleVersion="1.1.5" version="1.1.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.imotionconsulting.iacalaboratorios"
+    version="1.1.6"
+    xmlns="http://www.w3.org/ns/widgets"
+    xmlns:cdv="http://cordova.apache.org/ns/1.0"
+    android-versionCode="6"
+    ios-CFBundleVersion="1.1.6" >
     <name>IACA Lab</name>
     <description>
         IACA Laboratorios - Consulta de resultados de análisis de pacientes
