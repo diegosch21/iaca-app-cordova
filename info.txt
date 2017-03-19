@@ -1,0 +1,124 @@
+Node version: v6.10.0
+
+Cordova version: 6.5.0
+
+Config.xml file: 
+
+<?xml version='1.0' encoding='utf-8'?>
+<widget android-versionCode="5" id="com.imotionconsulting.iacalaboratorios" ios-CFBundleVersion="1.1.5" version="1.1.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>IACA Lab</name>
+    <description>
+        IACA Laboratorios - Consulta de resultados de análisis de pacientes
+    </description>
+    <author email="info@imotionconsulting.com.ar" href="http://imotionconsulting.com.ar">
+        IMotion Consulting
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <access origin="https://www.iaca.com.ar" />
+    <allow-navigation href="https://www.iaca.com.ar/*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="4000" />
+    <preference name="FadeSplashScreenDuration" value="1000" />
+    <preference name="SplashMaintainAspectRatio" value="true" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="SplashShowOnlyFirstTime" value="false" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
+    <preference name="StatusBarBackgroundColor" value="#28427e" />
+    <icon src="res/icon/icon.png" />
+    <platform name="android">
+        <preference name="LogLevel" value="DEBUG" />
+        <icon density="ldpi" src="res/icon/android/icon-ldpi.png" />
+        <icon density="mdpi" src="res/icon/android/icon-mdpi.png" />
+        <icon density="hdpi" src="res/icon/android/icon-hdpi.png" />
+        <icon density="xhdpi" src="res/icon/android/icon-xhdpi.png" />
+        <icon density="xxhdpi" src="res/icon/android/icon-xxhdpi.png" />
+        <icon density="xxxhdpi" src="res/icon/android/icon-xxxhdpi.png" />
+        <splash density="land-ldpi" src="res/screen/android/land-320x200.9.png" />
+        <splash density="land-mdpi" src="res/screen/android/land-480x320.9.png" />
+        <splash density="land-hdpi" src="res/screen/android/land-800x480.9.png" />
+        <splash density="land-xhdpi" src="res/screen/android/land-1280x720.9.png" />
+        <splash density="land-xxhdpi" src="res/screen/android/land-1920x1080.9.png" />
+        <splash density="port-ldpi" src="res/screen/android/port-200x320.9.png" />
+        <splash density="port-mdpi" src="res/screen/android/port-320x480.9.png" />
+        <splash density="port-hdpi" src="res/screen/android/port-480x800.9.png" />
+        <splash density="port-xhdpi" src="res/screen/android/port-720x1280.9.png" />
+        <splash density="port-xxhdpi" src="res/screen/android/port-1080x1920.9.png" />
+    </platform>
+    <plugin name="cordova-plugin-device" spec="~1.1.2" />
+    <plugin name="cordova-plugin-dialogs" spec="~1.2.1" />
+    <plugin name="cordova-plugin-inappbrowser" spec="~1.4.0" />
+    <plugin name="cordova-plugin-appavailability" spec="~0.4.2" />
+    <plugin name="cordova-plugin-x-toast" spec="~2.5.1" />
+    <plugin name="cordova-plugin-splashscreen" spec="~3.2.2" />
+    <plugin name="cordova-plugin-whitelist" spec="~1.2.2" />
+    <plugin name="cordova-plugin-file" spec="~4.2.0" />
+    <plugin name="cordova-plugin-file-transfer" spec="~1.5.1" />
+    <plugin name="cordova-plugin-fileopener" spec="~1.0.4" />
+    <engine name="android" spec="~6.1.2" />
+</widget>
+
+
+Plugins: 
+
+cordova-plugin-appavailability,cordova-plugin-compat,cordova-plugin-device,cordova-plugin-dialogs,cordova-plugin-file,cordova-plugin-file-transfer,cordova-plugin-fileopener,cordova-plugin-inappbrowser,cordova-plugin-splashscreen,cordova-plugin-whitelist,cordova-plugin-x-toast
+
+Android platform:
+
+Available Android targets:
+----------
+id: 1 or "android-22"
+     Name: Android 5.1.1
+     Type: Platform
+     API level: 22
+     Revision: 2
+     Skins: HVGA, QVGA, WQVGA400, WQVGA432, WSVGA, WVGA800 (default), WVGA854, WXGA720, WXGA800, WXGA800-7in, AndroidWearRound, AndroidWearRound400x400, AndroidWearRoundChin320x290, AndroidWearRoundChin360x325, AndroidWearRoundChin360x330, AndroidWearSquare, AndroidWearSquare320x320, AndroidWearRound, AndroidWearRound400x400, AndroidWearRoundChin320x290, AndroidWearRoundChin360x325, AndroidWearRoundChin360x330, AndroidWearSquare, AndroidWearSquare320x320
+ Tag/ABIs : android-tv/armeabi-v7a, android-tv/x86, android-wear/armeabi-v7a, android-wear/x86, default/armeabi-v7a, default/x86, default/x86_64
+----------
+id: 2 or "android-23"
+     Name: Android 6.0
+     Type: Platform
+     API level: 23
+     Revision: 3
+     Skins: HVGA, QVGA, WQVGA400, WQVGA432, WSVGA, WVGA800 (default), WVGA854, WXGA720, WXGA800, WXGA800-7in
+ Tag/ABIs : no ABIs.
+----------
+id: 3 or "android-24"
+     Name: Android 7.0
+     Type: Platform
+     API level: 24
+     Revision: 2
+     Skins: HVGA, QVGA, WQVGA400, WQVGA432, WSVGA, WVGA800 (default), WVGA854, WXGA720, WXGA800, WXGA800-7in
+ Tag/ABIs : no ABIs.
+----------
+id: 4 or "android-25"
+     Name: Android 7.1.1
+     Type: Platform
+     API level: 25
+     Revision: 1
+     Skins: HVGA, QVGA, WQVGA400, WQVGA432, WSVGA, WVGA800 (default), WVGA854, WXGA720, WXGA800, WXGA800-7in
+ Tag/ABIs : no ABIs.
+----------
+id: 5 or "Google Inc.:Google APIs:22"
+     Name: Google APIs
+     Type: Add-On
+     Vendor: Google Inc.
+     Revision: 1
+     Description: Android + Google APIs
+     Based on Android 5.1.1 (API level 22)
+     Libraries:
+      * com.android.future.usb.accessory (usb.jar)
+          API for USB Accessories
+      * com.google.android.media.effects (effects.jar)
+          Collection of video effects
+      * com.google.android.maps (maps.jar)
+          API for Google Maps
+     Skins: HVGA, QVGA, WQVGA400, WQVGA432, WSVGA, WVGA800 (default), WVGA854, WXGA720, WXGA800, WXGA800-7in, AndroidWearRound, AndroidWearRound400x400, AndroidWearRoundChin320x290, AndroidWearRoundChin360x325, AndroidWearRoundChin360x330, AndroidWearSquare, AndroidWearSquare320x320, AndroidWearRound, AndroidWearRound400x400, AndroidWearRoundChin320x290, AndroidWearRoundChin360x325, AndroidWearRoundChin360x330, AndroidWearSquare, AndroidWearSquare320x320
+ Tag/ABIs : google_apis/armeabi-v7a, google_apis/x86, google_apis/x86_64
+

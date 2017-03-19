@@ -5,7 +5,7 @@ define([
 	'models/Sesion',
 	'backbone'
 ], function (headerTemplate,$,_,Sesion) {
-	
+
 	var HeaderView = Backbone.View.extend({
 
 		//precompilo el template
@@ -67,14 +67,14 @@ define([
         	}
         	else {
         		$('li.back').removeClass('hidden');
-        		$('li.menu-profesional').removeClass('col-xs-12').addClass('col-xs-11');	
+        		$('li.menu-profesional').removeClass('col-xs-12').addClass('col-xs-11');
         	}
     	},
     	logout: function(evt) {
     		if(evt)
     			evt.preventDefault();
     		Sesion.logout();
-    		if (window.deviceready) { 
+    		if (window.deviceready) {
     			try {
     				window.plugins.toast.showShortCenter('Usuario deslogueado');
     			}
@@ -121,14 +121,14 @@ define([
 			}
 			// Si es home, no hago nada
 			else if (actualURL == 'home' || actualURL == '' ) {
-				
+
 			}
 			// En cualquier otro lado, voy atrás
 			else {
 				console.log('window.history.back()');
 				window.history.back();
 			}
-		} 
+		}
 
 	});
 

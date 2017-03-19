@@ -13,7 +13,7 @@ var logger = function() {
                             window['console']['log'] = function() {};
                             isDisabled = true;
                         };
-    var toggled = false;                  
+    var toggled = false;
     pub.toggleConsole = function (enable) {  // habilita o deshabilita sólo si estaba deshabilitada antes
         if(enable && isDisabled) {   // habilitar consola
             toggled = true; //guarda estado anterior
@@ -23,8 +23,8 @@ var logger = function() {
             if (toggled) {  //si se deshabilitó antes
                 logger.disableLogger();
                 toggled = false;
-            } 
+            }
         }
-    }                    
+    }
     return pub;
 }();

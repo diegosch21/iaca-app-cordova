@@ -1,3 +1,4 @@
+// Instalacion plugin: cordova plugin add phonegap-plugin-push --variable SENDER_ID="529178062856"
 define([
 	'models/Sesion'
 ],	function(Sesion) {
@@ -15,7 +16,7 @@ define([
 				console.log("PushPlugin: registrarAndroid");
 				try {
 					window.plugins.pushNotification.register(
-					 	successHandlerAndroid, 
+					 	successHandlerAndroid,
 					 	errorHandlerAndroid,
 					 	{"senderID":"529178062856",
 					 	"ecb":"window.callbacks.onNotificationGCM"}
@@ -23,13 +24,13 @@ define([
 				}
 				catch(err) {
 					console.log("PushPlugin error: "+err);
-				}	
+				}
 				logger.toggleConsole(false);   // NO DEBUG
 			};
 			var successHandlerAndroid = function(result) {
 				logger.toggleConsole(true);   // DEBUG
 				console.log("PushPlugin: Success handler register en android. Result: "+result);
-				addCallback('onNotificationGCM',onNotificationGCM);	
+				addCallback('onNotificationGCM',onNotificationGCM);
 				logger.toggleConsole(false);   // NO DEBUG
 			};
 			var errorHandlerAndroid = function(error) {
@@ -51,13 +52,13 @@ define([
 						}
 						break;
 					case 'message':
-                    	
+
                     	if (e.foreground) {
                     		// if this flag is set, this notification happened while we were in the foreground.
                     		// you might want to play a sound to get the user's attention, throw up a dialog, etc.
                     		console.log("PushPlugin - onNotificationGCM: Notificacion en foreground ");
                     	}
-			            else {	
+			            else {
 			            	// otherwise we were launched because the user touched a notification in the notification tray.
 							if (e.coldstart)
 								console.log("PushPlugin - onNotificationGCM: Notificacion - coldstart ");
@@ -84,7 +85,7 @@ define([
 				logger.toggleConsole(true);   // DEBUG
 				try {
 					window.plugins.pushNotification.register(
-						tokenHandlerApple, 
+						tokenHandlerApple,
 						errorHandlerApple,
 						{"badge":"true",
 						"sound":"true",
@@ -102,7 +103,7 @@ define([
 				logger.toggleConsole(true);   // DEBUG
 				console.log("PushPlugin: Success handler register en Apple. token: "+token);
 				//alert("PushPlugin: Success handler register en Apple. token: "+token);
-				addCallback('onNotificationAPN',onNotificationAPN);	
+				addCallback('onNotificationAPN',onNotificationAPN);
 				localStorage.setItem("iaca-notificationID", token);
 				Sesion.setNotifID(token);
 				logger.toggleConsole(false);   // NO DEBUG

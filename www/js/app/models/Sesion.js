@@ -1,8 +1,8 @@
 /*
 *	Guarda el token del usuario actual
-*   
+*
 *   Se encarga de las operaciones de login, relogin y logout
-*   Realiza el get de los resultados    
+*   Realiza el get de los resultados
 *  SINGLETON
 */
 define([
@@ -11,10 +11,10 @@ define([
  	'backbone',
  	'localstorage',
  	'collections/Usuarios'
-], function ($,_,Backbone,Store,Usuarios) {	
+], function ($,_,Backbone,Store,Usuarios) {
 
     var sesionModel = Backbone.Model.extend({
-        
+
         defaults:{
         	id: 'unic',
         	logueado: false,
@@ -25,14 +25,14 @@ define([
         },
 
         urls: {
-            //login: 'http://iaca3.web.vianetcon.com.ar/ws.json!login!',
+        	//login: 'http://iaca3.web.vianetcon.com.ar/ws.json!login!',
             login: 'https://www.iaca.com.ar/ws.json!login!',
-            //login: 'http://localhost/iaca/iaca-www/proxy_login.php?',
+        	//login: 'http://localhost/iaca/iaca-www/proxy_login.php?',
             //login: 'proxy_login.php?',
             //login: 'proxy/login_18277932.json?',
-            //results: 'http://iaca3.web.vianetcon.com.ar/ws.json!list-results!'
+        	//results: 'http://iaca3.web.vianetcon.com.ar/ws.json!list-results!'
             results: 'https://www.iaca.com.ar/ws.json!list-results!'
-            //results: 'http://localhost/iaca/iaca-www/proxy_results.php?'
+        	//results: 'http://localhost/iaca/iaca-www/proxy_results.php?'
             //results: 'proxy_results.php?'
             //results: 'proxy/results_18277932_2.json?'
             //results: 'proxy/results_vacio.json?'
@@ -41,7 +41,7 @@ define([
         localStorage: new Store('iaca-session'),
 
         initialize: function() {
-            
+
         	console.log("Initialize Sesion");
         	_.bindAll(this,'getAuth','login','crearUsuario','setUsuario',"relogin",'checkTimestamp','setNotificar','setNotifID','enviarNotifID');
             var self = this;
@@ -57,7 +57,7 @@ define([
                                 Backbone.history.navigate(self.redireccion,true);
                             }});
                     }
-                });	
+                });
 
         	}
         	else {
@@ -118,26 +118,26 @@ define([
         		}
         		else if (data.result && data.name==null) {
         			callback.error('Usuario inválido');
-        		}	
+        		}
         		else {
         			if (callback && 'error' in callback) {
         				switch(data.errorcode) {
-        					case 1: 
+        					case 1:
         						callback.error('Usuario o clave inválidos',1);
         						break;
-        					case -1: 
-        						callback.error('Ocurrió un error en la base de datos. Intente de nuevo.',-1)	
+        					case -1:
+        						callback.error('Ocurrió un error en la base de datos. Intente de nuevo.',-1)
         						break;
         					default:
-        						callback.error("Error desconocido. Intente de nuevo.",-2)	
+        						callback.error("Error desconocido. Intente de nuevo.",-2)
         				}
-        			} 
+        			}
         		}
         	}).fail(function( jqXHR, textStatus, errorThrown ) {
-        		console.log(jqXHR +" "+ textStatus +" "+ errorThrown);
+        		console.log(jqXHR.responseText +" "+ textStatus +" "+ errorThrown);
         		if (callback && 'error' in callback) {
         			callback.error('No se pudo comunicar con el servidor. Verifique su conexión a internet.',0);
-        		} 
+        		}
         	}).always(function(){
         		if (callback && 'complete' in callback) {
         			callback.complete();
@@ -146,16 +146,16 @@ define([
         },
 
         setUsuario: function(id,pass,data) {
-			
+
 			//Si no existe el usuario, lo creo
 			if(!Usuarios.get(id))
 				this.crearUsuario(id,data.name,pass);
             else {
                 console.log("El usuario ya existe en la colección");
             }
-                       
+
 			console.log("Set usuario logueado: "+id+" "+data.name+" ,token: "+data.token);
-		
+
             this.set("userID",id);
             this.set("username",data.name);
 			this.set("token",data.token);
@@ -175,11 +175,11 @@ define([
             var cambioID = false;
             var actualID = user.get('notifID');
             var notifID = "";
-            if (window.localStorage['iaca-notificationsID']) { 
+            if (window.localStorage['iaca-notificationsID']) {
                 notifID = window.localStorage.getItem('iaca-notificationsID');
             }
             if (notifID != "" && notifID != actualID) {
-                console.log("setUsuario: nuevo notifID"); 
+                console.log("setUsuario: nuevo notifID");
                 user.save({'notifID': notifID});
             }
 
@@ -188,7 +188,7 @@ define([
             if (cambioLogin || cambioID) {
                 this.enviarNotifID(notificar,id,notifID); // actualizo estado en el server
             }
-           
+
         },
 
         logout: function() {
@@ -198,7 +198,7 @@ define([
             	user.save({logueado: false});
 	            this.enviarNotifID(false,id,user.get('notifID'));  // aviso al server que estoy logout, para que no envie notificaciones
 	        }
-     
+
         	this.set("token","");
         	this.set("userID",-1);
 			this.set("username","");
@@ -220,7 +220,7 @@ define([
             var token = this.get("token");
             var self = this;
             console.log("Obtener lista resultados... Token: "+token+" Reintento: "+this.reintentoResultados);
-            // if token mayor a 30 minutos 
+            // if token mayor a 30 minutos
             //  relogin
             //else
             $.ajax({
@@ -268,8 +268,8 @@ define([
                     if (callback && 'error' in callback) {
                         callback.error('Error al actualizar lista de resultados. Verifique su conexión a internet.');
                     }
-                    
-                } 
+
+                }
             }).always(function(){
                 if (callback && 'complete' in callback) {
                     callback.complete();
@@ -319,15 +319,15 @@ define([
                 var user = Usuarios.get(userID);
                 var actualID = user.get('notifID');
                 if (notifID != actualID) {
-                    console.log("setNotifID: nuevo regID"); 
+                    console.log("setNotifID: nuevo regID");
                     user.save({
                         'notifID': notifID
                     });
 
                     this.enviarNotifID(user.get("notificar"),userID,notifID); // Actualizo id en el server (si estoy logueado y cambió)
                 }
-                
-            }            
+
+            }
         },
 
         enviarNotifID: function(notificar,userID,notifID) {

@@ -18,14 +18,14 @@ define(
     		this.setMarkers = function(markers) {
     		    var infowindow = new google.maps.InfoWindow({maxWidth: 160});
     		    var marker, i;
-    		    for (i = 0; i < markers.length; i++) {  
+    		    for (i = 0; i < markers.length; i++) {
     		        marker = new google.maps.Marker({
     		            position: new google.maps.LatLng(markers[i]["lat"], markers[i]["lng"]),
     		            title: "Sede "+markers[i]["sede"],
     		            icon: markers[i]["icon_map"],
     		            map: map
     		        });
-    		        
+
     		        google.maps.event.addListener(marker, 'click', (function(marker, i) {
     		            return function() {
     		                var content = "<a href='"+markers[i]["link_map"]+"'>";
@@ -44,7 +44,7 @@ define(
     		this.setZoom = function(z) {
     		    this.mapOptions.zoom = z;
     		};
-        
+
 
     	}
 

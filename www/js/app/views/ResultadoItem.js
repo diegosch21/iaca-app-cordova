@@ -2,7 +2,7 @@ define([
 	'text!templates/resultado_item.html',
 	'models/Sesion'
 ], function (resultadoItemTemplate,Sesion) {
-	
+
 	var ResultadoItemView = Backbone.View.extend({
 
 		//precompilo el template
@@ -51,7 +51,7 @@ define([
 				this.$el.removeClass('leido_no');
 			}
 			else {
-				this.$el.addClass('leido_no');	
+				this.$el.addClass('leido_no');
 				this.$el.removeClass('leido_si');
 			}
 		},
@@ -66,16 +66,102 @@ define([
 				Sesion.checkTimestamp({ success: this._openPDF});
 		},
 		_openPDF: function(event) {
+			$('#page-loading').show();
 			//CAMBIA EL TOKEN DEL URL POR EL ACTUAL
-			var url= this.model.get("pdf");
+			var url= this.model.get("pdf"),
+				id = this.model.get("id");
 			var i = url.lastIndexOf('token=');
 			if(i>0) {
 				var url_sintoken = url.substring(0,i);
 				var url = url_sintoken + 'token=' + Sesion.get('token');
 			}
 			console.log("Open PDF - url token actualizado: "+url);
-			window.open(url, '_system');
-			
+
+			if (window.deviceready) {
+				var platform = device.platform,
+					saveDirectory = "";
+				if (platform === "iOS") {
+					saveDirectory = cordova.file.documentsDirectory;
+				}
+				else if (platform == 'android' || platform == "Android" ) {
+					if (cordova.file.externalRootDirectory) {
+						saveDirectory = cordova.file.externalRootDirectory;
+					}
+					else if (cordova.file.externalApplicationStorageDirectory) {
+						saveDirectory = cordova.file.externalApplicationStorageDirectory;
+					}
+					else {
+						saveDirectory = cordova.file.cacheDiretory;
+					}
+				}
+				else {
+					saveDirectory = cordova.file.dataDirectory;
+				}
+
+				window.resolveLocalFileSystemURL(saveDirectory,
+				// success resolveLocalFileSystemURL
+				function (dir) {
+					dir.getDirectory("IACA",{create: true},
+					// success getDirectory
+					function(finalDir){
+						var fileTransfer = new FileTransfer();
+						if (fileTransfer) {
+							var uri = encodeURI(url),
+								fileURL = finalDir.toURL() + 'resultado_analisis_'+id+'.pdf';
+							fileTransfer.download(
+								uri,
+								fileURL,
+								function(entry) {
+									console.log("download complete: " + entry.toURL());
+									// muestra el PDF
+									if (platform == 'android' || platform == "Android" ) {
+										window.cordova.plugins.FileOpener.openFile(entry.toURL(),
+										function() {
+											console.log('PDF abierto');
+											$('#page-loading').hide();
+										},
+										function(error) {
+											errorDescarga(error,'fileTransfer.download',url);
+										});
+									}
+									else {
+										window.open(entry.toURL(), '_blank', 'location=no,closebuttoncaption=Close,enableViewportScale=yes');
+										$('#page-loading').hide();
+									}
+								},
+								function(error) {
+									errorDescarga(error,'fileTransfer.download',url);
+								},
+								true
+							)
+						}
+						else {
+							errorDescarga(error,'fileTransfer',url);
+						}
+					},
+					// error getDirectory
+					function(error) {
+						errorDescarga(error,'getDirectory',url);
+					});
+				},
+				// error resolveLocalFileSystemURL
+				function(error){
+					errorDescarga(error,'resolveLocalFileSystemURL',url);
+				});
+
+				function errorDescarga (error,tipo,url) {
+					console.log("Error "+ tipo + " "+  error);
+					// error: intenta descargar con browser
+					window.open(url, '_system');
+					$('#page-loading').hide();
+				}
+			}
+			else {
+				window.open(url, '_blank');
+				$('#page-loading').hide();
+			}
+
+
 			this.setLeido();
 		},
 		verImgs: function(event) {
@@ -108,8 +194,8 @@ define([
 			});
 			this.setLeido();
 		}
-	
-		
+
+
 	});
 
 	return ResultadoItemView;

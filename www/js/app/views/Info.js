@@ -1,7 +1,7 @@
 define([
 	'text!templates/info.html'
 ], function (infoTemplate) {
-	
+
 	var InfoView = Backbone.View.extend({
 
 		//precompilo el template
@@ -13,7 +13,7 @@ define([
 		},
 
 		initialize: function() {
-			
+
 		},
 
 		render: function() {
@@ -24,10 +24,15 @@ define([
 			console.log('pressBoton (dragging: '+window.dragging+')');
 			if(!window.dragging) {
 				var url= ($(event.currentTarget).data('href'));
-				window.open(url, '_system');
+				if (typeof cordova !== 'undefined' && cordova.InAppBrowser) {
+					cordova.InAppBrowser.open(url, '_blank'); // usa plugin inAppBrowser
+				}
+				else {
+					window.open(url,'_system');
+				}
 			}
 		}
-		
+
 	});
 
 	return InfoView;

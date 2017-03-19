@@ -5,7 +5,7 @@ define([
 	'collections/Usuarios'
 
 ], function (loginTemplate,Sesion,alertTemplate,Usuarios) {
-	
+
 	var LoginView = Backbone.View.extend({
 
 		//precompilo el template
@@ -40,9 +40,9 @@ define([
 				this.$el.html(this.template({"logueado": logueado, "guardados":true, "usuarios": users}));
 			}
 			else {
-				this.$el.html(this.template({"logueado": logueado, "guardados":false}));	
+				this.$el.html(this.template({"logueado": logueado, "guardados":false}));
 			}
-			
+
 			return this;
 		},
 
@@ -53,7 +53,7 @@ define([
 			var username = this.$("#usuario").val();
 			var password = this.$("#pass").val();
 			self.$('.mensaje--alerta').html('');
-			
+
 			if(username=="" || username==" ") {
 				this.alerta("Ingrese su número de usuario",'.mensaje--alerta');
 			}
@@ -80,7 +80,7 @@ define([
 		},
 		alerta: function(msj,selector,long) {
 			try {
-				if (window.deviceready && window.plugins && window.plugins.toast) { 
+				if (window.deviceready && window.plugins && window.plugins.toast) {
 					if(long)
 						window.plugins.toast.showLongCenter(msj);
 					else
@@ -120,7 +120,7 @@ define([
 			}
 			else
 				this.alerta("Información guardada inválida",'#error-login-guardado');
-			
+
 
 		},
 
@@ -141,7 +141,7 @@ define([
 		},
 		logout: function() {
 			Sesion.logout();
-    		if (window.deviceready) { 
+    		if (window.deviceready) {
     			try {
     				window.plugins.toast.showShortCenter('Usuario deslogueado');
     			}
@@ -149,12 +149,12 @@ define([
     				console.log(err);
     			}
     		}
-    		this.render();	
+    		this.render();
 		}
 
 
 
-		
+
 	});
 
 	return LoginView;

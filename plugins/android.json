@@ -4,106 +4,43 @@
         "uninstalled": []
     },
     "config_munge": {
-        "files": {
-            "res/xml/config.xml": {
-                "parents": {
-                    "/*": [
-                        {
-                            "xml": "<feature name=\"AppAvailability\"><param name=\"android-package\" value=\"com.ohh2ahh.appavailability.AppAvailability\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"PushPlugin\"><param name=\"android-package\" value=\"com.plugin.gcm.PushPlugin\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Toast\"><param name=\"android-package\" value=\"nl.xservices.plugins.Toast\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Notification\"><param name=\"android-package\" value=\"org.apache.cordova.dialogs.Notification\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
-                            "count": 1
-                        }
-                    ]
-                }
-            },
-            "AndroidManifest.xml": {
-                "parents": {
-                    "/manifest": [
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.WAKE_LOCK\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.VIBRATE\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"com.google.android.c2dm.permission.RECEIVE\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<permission android:name=\"com.imotionconsulting.iacalaboratorios.permission.C2D_MESSAGE\" android:protectionLevel=\"signature\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"com.imotionconsulting.iacalaboratorios.permission.C2D_MESSAGE\" />",
-                            "count": 1
-                        }
-                    ],
-                    "/manifest/application": [
-                        {
-                            "xml": "<activity android:exported=\"true\" android:name=\"com.plugin.gcm.PushHandlerActivity\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<receiver android:name=\"com.plugin.gcm.CordovaGCMBroadcastReceiver\" android:permission=\"com.google.android.c2dm.permission.SEND\"><intent-filter><action android:name=\"com.google.android.c2dm.intent.RECEIVE\" /><action android:name=\"com.google.android.c2dm.intent.REGISTRATION\" /><category android:name=\"com.imotionconsulting.iacalaboratorios\" /></intent-filter></receiver>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<service android:name=\"com.plugin.gcm.GCMIntentService\" />",
-                            "count": 1
-                        }
-                    ]
-                }
-            }
-        }
+        "files": {}
     },
     "installed_plugins": {
-        "com.ohh2ahh.plugins.appavailability": {
+        "cordova-plugin-device": {
             "PACKAGE_NAME": "com.imotionconsulting.iacalaboratorios"
         },
-        "com.phonegap.plugins.PushPlugin": {
+        "cordova-plugin-dialogs": {
             "PACKAGE_NAME": "com.imotionconsulting.iacalaboratorios"
         },
-        "nl.x-services.plugins.toast": {
+        "cordova-plugin-inappbrowser": {
             "PACKAGE_NAME": "com.imotionconsulting.iacalaboratorios"
         },
-        "org.apache.cordova.device": {
+        "cordova-plugin-appavailability": {
             "PACKAGE_NAME": "com.imotionconsulting.iacalaboratorios"
         },
-        "org.apache.cordova.dialogs": {
+        "cordova-plugin-x-toast": {
             "PACKAGE_NAME": "com.imotionconsulting.iacalaboratorios"
         },
-        "org.apache.cordova.inappbrowser": {
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.imotionconsulting.iacalaboratorios"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.imotionconsulting.iacalaboratorios"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.imotionconsulting.iacalaboratorios"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.imotionconsulting.iacalaboratorios"
+        },
+        "cordova-plugin-fileopener": {
             "PACKAGE_NAME": "com.imotionconsulting.iacalaboratorios"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.imotionconsulting.iacalaboratorios"
+        }
+    }
 }
