@@ -11,7 +11,7 @@ define([
         initialize: function(models,options){
             this.userID = options["userID"];
             console.log("Init resultadosCollection - userID: "+this.userID);
-            this.localStorage = new Store('iaca-resultados-user_'+this.userID)
+            this.localStorage = new Store('iaca-shift-resultados-user_'+this.userID);
 
         },
         model: resultadoModel,

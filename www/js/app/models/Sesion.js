@@ -5,6 +5,7 @@
 *   Realiza el get de los resultados
 *  SINGLETON
 */
+/* globals device */
 define([
  	'jquery',
  	'underscore',
@@ -16,7 +17,7 @@ define([
     var sesionModel = Backbone.Model.extend({
 
         defaults:{
-        	id: 'unic',
+        	id: 'app', // unica sesión (este modelo es un singleton)
         	logueado: false,
         	userID: -1,
         	username: "",
@@ -27,43 +28,44 @@ define([
         urls: {
         	//login: 'http://iaca3.web.vianetcon.com.ar/ws.json!login!',
             login: 'https://www.iaca.com.ar/ws.json!login!',
-        	//login: 'http://localhost/iaca/iaca-www/proxy_login.php?',
+        	//login: 'http://imotion.local/iaca/iaca-www/proxy_login.php?',
             //login: 'proxy_login.php?',
             //login: 'proxy/login_18277932.json?',
         	//results: 'http://iaca3.web.vianetcon.com.ar/ws.json!list-results!'
             results: 'https://www.iaca.com.ar/ws.json!list-results!'
-        	//results: 'http://localhost/iaca/iaca-www/proxy_results.php?'
+        	//results: 'http://imotion.local/iaca/iaca-www/proxy_results.php?'
             //results: 'proxy_results.php?'
             //results: 'proxy/results_18277932_2.json?'
             //results: 'proxy/results_vacio.json?'
         },
 
-        localStorage: new Store('iaca-session'),
+        localStorage: new Store('iaca-shift-session'),
 
         initialize: function() {
 
-        	console.log("Initialize Sesion");
+            console.log("Initialize Sesion");
         	_.bindAll(this,'getAuth','login','crearUsuario','setUsuario',"relogin",'checkTimestamp','setNotificar','setNotifID','enviarNotifID');
             var self = this;
             this.set("timestamp",new Date().getTime());
 
-            if(localStorage.getItem('iaca-session-unic')) {
-        		console.log("Init: Fetch sesion")
+            if(localStorage.getItem('iaca-shift-session-app')) { // Chequeo si había sesión previa
+                // ToDo - nuevo sistema login
+        		console.log("Init: Fetch sesion");
         		this.fetch({
                     success: function(){
-                        if(self.get("logueado"))
+                        if(self.get("logueado")) {
                             self.relogin({success: function() {
                                 console.log("Relogin inicial - Redirecciono a home");
                                 Backbone.history.navigate(self.redireccion,true);
                             }});
+                        }
                     }
                 });
-
         	}
         	else {
-        		console.log("Init: Save sesion")
+        		console.log("Init: Save sesion");
         		this.save();
-        	};
+        	}
         },
 
         login: function(user,pass,callback) {
@@ -104,19 +106,18 @@ define([
 
 
         getAuth: function(user,pass,callback) {
-        	var self = this;
         	$.ajax({
         		url: this.urls.login+"username="+user+"&password="+pass,
         		dataType: 'json',
         		type: 'GET'
-        	}).done(function(data, textStatus, jqXHR){
+        	}).done(function(data){
         		console.log(data);
-        		if(data.result && data.name != null) {
+        		if(data.result && data.name !== null) {
         			if (callback && 'success' in callback) {
         				callback.success(data);
         			}
         		}
-        		else if (data.result && data.name==null) {
+        		else if (data.result && data.name===null) {
         			callback.error('Usuario inválido');
         		}
         		else {
@@ -126,10 +127,10 @@ define([
         						callback.error('Usuario o clave inválidos',1);
         						break;
         					case -1:
-        						callback.error('Ocurrió un error en la base de datos. Intente de nuevo.',-1)
+        						callback.error('Ocurrió un error en la base de datos. Intente de nuevo.',-1);
         						break;
         					default:
-        						callback.error("Error desconocido. Intente de nuevo.",-2)
+        						callback.error("Error desconocido. Intente de nuevo.",-2);
         				}
         			}
         		}
@@ -178,7 +179,7 @@ define([
             if (window.localStorage['iaca-notificationsID']) {
                 notifID = window.localStorage.getItem('iaca-notificationsID');
             }
-            if (notifID != "" && notifID != actualID) {
+            if (notifID !== "" && notifID != actualID) {
                 console.log("setUsuario: nuevo notifID");
                 user.save({'notifID': notifID});
             }
@@ -211,7 +212,7 @@ define([
 
         crearUsuario: function(id,name,pass) {
             console.log("Creo usuario id:"+id);
-            Usuarios.create({id: id, name: name, pass: pass})
+            Usuarios.create({id: id, name: name, pass: pass});
         },
 
         reintentoResultados: false, // para controlar un solo reintento
@@ -227,7 +228,7 @@ define([
                 url: this.urls.results+"token="+token,
                 dataType: 'json',
                 type: 'GET'
-            }).done(function(data, textStatus, jqXHR){
+            }).done(function(data){
                 console.log(data);
                 if(data.result) {
                     console.log("Get Resultados OK");
@@ -237,7 +238,7 @@ define([
                     }
                 }
                 else {
-                    console.log("Get resultados - Errorcode: "+data.errorcode)
+                    console.log("Get resultados - Errorcode: "+data.errorcode);
                     // ERROR DE TOKEN: Reintento (Relogin y otra vez getResultados)
                     if(data.errorcode == 2 && !self.reintentoResultados) {
                         self.reintentoResultados = true;
@@ -299,11 +300,11 @@ define([
 
         setNotificar: function(notificar) { //param: boolean
             var userID = this.get("userID");
-            if (userID =! -1 && Usuarios.get(userID)) {
+            if (userID != -1 && Usuarios.get(userID)) {
                 var user = Usuarios.get(userID);
                 var actualNotificar = user.get('notificar');
                 if (notificar != actualNotificar) {
-                    console.log('setNotificaciones: cambio opcion notificar')
+                    console.log('setNotificaciones: cambio opcion notificar');
                     user.save({
                         'notificar': notificar
                     });
@@ -315,7 +316,7 @@ define([
 
         setNotifID: function(notifID) {
             var userID = this.get("userID");
-            if (userID =! -1 && Usuarios.get(userID)) {
+            if (userID != -1 && Usuarios.get(userID)) {
                 var user = Usuarios.get(userID);
                 var actualID = user.get('notifID');
                 if (notifID != actualID) {
@@ -345,6 +346,6 @@ define([
         }
 
     });
-    return new sesionModel; //SINGLETON
+    return new sesionModel(); //SINGLETON
 
 });

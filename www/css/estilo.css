@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* Hoja de estilo principal. Nuevo sitio IACA Laboratorios  - App m├│vil*/
+/* Hoja de estilo principal. Nuevo sitio IACA Laboratorios  - App móvil*/
 /** Fuentes usadas  **/
 @import url(mavenpro-sourcesanspro.css);
 @import url(font-awesome.min.css);
@@ -3508,7 +3508,7 @@ select {
 /* Foundation accordion*/
 /**** Fin foundation ****/
 /*********************************************************************
-*********************** Estilos dise├▒o web ***************************
+*********************** Estilos diseño web ***************************
 **********************************************************************/
 * {
   -webkit-box-sizing: border-box;
@@ -3918,7 +3918,7 @@ Browse Happy prompt
   border-color: #8fa9ce;
 }
 
-/** Men├║ top **/
+/** Menú top **/
 .menu-top-bg {
   background-color: #28427e;
   margin: 0 0 32px 0;
@@ -4115,10 +4115,10 @@ form select, form option {
 
 /**** Fin base.scss ****/
 /*********************************************************************
-*********************** Estilos app m├│vil ****************************
-************* Base: xs (entre 360px y 768px de ancho) ****************
+*********************** Estilos app móvil ****************************
+************* Base: xs (entre 400px y 768px de ancho) ****************
 **********************************************************************/
-/********* Gen├®ricos **********/
+/********* Genéricos **********/
 html {
   font-size: 16px;
   margin-top: 0;
@@ -4454,7 +4454,7 @@ a:active {
 }
 
 .home-item {
-  /** Clase usada tambien para los botones de la secci├│n informaci├│n **/
+  /** Clase usada tambien para los botones de la sección información **/
   padding-left: 0;
   padding-right: 0;
   margin: 16px 0;
@@ -4551,14 +4551,14 @@ a:active {
 .home-boton.destacado .banner-horizontal .contenedor-con-punta .punta--derecha {
   border-left-width: 53px;
   border-left-width: 3.33333rem;
-  right: -53px;
+  right: -54px;
   right: -3.33333rem;
   border-right-color: transparent;
 }
 .home-boton.destacado .banner-horizontal .contenedor-con-punta .punta--izquierda {
   border-right-width: 53px;
   border-right-width: 3.33333rem;
-  left: -53px;
+  left: -54px;
   left: -3.33333rem;
   border-left-color: transparent;
 }
@@ -4868,12 +4868,12 @@ div.botones-social div.redes-sociales a.activo {
 #app-login .acceso_login {
   margin-bottom: 16px;
   margin-bottom: 1rem;
-  margin-top: 48px;
-  margin-top: 3rem;
+  margin-top: 32px;
+  margin-top: 2rem;
 }
 #app-login .acceso_login .contenedor-con-punta {
-  height: 80px;
-  height: 5rem;
+  height: 48px;
+  height: 3rem;
   position: relative;
 }
 #app-login .acceso_login .contenedor-con-punta .punta--derecha {
@@ -4882,14 +4882,14 @@ div.botones-social div.redes-sociales a.activo {
   height: 0px;
   top: 0;
   border-style: solid;
-  border-top-width: 40px;
-  border-top-width: 2.5rem;
-  border-bottom-width: 40px;
-  border-bottom-width: 2.5rem;
-  border-left-width: 20px;
-  border-left-width: 1.25rem;
-  right: -22px;
-  right: -1.4rem;
+  border-top-width: 24px;
+  border-top-width: 1.5rem;
+  border-bottom-width: 24px;
+  border-bottom-width: 1.5rem;
+  border-left-width: 12px;
+  border-left-width: 0.75rem;
+  right: -15px;
+  right: -0.9rem;
   border-right-color: transparent;
   border-top-color: transparent;
   border-bottom-color: transparent;
@@ -4899,8 +4899,25 @@ div.botones-social div.redes-sociales a.activo {
   width: 60%;
   margin-right: 24px;
   margin-right: 1.5rem;
-  padding: 20px 0;
-  padding: 1.25rem 0;
+}
+#app-login .acceso_login .header--banner {
+  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
+}
+#app-login .acceso_login .header--banner .h3 {
+  line-height: 48px;
+  line-height: 3rem;
+}
+#app-login .aclaracion-nuevo-login {
+  font-size: 14px;
+  line-height: 18px;
+  padding: 5px 40px;
+}
+#app-login .input-login .boton--enviar {
+  text-transform: uppercase;
+  font-size: 20px;
+  padding: 8px 48px;
+  padding: 0.5rem 3rem;
 }
 #app-login .logout {
   margin-top: 32px;
@@ -4910,8 +4927,8 @@ div.botones-social div.redes-sociales a.activo {
 #app-login .usuarios-guardados {
   padding-bottom: 16px;
   padding-bottom: 1rem;
-  margin-top: 48px;
-  margin-top: 3rem;
+  margin-top: 32px;
+  margin-top: 2rem;
 }
 #app-login .usuarios-guardados .contenedor-con-punta {
   height: 64px;
@@ -4930,7 +4947,7 @@ div.botones-social div.redes-sociales a.activo {
   border-bottom-width: 2rem;
   border-left-width: 16px;
   border-left-width: 1rem;
-  right: -18px;
+  right: -19px;
   right: -1.15rem;
   border-right-color: transparent;
   border-top-color: transparent;
@@ -4941,8 +4958,6 @@ div.botones-social div.redes-sociales a.activo {
   width: 60%;
   margin-right: 24px;
   margin-right: 1.5rem;
-  padding: 20px 0;
-  padding: 1.25rem 0;
 }
 #app-login .usuarios-guardados .list-group {
   margin: 16px;
@@ -4956,6 +4971,10 @@ div.botones-social div.redes-sociales a.activo {
   position: absolute;
   right: 15px;
   top: 10px;
+}
+#app-login .usuarios-guardados .header--banner .h4 {
+  line-height: 64px;
+  line-height: 4rem;
 }
 #app-login .contenedor-con-punta {
   margin-bottom: 32px;
@@ -4994,7 +5013,7 @@ div.botones-social div.redes-sociales a.activo {
   border-bottom-width: 1.5rem;
   border-left-width: 12px;
   border-left-width: 0.75rem;
-  right: -14px;
+  right: -15px;
   right: -0.9rem;
   border-right-color: transparent;
   border-top-color: transparent;
@@ -5005,8 +5024,6 @@ div.botones-social div.redes-sociales a.activo {
   width: 100%;
   margin-right: 24px;
   margin-right: 1.5rem;
-  padding: 20px 0;
-  padding: 1.25rem 0;
 }
 #app-login .input-login label {
   display: inline;
@@ -5047,6 +5064,26 @@ div.botones-social div.redes-sociales a.activo {
 }
 
 /****** Fin login **********/
+.acceso-web-resultados-anteriores {
+  text-align: center;
+  margin-top: 32px;
+  margin-top: 2rem;
+}
+.acceso-web-resultados-anteriores .boton .banner-horizontal {
+  position: relative;
+  background-color: #0056a0;
+  line-height: 20px;
+  width: 360px;
+  padding: 12px 40px 12px 20px;
+}
+.acceso-web-resultados-anteriores .boton .banner-horizontal i.fa {
+  font-size: 20px;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  margin-top: -10px;
+}
+
 /******** Template resultados ********/
 #app-resultados {
   padding-bottom: 50px;
@@ -5085,8 +5122,8 @@ div.botones-social div.redes-sociales a.activo {
 }
 #app-resultados #ver-mas-results {
   text-align: center;
-  padding-bottom: 32px;
-  padding-bottom: 2rem;
+  padding-bottom: 8px;
+  padding-bottom: 0.5rem;
 }
 #app-resultados #ver-mas-results a {
   text-transform: uppercase;
@@ -5133,8 +5170,8 @@ div.botones-social div.redes-sociales a.activo {
 .columna-tabla a, .columna-tabla span {
   line-height: 1;
   font-size: 14px;
-  padding: 8px 0;
-  padding: 0.5rem 0;
+  padding: 8px 0 13px;
+  padding: 0.5rem 0 0.8rem;
   display: inline-block;
 }
 .columna-tabla a i.fa, .columna-tabla span i.fa {
@@ -5247,14 +5284,14 @@ ul.lista_resultados .item--resultado_paciente .contenedor-con-punta .punta--dere
 ul.lista_resultados .item--resultado_paciente .contenedor-con-punta .punta--derecha {
   border-left-width: 21px;
   border-left-width: 1.33333rem;
-  right: -21px;
+  right: -22px;
   right: -1.33333rem;
   border-right-color: transparent;
 }
 ul.lista_resultados .item--resultado_paciente .contenedor-con-punta .punta--izquierda {
   border-right-width: 21px;
   border-right-width: 1.33333rem;
-  left: -21px;
+  left: -22px;
   left: -1.33333rem;
   border-left-color: transparent;
 }
@@ -5334,11 +5371,11 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo.dont-show, ul.li
 
 /*********************** Fin app.scss ************************/
 /*********************************************************************
-***** Estilos para dispositivos de  359px de ancho, ├│ inferior *******
+***** Estilos para dispositivos de  399px de ancho, ó inferior *******
 **********************************************************************/
-@media (max-width: 359px) {
+@media (max-width: 399px) {
   #content-wrapper {
-    top: 87px;
+    top: 91px;
   }
 
   .hidden-xxs {
@@ -5398,7 +5435,7 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo.dont-show, ul.li
   }
 
   #nav-top > li.menu-profesional {
-    line-height: 1.25;
+    line-height: 1.55;
   }
   #nav-top > li.menu-profesional div.dropdown {
     font-size: 14px;
@@ -5409,10 +5446,7 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo.dont-show, ul.li
   }
   #nav-top > li.back i.fa {
     font-weight: 700;
-    padding: 0 8px;
-    padding: 0 0.5rem;
-    padding-left: 4px;
-    padding-left: 0.25rem;
+    padding: 2px 8px;
   }
 
   #app-header-menu {
@@ -5437,12 +5471,12 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo.dont-show, ul.li
   }
 
   #app-home .home-item {
-    margin: 8px 0;
-    margin: 0.5rem 0;
+    margin: 16px 0;
+    margin: 1rem 0;
   }
   #app-home .home-item.destacado {
-    margin: 8px 0;
-    margin: 0.5rem 0;
+    margin: 16px 0 24px;
+    margin: 1rem 0 1.5rem;
   }
 
   div.botones-social {
@@ -5459,12 +5493,12 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo.dont-show, ul.li
   }
 
   .home-boton .banner-horizontal {
-    height: 64px;
-    height: 4rem;
+    height: 80px;
+    height: 5rem;
   }
   .home-boton .banner-horizontal .contenedor-con-punta {
-    height: 64px;
-    height: 4rem;
+    height: 80px;
+    height: 5rem;
     position: relative;
   }
   .home-boton .banner-horizontal .contenedor-con-punta .punta--derecha, .home-boton .banner-horizontal .contenedor-con-punta .punta--izquierda {
@@ -5473,34 +5507,34 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo.dont-show, ul.li
     height: 0px;
     top: 0;
     border-style: solid;
-    border-top-width: 32px;
-    border-top-width: 2rem;
-    border-bottom-width: 32px;
-    border-bottom-width: 2rem;
+    border-top-width: 40px;
+    border-top-width: 2.5rem;
+    border-bottom-width: 40px;
+    border-bottom-width: 2.5rem;
     border-top-color: transparent;
     border-bottom-color: transparent;
   }
   .home-boton .banner-horizontal .contenedor-con-punta .punta--derecha {
-    border-left-width: 21px;
-    border-left-width: 1.33333rem;
-    right: -21px;
-    right: -1.33333rem;
+    border-left-width: 27px;
+    border-left-width: 1.66667rem;
+    right: -27px;
+    right: -1.66667rem;
     border-right-color: transparent;
   }
   .home-boton .banner-horizontal .contenedor-con-punta .punta--izquierda {
-    border-right-width: 21px;
-    border-right-width: 1.33333rem;
-    left: -21px;
-    left: -1.33333rem;
+    border-right-width: 27px;
+    border-right-width: 1.66667rem;
+    left: -27px;
+    left: -1.66667rem;
     border-left-color: transparent;
   }
   .home-boton .banner-horizontal .contenedor-con-punta .punta--derecha, .home-boton .banner-horizontal .contenedor-con-punta .punta--izquierda {
     top: -8px;
     top: -0.5rem;
-    border-top-width: 40px;
-    border-top-width: 2.5rem;
-    border-bottom-width: 40px;
-    border-bottom-width: 2.5rem;
+    border-top-width: 48px;
+    border-top-width: 3rem;
+    border-bottom-width: 48px;
+    border-bottom-width: 3rem;
   }
   .home-boton .banner-horizontal .header--banner {
     padding: 0;
@@ -5510,16 +5544,16 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo.dont-show, ul.li
     font-size: 1.2rem;
   }
   .home-boton .banner-horizontal .contenido--banner span {
-    font-size: 32px;
-    font-size: 2rem;
+    font-size: 40px;
+    font-size: 2.5rem;
   }
   .home-boton.destacado .banner-horizontal {
-    height: 96px;
-    height: 6rem;
+    height: 128px;
+    height: 8rem;
   }
   .home-boton.destacado .banner-horizontal .contenedor-con-punta {
-    height: 96px;
-    height: 6rem;
+    height: 128px;
+    height: 8rem;
     position: relative;
   }
   .home-boton.destacado .banner-horizontal .contenedor-con-punta .punta--derecha, .home-boton.destacado .banner-horizontal .contenedor-con-punta .punta--izquierda {
@@ -5528,46 +5562,46 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo.dont-show, ul.li
     height: 0px;
     top: 0;
     border-style: solid;
-    border-top-width: 48px;
-    border-top-width: 3rem;
-    border-bottom-width: 48px;
-    border-bottom-width: 3rem;
+    border-top-width: 64px;
+    border-top-width: 4rem;
+    border-bottom-width: 64px;
+    border-bottom-width: 4rem;
     border-top-color: transparent;
     border-bottom-color: transparent;
   }
   .home-boton.destacado .banner-horizontal .contenedor-con-punta .punta--derecha {
-    border-left-width: 32px;
-    border-left-width: 2rem;
-    right: -32px;
-    right: -2rem;
+    border-left-width: 43px;
+    border-left-width: 2.66667rem;
+    right: -43px;
+    right: -2.66667rem;
     border-right-color: transparent;
   }
   .home-boton.destacado .banner-horizontal .contenedor-con-punta .punta--izquierda {
-    border-right-width: 32px;
-    border-right-width: 2rem;
-    left: -32px;
-    left: -2rem;
+    border-right-width: 43px;
+    border-right-width: 2.66667rem;
+    left: -43px;
+    left: -2.66667rem;
     border-left-color: transparent;
   }
   .home-boton.destacado .banner-horizontal .contenedor-con-punta .punta--derecha {
-    border-left-width: 20px;
-    border-left-width: 1.25rem;
-    right: -22px;
-    right: -1.35rem;
+    border-left-width: 24px;
+    border-left-width: 1.5rem;
+    right: -26px;
+    right: -1.6rem;
   }
   .home-boton.destacado .banner-horizontal .contenedor-con-punta .punta--izquierda {
-    border-right-width: 20px;
-    border-right-width: 1.25rem;
-    left: -22px;
-    left: -1.35rem;
+    border-right-width: 24px;
+    border-right-width: 1.5rem;
+    left: -26px;
+    left: -1.6rem;
   }
   .home-boton.destacado .banner-horizontal .header--banner span {
     font-size: 21px;
     font-size: 1.3rem;
   }
   .home-boton.destacado .banner-horizontal .contenido--banner span {
-    font-size: 40px;
-    font-size: 2.5rem;
+    font-size: 56px;
+    font-size: 3.5rem;
   }
 
   .labos-item {
@@ -5596,14 +5630,14 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo.dont-show, ul.li
   .labos-boton .contenedor-con-punta .punta--derecha {
     border-left-width: 21px;
     border-left-width: 1.33333rem;
-    right: -21px;
+    right: -22px;
     right: -1.33333rem;
     border-right-color: transparent;
   }
   .labos-boton .contenedor-con-punta .punta--izquierda {
     border-right-width: 21px;
     border-right-width: 1.33333rem;
-    left: -21px;
+    left: -22px;
     left: -1.33333rem;
     border-left-color: transparent;
   }
@@ -5669,49 +5703,44 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo.dont-show, ul.li
   }
   #app-login .contenedor-con-punta .h4 {
     white-space: normal;
-    margin-top: -16px;
-    margin-top: -1rem;
+    max-width: 180px;
   }
   #app-login .input-login input[type="password"], #app-login .input-login input[type="text"] {
     width: 70%;
+  }
+  #app-login #content-logout {
+    line-height: 1;
+  }
+  #app-login .usuarios-guardados .header--banner .h4 {
+    line-height: 24px;
+    padding-top: 6px;
+  }
+
+  .acceso-web-resultados-anteriores .boton .banner-horizontal {
+    width: 100%;
+    max-width: 320px;
+    padding-left: 0;
+    padding-right: 30px;
+  }
+  .acceso-web-resultados-anteriores .boton .banner-horizontal i.fa {
+    font-size: 20px;
+    right: 10px;
   }
 
   #app-resultados .header-resultados .h3 {
     font-size: 21px;
     font-size: 1.3125rem;
     font-weight: 500;
+    display: block;
   }
 
   .barra-tabla > div {
     padding: 0;
   }
 
-  .columna-tabla {
-    line-height: 2;
-  }
-  .columna-tabla a, .columna-tabla span {
-    white-space: nowrap;
-  }
-  .columna-tabla.doble-linea {
-    line-height: 4;
-  }
-  .columna-tabla.doble-linea.doble-renglon {
-    line-height: 2;
-  }
-  .columna-tabla.doble-linea.doble-renglon a, .columna-tabla.doble-linea.doble-renglon span {
-    white-space: normal;
-    line-height: 2;
-  }
-
   ul.lista_resultados .item--resultado_paciente .boton_img {
     padding-right: 16px;
     padding-right: 1rem;
-  }
-  ul.lista_resultados .item--resultado_paciente .info--resultado {
-    line-height: 2;
-  }
-  ul.lista_resultados .item--resultado_paciente .doble-linea {
-    line-height: 4;
   }
   ul.lista_resultados .item--resultado_paciente .contenedor-con-punta {
     height: 64px;
@@ -5734,14 +5763,14 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo.dont-show, ul.li
   ul.lista_resultados .item--resultado_paciente .contenedor-con-punta .punta--derecha {
     border-left-width: 21px;
     border-left-width: 1.33333rem;
-    right: -21px;
+    right: -22px;
     right: -1.33333rem;
     border-right-color: transparent;
   }
   ul.lista_resultados .item--resultado_paciente .contenedor-con-punta .punta--izquierda {
     border-right-width: 21px;
     border-right-width: 1.33333rem;
-    left: -21px;
+    left: -22px;
     left: -1.33333rem;
     border-left-color: transparent;
   }
@@ -5759,8 +5788,19 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo.dont-show, ul.li
     padding-left: 0.75rem;
   }
 }
+@media (max-width: 399px) and (max-width: 340px) {
+  ul.lista_resultados .item--resultado_paciente .info--resultado {
+    line-height: 48px;
+    font-size: 14px;
+  }
+  ul.lista_resultados .item--resultado_paciente .contenedor-con-punta {
+    height: 48px;
+    height: 3rem;
+  }
+}
+
 /*********************************************************************
-****** Estilos para dispositivos de  768px de ancho, ├│ superior ******
+****** Estilos para dispositivos de  768px de ancho, ó superior ******
 **********************************************************************/
 @media (min-width: 768px) {
   #content-wrapper {
@@ -5885,14 +5925,14 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo.dont-show, ul.li
   ul.lista_resultados .item--resultado_paciente .contenedor-con-punta .punta--derecha {
     border-left-width: 21px;
     border-left-width: 1.33333rem;
-    right: -21px;
+    right: -22px;
     right: -1.33333rem;
     border-right-color: transparent;
   }
   ul.lista_resultados .item--resultado_paciente .contenedor-con-punta .punta--izquierda {
     border-right-width: 21px;
     border-right-width: 1.33333rem;
-    left: -21px;
+    left: -22px;
     left: -1.33333rem;
     border-left-color: transparent;
   }
@@ -5940,7 +5980,7 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo.dont-show, ul.li
     border-bottom-width: 4rem;
     border-left-width: 32px;
     border-left-width: 2rem;
-    right: -34px;
+    right: -35px;
     right: -2.15rem;
     border-right-color: transparent;
     border-top-color: transparent;
@@ -5951,12 +5991,9 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo.dont-show, ul.li
     width: 30%;
     margin-right: 24px;
     margin-right: 1.5rem;
-    padding: 20px 0;
-    padding: 1.25rem 0;
   }
   .app-info_contacto .banner_contacto .h3, .app-info_contacto .app_certificaciones .h3, .app-wrapper-certificaciones .banner_contacto .h3, .app-wrapper-certificaciones .app_certificaciones .h3 {
-    margin: 24px 0;
-    margin: 1.5rem 0;
+    margin: 36px 0;
   }
 
   #app-login .acceso_login {
@@ -5965,7 +6002,7 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo.dont-show, ul.li
   }
 }
 /*********************************************************************
-****** Estilos para dispositivos de  990px de ancho, ├│ superior ******
+****** Estilos para dispositivos de  990px de ancho, ó superior ******
 **********************************************************************/
 @media (min-width: 992px) {
   #content-wrapper {
@@ -6073,7 +6110,7 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo.dont-show, ul.li
   }
 }
 /*********************************************************************
-****** Estilos para dispositivos de  1200px de ancho, ├│ superior *****
+****** Estilos para dispositivos de  1200px de ancho, ó superior *****
 **********************************************************************/
 @media (min-width: 1200px) {
   html {

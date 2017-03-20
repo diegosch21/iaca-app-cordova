@@ -1,8 +1,10 @@
+/* global requirejs */
 define([
 	'text!templates/laboratorios.html',
-	//'lib/gmaps',
+	'backbone',
 	'collections/Labos',
-], function (laboratoriosTemplate,labosCollection) {
+	//'lib/gmaps',
+], function (laboratoriosTemplate,Backbone) {
 
 	var LaboratoriosView = Backbone.View.extend({
 
@@ -15,7 +17,7 @@ define([
 			'touchstart #reload' : 'reloadMapa'
 		},
 
-		initialize: function(options) {
+		initialize: function() { // options
 			//console.log(3);
 			//this.mapa = options['mapa'];
         },
@@ -31,7 +33,7 @@ define([
 		},
 		mapaTodos: function() {
 			//console.log(6);
-			self = this;
+			var self = this;
 			self.$el.find('#loading-map').show();
 			require(['lib/gmaps'],
 				function(mapa) {
@@ -43,7 +45,7 @@ define([
 					mapa.render(self.$('#map_canvas')[0]);
 					mapa.setMarkers(self.collection.toJSON());
 				},
-				function(err) {
+				function() {
 					self.$el.find('#loading-map').hide();
 					if (window.deviceready && window.plugins && window.plugins.toast) {
     					window.plugins.toast.showLongBottom('No se puede cargar el mapa: verifique la conexión a internet');
@@ -66,4 +68,4 @@ define([
 	});
 
 	return LaboratoriosView;
-})
+});

@@ -1,13 +1,17 @@
 <div id="app-login" class="container-fluid container-fluid_max">
 	<div class="row">
 		<div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-	
+
 			<% if (!logueado) { %>
 				<section class="acceso acceso_login contenedor--blanco">
 
 				    <div class="header--banner contenedor--azul contenedor-con-punta">
 				        <p class="h3 texto-invertido">Login</p>
 				        <div class="punta--derecha punta--azul"></div>
+				    </div>
+
+				    <div class="aclaracion-nuevo-login">
+				    	Ingrese su usuario y contraseña, para consultar sus resultados de exámenes <strong>posteriores al 01/04/2017</strong>.
 				    </div>
 
 				    <div class="row">
@@ -29,11 +33,11 @@
 			    		                <div class="punta--derecha punta--azul_oscuro"></div>
 			    		            </label>
 
-			    		            <input id="pass" class="form-control" name="clave" type="password" placeholder="Clave" required="required"/>
+			    		            <input id="pass" class="form-control" name="clave" type="password" placeholder="Contraseña" required="required"/>
 			    		        </div> <!--password-->
 
 			    		        <div class="mensaje--alerta">
-			    		            
+
 			    		        </div> <!--/.mensaje--alerta-->
 
 			    		        <div class="mensaje--satisfactorio">
@@ -47,22 +51,33 @@
 			    		        	<input class="boton--enviar" type="submit" value="Login"/>
 			    		        </div>
 
-				    		    
-				    	
+
+
 				    		</form>
-				    		
+
 				    	</div>
 				    </div>
 
 
 				</section>
-			<% } 
+			<% }
 			else { %>
 				<div class="logout">
 			    	<div class="boton--enviar boton" id="content-logout">Desconectar usuario actual</div>
 			    </div>
-			<% } 
-			if (guardados) { %>
+			<% } %>
+
+			<div class="acceso-web-resultados-anteriores">
+				<div id="boton-acceso-resultados-anteriores" class="external-link boton"
+					data-href="https://www.iaca.com.ar/acceso_paciente.html">
+					<div class="banner-horizontal texto-invertido">
+						<i class="fa fa-external-link"></i>
+						Acceder a los resultados de exámenes<br><strong>anteriores al 01/04/2017</strong>	
+					</div>
+				</div>
+			</div>
+
+			<% if (guardados) { %>
 				<section class="acceso usuarios-guardados contenedor--blanco">
 
 				    <div class="header--banner contenedor--azul contenedor-con-punta">
@@ -70,19 +85,19 @@
 				        <div class="punta--derecha punta--azul"></div>
 				    </div>
 					<div id="error-login-guardado">
-					    	
+
 					</div>
 				    <div class="list-group lista-guardados row">
 				    	<% for (var i = 0;i<usuarios.length;i++) { %>
 				    		<a data-id="<%= usuarios[i].id %>" class="list-group-item usuario-guardado col-sm-8 col-sm-offset-2">
-				    			<%= usuarios[i].name %>  
+				    			<%= usuarios[i].name %>
 				    			<span class="badge delete-guardado" data-id="<%= usuarios[i].id %>"><i class="fa fa-times-circle"></i></span>
 			    			</a>
 				    	<% } %>
 				    </div>
-					
+
 				</section>
-				
+
 			<% } %>
 
 		</div>

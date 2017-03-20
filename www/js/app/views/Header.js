@@ -4,7 +4,7 @@ define([
 	'underscore',
 	'models/Sesion',
 	'backbone'
-], function (headerTemplate,$,_,Sesion) {
+], function (headerTemplate,$,_,Sesion,Backbone) {
 
 	var HeaderView = Backbone.View.extend({
 
@@ -45,7 +45,7 @@ define([
 		},
 
 		updateUser: function() {
-			console.log("Update User..")
+			console.log("Update User..");
 			this.checkUser();
 			this.render();
 			this.selectMenuItem(this.menuItem);
@@ -61,7 +61,7 @@ define([
         	}
         	var actualURL = Backbone.history.fragment;
         	console.log(actualURL);
-        	if (actualURL == 'home' || actualURL == '' ) {
+        	if (actualURL == 'home' || actualURL === '' ) {
         		$('li.back').addClass('hidden');
         		$('li.menu-profesional').removeClass('col-xs-11').addClass('col-xs-12');
         	}
@@ -120,9 +120,7 @@ define([
 				Backbone.history.navigate("home",true);
 			}
 			// Si es home, no hago nada
-			else if (actualURL == 'home' || actualURL == '' ) {
-
-			}
+			// else if (actualURL == 'home' || actualURL === '' ) {	}
 			// En cualquier otro lado, voy atrás
 			else {
 				console.log('window.history.back()');
@@ -133,4 +131,4 @@ define([
 	});
 
 	return HeaderView;
-})
+});

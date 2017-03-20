@@ -3,8 +3,9 @@
 */
 
 define([
-	'text!templates/config.html'
-], function (configTemplate) {
+	'text!templates/config.html',
+	'backbone'
+], function (configTemplate,Backbone) {
 
 	var ConfigView = Backbone.View.extend({
 
@@ -23,4 +24,4 @@ define([
 	});
 
 	return ConfigView;
-})
+});

@@ -1,6 +1,7 @@
 define([
-    'models/Labo'
-], function(laboModel){
+    'models/Labo',
+    'backbone',
+], function(laboModel,Backbone){
     var labosCollection = Backbone.Collection.extend({
         initialize: function(){
 
@@ -8,7 +9,6 @@ define([
         model: laboModel,
 
         url: 'data/labos.json',
-
 
     });
 

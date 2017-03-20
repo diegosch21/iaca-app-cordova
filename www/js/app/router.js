@@ -1,7 +1,8 @@
 define([
+	'backbone',
 	'models/Sesion',
-	'app/views/Header'
-], function (Sesion,HeaderView) {
+	'app/views/Header',
+], function (Backbone,Sesion,HeaderView) {
 
 	var appRouter = Backbone.Router.extend({
 		routes: {
@@ -78,9 +79,9 @@ define([
 						// if(!self.mapa)
 						//   	self.mapa = new Mapa();
 						self.laboratoriosView = new LaboratoriosView({
-								//mapa: self.mapa,
-								collection: self.labosCollection
-							})
+							//mapa: self.mapa,
+							collection: self.labosCollection
+						});
 						self.cambiarPagina(self.laboratoriosView,'laboratorios');
 					});
 				}
@@ -170,7 +171,7 @@ define([
 		this.loading(false);
 
 		return view;
-	};
+	}
 
 	function loading (loading) {
 		if(loading) {
@@ -200,9 +201,7 @@ define([
 	        	});
 	    	}
 	    });
-	};
-
-
+	}
 
 	return appRouter;
 });

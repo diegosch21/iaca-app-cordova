@@ -52,9 +52,13 @@ define(['jquery', 'underscore', 'backbone', 'iscroll','bootstrap'], //'modernizr
 
 	   	/* Document ready */
 		$(function(){
-			console.log('documentready');
 
 			// logger.disableLogger();   // NO DEBUG
+
+			console.log('documentready');
+			// Retrocompatibilidad (sesión y usuarios previos a cambio de sistema Abril2017)
+			// Quito de localstorage toda la data previa
+			removeStoragePrevio();
 
 			eventHandlersGenerales();
 
@@ -81,6 +85,15 @@ define(['jquery', 'underscore', 'backbone', 'iscroll','bootstrap'], //'modernizr
 	}
 );
 
+// Retrocompatibilidad  - usos de app hasta version 1.1.6: se elimina toda la info guardada en storage
+function removeStoragePrevio() {
+	if (localStorage.getItem('iaca-session') || localStorage.getItem('iaca-usuarios')) {
+		console.log('Había sesión o usuarios sistema anterior: vacío storage');
+		// Vacío storage
+		window.localStorage.clear();
+	}
+}
+
 function eventHandlersGenerales() {
 	// variables para controlar distancia de touchmove
 	var startX = 0;	var startY = 0;
@@ -104,8 +117,6 @@ function eventHandlersGenerales() {
 		//console.log("touchmove "+e.target.tagName +' '+e.target.id +' '+ e.target.className+' '+e.touches);
 	},false);
 
-
-
 	document.addEventListener('touchstart', function(e){
     	window.dragging = false;
     	if (e.changedTouches) {
@@ -118,7 +129,7 @@ function eventHandlersGenerales() {
     	// console.log("touchstart "+e.target.tagName +' '+e.target.id +' '+ e.target.className);
 	},false);
 
-	document.addEventListener("touchend", function (e) {
+	document.addEventListener("touchend", function () {
 		window.dragging = false;
 		// console.log("touchend "+event.target.tagName +' '+event.target.id +' '+ event.target.className);
 	},false);
@@ -141,7 +152,7 @@ function eventHandlersGenerales() {
 		// console.log("desactivo "+e.target.tagName +' '+e.target.id +' '+ e.target.className);
 	});
 	// $('body').on('mouseup touchend touchmove', function(e) {
-	$('body').on('touchend touchmove', function(e) {
+	$('body').on('touchend touchmove', function() {
 		//$('.boton').removeClass('activo');
 	});
 
@@ -153,42 +164,44 @@ function eventHandlersPhoneGap() {
 	window.deviceready = true;
 
 	// Evento boton atrás celu
-	$(document).on('backbutton',function(e) {
+	$(document).on('backbutton',function() {
 		console.log('backbutton');
 		if($('#imgs-wrapper').is(":visible")) {
 			console.log("Viendo imgs");
 			$('#imgs-wrapper').hide();
 		}
 		else {
-			var actualURL = Backbone.history.fragment;
-			console.log('actualURL: '+actualURL);
-			// Desde laboratorios siempre voy a home (para evitar que si vi vengo de un lab vuelva a ese)
-			// Desde login también va a home
-			if (actualURL == 'laboratorios' || actualURL.substring(0, 5) == 'login') {
-				console.log('Go to home');
-				Backbone.history.navigate("home",true);
-			}
-			// Si es home, exit app
-			else if (actualURL == 'home' || actualURL == '' ) {
-				console.log('Exit app??');
+			require(['backbone'], function(Backbone) {
+				var actualURL = Backbone.history.fragment;
+				console.log('actualURL: '+actualURL);
+				// Desde laboratorios siempre voy a home (para evitar que si vi vengo de un lab vuelva a ese)
+				// Desde login también va a home
+				if (actualURL == 'laboratorios' || actualURL.substring(0, 5) == 'login') {
+					console.log('Go to home');
+					Backbone.history.navigate("home",true);
+				}
+				// Si es home, exit app
+				else if (actualURL == 'home' || !actualURL) {
+					console.log('Exit app??');
 
-				navigator.notification.confirm(
-				    '¿Desea cerrar la aplicación?', // message
-				     exitApp,            // callback to invoke with index of button pressed
-				    'SALIR',           // title
-				    ['NO','SÍ']     // buttonLabels
-				);
-			}
-			// En cualquier otro lado, voy atrás
-			else {
-				console.log('window.history.back()');
-				window.history.back();
-			}
+					navigator.notification.confirm(
+					    '¿Desea cerrar la aplicación?', // message
+					     exitApp,            // callback to invoke with index of button pressed
+					    'SALIR',           // title
+					    ['NO','SÍ']     // buttonLabels
+					);
+				}
+				// En cualquier otro lado, voy atrás
+				else {
+					console.log('window.history.back()');
+					window.history.back();
+				}
+			});
 		}
 	});
 
 	//Evento boton menu celu
-	$(document).on('menubutton',function(e) {
+	$(document).on('menubutton',function() {
 		console.log('menubutton: Toggle dropdown menuUser-list');
 		$('#menuUser-list').dropdown('toggle');
 	});
@@ -208,7 +221,7 @@ function eventHandlersPhoneGap() {
 function exitApp(buttonIndex) {
 	console.log('confirm-boton: '+buttonIndex);
 	if(buttonIndex == 2) {
-		console.log('exitApp')
+		console.log('exitApp');
 		navigator.app.exitApp();
 	}
 

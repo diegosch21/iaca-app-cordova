@@ -3,7 +3,7 @@ var logger = function() {
     var pub = {};
     var isDisabled = false;
     pub.enableLogger =  function enableLogger()  {
-                            if(oldConsoleLog == null)
+                            if(oldConsoleLog === null)
                                 return;
                             window['console']['log'] = oldConsoleLog;
                             isDisabled = false;
@@ -25,6 +25,6 @@ var logger = function() {
                 toggled = false;
             }
         }
-    }
+    };
     return pub;
 }();

@@ -1,7 +1,9 @@
+/* global cordova, requirejs */
 define([
 	'text!templates/laboratorio_detalles.html',
+	'backbone'
 	//'lib/gmaps'
-], function (laboTemplate) {
+], function (laboTemplate,Backbone) {
 
 	var LaboratoriosView = Backbone.View.extend({
 
@@ -13,11 +15,10 @@ define([
 			// 'click #back' : 'botonBack',
 			'touchstart .external-link' : 'externalLink',
 			// 'click .external-link' : 'externalLink',
-			'touchstart #reload' : 'mapaLabo',
 			'touchstart #reload' : 'reloadMapa'
 		},
 
-		initialize: function(options) {
+		initialize: function() { // options
 			//this.mapa = options['mapa'];
 		},
 		render: function() {
@@ -30,7 +31,7 @@ define([
             return this;
 		},
 		mapaLabo: function() {
-			self = this;
+			var self = this;
 			this.$el.find('#loading-map').show();
 			require(['lib/gmaps'],
 				function(mapa) {
@@ -41,7 +42,7 @@ define([
 					mapa.render(self.$('#map_canvas')[0]);
 					mapa.setMarkers([self.model.toJSON()]);
 				},
-				function(err) {
+				function() {
 					if (window.deviceready && window.plugins && window.plugins.toast) {
     					window.plugins.toast.showLongBottom('No se puede cargar el mapa: verifique la conexión a internet');
     				}
@@ -49,7 +50,7 @@ define([
 				}
 			);
 		},
-		botonBack: function(e) {
+		botonBack: function() {
 			Backbone.history.navigate('laboratorios',true);
 		},
 		externalLink: function(event) {
@@ -70,4 +71,4 @@ define([
 	});
 
 	return LaboratoriosView;
-})
+});

@@ -1,7 +1,7 @@
 /**
  * MBP - Mobile boilerplate helper functions
  */
-
+/* global MBP */
 (function(document) {
 
     window.MBP = window.MBP || {};

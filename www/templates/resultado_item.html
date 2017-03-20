@@ -3,32 +3,17 @@
 	<i class="estado_leido--no fa fa-lg fa-envelope texto-gris_oscuro"></i>
 </div>
 
-<div class="col-xs-3 hidden-xxs info--resultado text-left-xs">
+<div class="col-xs-3 info--resultado text-left-xs">
 	<span class=" fecha texto-negro"><%= fecha %></span>
 </div>
-<div class="col-xs-3 hidden-xxs info--resultado text-left-xs">
+<div class="col-xs-5 info--resultado text-left-xs">
 	<span class="protocolo texto-negro"><%= id %></span>
 </div>
-<div class="col-xxs-4 visible-xxs">
-	<div class="row info--resultado text-left-xs">
-		<span class="fecha texto-negro"><%= fecha %></span>
-	</div>
-	<div class="row info--resultado text-left-xs">
-		<span class="protocolo texto-negro"><%= id %></span>
-	</div>
-</div>
 
-<div class="col-xs-4 col-xxs-6">
-	<div class="row">
-		<div class="col-xs-6 col-xxs-6 col-xxs-offset-2 info--resultado boton_img boton contenedor-con-punta">
-			<!-- <i class="texto-invertido fa fa-lg fa-search fa-flip-horizontal"></i> -->
-			<i class="texto-invertido fa fa-lg fa-file-text"></i>
-			<div class="punta--izquierda"></div>
-		</div>
-		<div data-href="<%= pdf %>" class="col-xs-6 col-xxs-4 info--resultado boton_pdf boton contenedor-con-punta">
-			<i class="texto-invertido fa fa-lg fa-download"></i>
-			<!-- <i class="texto-invertido fa fa-lg fa-file-pdf-o"></i> -->
-			<div class="punta--izquierda"></div>
-		</div>
-	</div>
+<!-- no hay más boton para descarga de imagen (el server no las entrega) -->
+
+<div data-href="<%= pdf %>" class="col-xs-2 info--resultado boton_pdf boton contenedor-con-punta">
+	<i class="texto-invertido fa fa-lg fa-download"></i>
+	<!-- <i class="texto-invertido fa fa-lg fa-file-pdf-o"></i> -->
+	<div class="punta--izquierda hidden-xxs"></div>
 </div>

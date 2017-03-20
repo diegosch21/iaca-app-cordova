@@ -1,11 +1,13 @@
+/* global logger */
 // Instalacion plugin: cordova plugin add phonegap-plugin-push --variable SENDER_ID="529178062856"
 define([
-	'models/Sesion'
-],	function(Sesion) {
+	'models/Sesion',
+	'backbone'
+],	function(Sesion,Backbone) {
 		var Notificaciones = function() {
 
 			var addCallback = function(key, callback) {
-  				if(window.callbacks == undefined) {
+  				if(window.callbacks === undefined) {
    					window.callbacks = {};
   				}
   				window.callbacks[key] = callback;
@@ -127,10 +129,10 @@ define([
                 }
                 alerta('Nuevo resultado','Hay un nuevo resultado de análisis disponible');
                 if (e.badge) {
-                    pushNotification.setApplicationIconBadgeNumber(successHandlerBadge, e.badge);
+                    window.plugins.pushNotification.setApplicationIconBadgeNumber(successHandlerBadge, e.badge);
                 }
                 logger.toggleConsole(false);   // NO DEBUG
-            }
+            };
 
 
 			this.registrarWin = function() {
@@ -150,8 +152,8 @@ define([
 					console.log('ver lista');
 					Backbone.history.navigate("resultados",true);
 				}
-			}
-		}
+			};
+		};
 
 		return new Notificaciones();  //SINGLETON
 	}

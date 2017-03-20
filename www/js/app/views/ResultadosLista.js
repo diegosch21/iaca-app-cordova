@@ -1,11 +1,13 @@
+/* global cordova */
 define([
 	'text!templates/resultados_lista.html',
 	'models/Sesion',
 	'text!templates/alert.html',
 	'collections/Resultados',
 	'views/ResultadoItem',
+	'backbone',
 	'iscroll'
-], function (resultadosListaTemplate,Sesion,alertTemplate,ResultadosCollection,ResultadoItem,IScroll) {
+], function (resultadosListaTemplate,Sesion,alertTemplate,ResultadosCollection,ResultadoItem,Backbone,IScroll) {
 
 	var ResultadosListaView = Backbone.View.extend({
 
@@ -27,9 +29,11 @@ define([
 		},
 		events: {
 			'touchstart #ver-mas' : 	'verMas',
-			'touchstart #update' : 'updateUsuario'
+			'touchstart #update' : 'updateUsuario',
+			'touchstart #boton-acceso-resultados-anteriores.external-link' : 'openConsultaResultadosAnteriores'
 			// 'click #ver-mas' : 	'verMas',
-			// 'click #update' : 'updateUsuario'
+			// 'click #update' : 'updateUsuario',
+			// 'click #boton-acceso-resultados-anteriores.external-link' : 'openConsultaResultadosAnteriores'
 		},
 
 		// AGREGAR EVENTO A CHECKBOX NOTIFICACIONES
@@ -55,7 +59,7 @@ define([
 			var pri = this.actualItem +1;
 			console.log("Primer item: #"+pri+" Último item: #"+ult);
 
-			var hayImagenes = false;
+			//var hayImagenes = false; // El server no entrega más link a imagenes
 
 			for (var i = pri; i <=ult; i++) {
 				var result = this.resultadosGuardados.at(i);
@@ -64,14 +68,16 @@ define([
 				this.$el.find('#lista-resultados').append(view.render().el);
 				this.itemsViews[result.id] = view;
 				this.actualItem = i;
-				hayImagenes = hayImagenes || result.get("jpg").length > 0;
-			};
-			if(hayImagenes) {
-				this.$el.find('.ver-imagenes').show();
+				// El server no entrega más link a imagenes
+				//hayImagenes = hayImagenes || result.get("jpg").length > 0;
 			}
-			else {
-				this.$el.find('.ver-imagenes').hide();
-			}
+			 // El server no entrega más link a imagenes - en template no está más link a ver-imagenes
+			// if(hayImagenes) {
+			// 	this.$el.find('.ver-imagenes').show();
+			// }
+			// else {
+			// 	this.$el.find('.ver-imagenes').hide();
+			// }
 			if(this.resultadosGuardados.length>0)
 				this.$el.find('#no-results').hide();
 			else
@@ -108,7 +114,7 @@ define([
 		*		sólo actualiza lista
 		*/
 		updateUsuario: function() {
-			console.log("Update usuario...")
+			console.log("Update usuario...");
 			if(Sesion.get("logueado")) {
 				var id = Sesion.get('userID');
 				// Si cambio el usuario, creo coleccion y escucho eventos
@@ -140,7 +146,7 @@ define([
 		},
 		getListaGuardada: function() {
 			var self = this;
-			console.log("Obtengo resultados guardados...")
+			console.log("Obtengo resultados guardados...");
 			if(this.showing)
 				this.loading(true);
 			this.resultadosGuardados.fetch({
@@ -148,7 +154,7 @@ define([
 					self.renderList(true,9);
 					self.updateLista();
 				},
-				error: function(collection, response, options) {
+				error: function(collection, response) { // otro param: options
 					console.log(response);
 				},
 				complete: function() {
@@ -158,13 +164,13 @@ define([
 
 		},
 		updateLista: function() {
-			console.log("Actualizo lista de resultados...")
+			console.log("Actualizo lista de resultados...");
 			this.updating(true);
 			var self = this;
 			try {
 				Sesion.getResultados({
 					success: function(data) {
-						if(data.list != null) {
+						if(data.list !== null) {
 							console.log("Cantidad resultados: "+data.list.length);
 							var result = {};
 							var hayNuevo = false;  //si no hay nuevo no vuelvo a hacer renderList
@@ -182,7 +188,7 @@ define([
 									});
 									var fecha = (result['fecha'].replace(/(\d{2})(\d{2})(\d{2})/,'$1-$2-$3'));
 									result['fecha'] = fecha;
-									console.log("Nuevo resultado: ")
+									console.log("Nuevo resultado: ");
 									console.log(result);
 									self.resultadosGuardados.create(result);
 									hayNuevo = true;
@@ -211,7 +217,7 @@ define([
 					complete: function() {
 						self.updating(false);
 						//console.log(self.itemsViews);
-						_.each(self.itemsViews, function(item, key) {
+						_.each(self.itemsViews, function(item) { // otro param: key
 							item.delegateEvents();
 						//	console.log("delegateEvents "+item);
 						});
@@ -269,10 +275,21 @@ define([
 				zoomMin: 0.25
 				//zoomMax: 2
 			});
-
+		},
+		// Abre link para consulta de resultados anteriores en browser
+		openConsultaResultadosAnteriores: function(event) {
+			var url= ($(event.currentTarget).data('href'));
+			if (typeof cordova !== 'undefined' && cordova.InAppBrowser) {
+				// Usa plugin inAppBrowser pero abre browser sistema. En Android, con boton back cierra el browser
+				// No uso el browser in-app porque no permite descargar PDF
+				// 	(y no puedo obtener link de descarga y usar método de lib/PDFDownloader, porque necesito la cookie)
+				cordova.InAppBrowser.open(url, '_system');
+			}
+			else {
+				window.open(url,'_system');
+			}
 		}
-
 	});
 
 	return ResultadosListaView;
-})
+});

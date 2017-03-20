@@ -1,6 +1,8 @@
+/* global cordova */
 define([
-	'text!templates/info.html'
-], function (infoTemplate) {
+	'text!templates/info.html',
+	'backbone'
+], function (infoTemplate, Backbone) {
 
 	var InfoView = Backbone.View.extend({
 
@@ -36,4 +38,4 @@ define([
 	});
 
 	return InfoView;
-})
+});

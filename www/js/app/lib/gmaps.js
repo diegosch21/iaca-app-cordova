@@ -1,3 +1,4 @@
+/* global google */
 define(
     [ "async!http://maps.google.com/maps/api/js?sensor=false" ],
     //[ "http://www.cualquiercosaaaaaa.com.ar" ],
@@ -31,10 +32,10 @@ define(
     		                var content = "<a href='"+markers[i]["link_map"]+"'>";
     		                content+="<strong>Sede "+markers[i]["sede"]+"</strong></a><br/>";
     		                content+= markers[i]["info_map"]+"<br/>";
-    		                content+= "<i>"+markers[i]["direccion"]+"</i>"
+    		                content+= "<i>"+markers[i]["direccion"]+"</i>";
     		                infowindow.setContent(content);
     		                infowindow.open(map, marker);
-    		            }
+    		            };
     		        })(marker, i));
     		    }
     		};
@@ -46,7 +47,7 @@ define(
     		};
 
 
-    	}
+    	};
 
         return new Mapa();  //SINGLETON
     }

@@ -1,10 +1,11 @@
+/* global cordova */
 define([
 	'text!templates/login.html',
 	'models/Sesion',
 	'text!templates/alert.html',
-	'collections/Usuarios'
-
-], function (loginTemplate,Sesion,alertTemplate,Usuarios) {
+	'collections/Usuarios',
+	'backbone'
+], function (loginTemplate,Sesion,alertTemplate,Usuarios,Backbone) {
 
 	var LoginView = Backbone.View.extend({
 
@@ -25,9 +26,12 @@ define([
 			'submit form#login'	: 'login',
 			'touchend a.usuario-guardado' : 'loginGuardado',
 			'touchend span.delete-guardado' : 'deleteGuardado',
-			'touchend #content-logout' : 'logout'
+			'touchend #content-logout' : 'logout',
+			'touchstart #boton-acceso-resultados-anteriores.external-link' : 'openConsultaResultadosAnteriores'
 			// 'click a.usuario-guardado' : 'loginGuardado',
-			// 'click span.delete-guardado' : 'deleteGuardado'
+			// 'click span.delete-guardado' : 'deleteGuardado',
+			// 'click #content-logout' : 'logout',
+			// 'click #boton-acceso-resultados-anteriores.external-link' : 'openConsultaResultadosAnteriores'
 		},
 
 		render: function() {
@@ -36,7 +40,7 @@ define([
 				var users = [];
 				Usuarios.each(function(user, index){
 					users[index] = {"id": user.get("id"), "name": user.get("name")};
-				})
+				});
 				this.$el.html(this.template({"logueado": logueado, "guardados":true, "usuarios": users}));
 			}
 			else {
@@ -54,16 +58,16 @@ define([
 			var password = this.$("#pass").val();
 			self.$('.mensaje--alerta').html('');
 
-			if(username=="" || username==" ") {
+			if(!username.trim) { // string vacío
 				this.alerta("Ingrese su número de usuario",'.mensaje--alerta');
 			}
-			else if (password=="" || password==" ") {
+			else if (!password.trim) { // string vacío
 				this.alerta("Ingrese su contraseña",'.mensaje--alerta');
 			}
 			else {
 				this.loading(true);
 				Sesion.login(username,password,{
-					success: function(data) {
+					success: function() { // param: data
 						console.log("Logueado: "+Sesion.get("logueado")+" Redirecciona a: "+self.redireccion);
 						self.alerta('Logueado correctamente');
 						Backbone.history.navigate(self.redireccion,true);
@@ -105,7 +109,7 @@ define([
 				var pass = user.get("pass");
 				this.loading(true);
 				Sesion.login(id,pass,{
-					success: function(data) {
+					success: function() { // param: data
 						console.log("Usuario guardado Logueado: "+Sesion.get("logueado")+" Redirecciona a: "+self.redireccion);
 						self.alerta('Logueado correctamente');
 						Backbone.history.navigate(self.redireccion,true);
@@ -150,12 +154,21 @@ define([
     			}
     		}
     		this.render();
+		},
+		// Abre link para consulta de resultados anteriores en browser
+		openConsultaResultadosAnteriores: function(event) {
+			var url= ($(event.currentTarget).data('href'));
+			if (typeof cordova !== 'undefined' && cordova.InAppBrowser) {
+				// Usa plugin inAppBrowser pero abre browser sistema.
+				// No uso el browser in-app porque no permite descargar PDF
+				// 	(y no puedo obtener link de descarga y usar método de lib/PDFDownloader, porque necesito la cookie)
+				cordova.InAppBrowser.open(url, '_system');
+			}
+			else {
+				window.open(url,'_system');
+			}
 		}
-
-
-
-
 	});
 
 	return LoginView;
-})
+});

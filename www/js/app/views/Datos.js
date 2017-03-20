@@ -3,8 +3,9 @@
 */
 
 define([
-	'text!templates/datos.html'
-], function (datosTemplate) {
+	'text!templates/datos.html',
+	'backbone'
+], function (datosTemplate,Backbone) {
 
 	var DatosView = Backbone.View.extend({
 
@@ -23,4 +24,4 @@ define([
 	});
 
 	return DatosView;
-})
+});
