@@ -1,6 +1,6 @@
-[ 
+[
 	{
-	  	"id": "sanmartin", 
+	  	"id": "sanmartin",
 	  	"sede":"San Martín",
 	  	"tipo" : "Laboratorio Clínico Humano",
 	  	"direccion" : "San Martín 68",
@@ -19,7 +19,7 @@
 	  	"img_grande" : "img/labos/grande--sede-sanmartin.jpg"
   	},
   	{
-	  	"id": "rodriguez", 
+	  	"id": "rodriguez",
 	  	"sede":"Rodríguez",
 	  	"tipo" : "Laboratorio Clínico Humano",
 	  	"direccion" : "Rodríguez 710",
@@ -35,10 +35,9 @@
 	  	"info1": "Nuevo y moderno edificio, de más de 500 m2 de superficie cubierta para ofrecer mayores comodidades a nuestros pacientes.",
 	  	"info2": "Amplia sala de espera - Sala de espera para niños - Sala de espera para embarazadas - Desayunador.",
 	  	"img_grande" : "img/labos/grande--sede-rodriguez.jpg"
-
   	},
   	{
-	  	"id": "darwin", 
+	  	"id": "darwin",
 	  	"sede":"Darwin",
 	  	"tipo" : "Laboratorios",
 	  	"direccion" : "Darwin 530",
@@ -56,5 +55,3 @@
 	  	"img_grande" : "img/labos/grande--sede-darwin.jpg"
   	}
 ]
-
- 

@@ -1,9 +1,4 @@
-define([
-	'jquery',
- 	'underscore',
- 	'backbone',
- 	'collections/Resultados'
-],function($,_,Backbone) {
+define(['backbone'],function(Backbone) {
 
     var resultadoModel = Backbone.Model.extend({
         defaults:{

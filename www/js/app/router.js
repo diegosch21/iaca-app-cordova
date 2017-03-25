@@ -1,8 +1,8 @@
 define([
 	'backbone',
-	'models/Sesion',
+	'services/authentication', // al inicializar, intenta obtener usuario previamente logueado
 	'app/views/Header',
-], function (Backbone,Sesion,HeaderView) {
+], function (Backbone,Auth,HeaderView) {
 
 	var appRouter = Backbone.Router.extend({
 		routes: {
@@ -23,13 +23,11 @@ define([
 		},
 
 		initialize: function(){
-
 			this.headerView = new HeaderView();
         	$('#header').html(this.headerView.el);
         	this.cambiarPagina = _.bind(cambiarPagina,this);
         	this.getLabos = _.bind(getLabos,this);
         	this.loading = _.bind(loading,this);
-
 		},
 
 		home: function(){
@@ -43,7 +41,7 @@ define([
 		},
 		resultados: function(){
 			var self = this;
-			if(!Sesion.get("logueado")) {
+			if(!Auth.logueado) {
 				console.log("Resultados - No logueado, redireccion a login");
 				Backbone.history.navigate("login/resultados",true);
 			}
@@ -68,7 +66,7 @@ define([
 		laboratorios: function(){
 			var self = this;
 			this.loading(true);
-			//require(['views/Laboratorios','lib/gmaps'], function(LaboratoriosView,Mapa) {
+			//require(['views/Laboratorios','services/gmaps'], function(LaboratoriosView,Mapa) {
 			require(['views/Laboratorios'], function(LaboratoriosView) {
 				//console.log(1);
 				if (self.laboratoriosView) {
@@ -90,7 +88,7 @@ define([
 		verLabo: function(lab){
 			var self = this;
 			this.loading(true);
-			//require(['views/LaboratorioDetalles','lib/gmaps'], function(LaboView,Mapa) {
+			//require(['views/LaboratorioDetalles','services/gmaps'], function(LaboView,Mapa) {
 			require(['views/LaboratorioDetalles'], function(LaboView) {
 				self.getLabos(function() {
 					var labo = self.labosCollection.get(lab);
@@ -123,24 +121,24 @@ define([
 		},
 		*/
 		login: function(page) {
-			//if(Sesion.get("logueado"))
+			//if(Auth.logueado)
 			//	Backbone.history.navigate("home",true);
 			//else {
 			var self = this;
 			this.loading(true);
 			require(['views/Login'], function(LoginView) {
+				var menuitem = 'inicio';
 				if(page) {
-					self.cambiarPagina(new LoginView({"redireccion": page}),'resultados');
+					menuitem = page; // se usa para menu resultados
 				}
-				else
-					self.cambiarPagina(new LoginView(),'inicio');
+				self.cambiarPagina(new LoginView(),menuitem);
 			});
 			//}
 		}
 		// HECHO EN HEADERVIEW
 		// logout: function(page) {
-		// 	if(Sesion.get("logueado"))
-		// 		Sesion.logout();
+		// 	if(Auth.logueado)
+		// 		Auth.logout();
 		// }
 	});
 

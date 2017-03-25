@@ -1,11 +1,8 @@
 define([
-    'jquery',
-    'underscore',
     'backbone',
-    'models/Usuario',
     'localstorage',
     'models/Resultado'
-], function($,_,Backbone,usuarioModel,Store,resultadoModel){
+], function(Backbone,Store,resultadoModel){
     var resultadosCollection = Backbone.Collection.extend({
 
         initialize: function(models,options){

@@ -1,11 +1,7 @@
-define([
-    'backbone',
-],function(Backbone) {
+define(['backbone'],function(Backbone) {
 
     var laboModel = Backbone.Model.extend({
-        defaults:{
-
-        }
+        defaults:{ }
     });
     return laboModel;
 

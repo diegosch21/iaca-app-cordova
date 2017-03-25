@@ -72,7 +72,7 @@
 					data-href="https://www.iaca.com.ar/acceso_paciente.html">
 					<div class="banner-horizontal texto-invertido">
 						<i class="fa fa-external-link"></i>
-						Acceder a los resultados de exámenes<br><strong>anteriores al 01/04/2017</strong>	
+						Acceder a los resultados de exámenes<br><strong>anteriores al 01/04/2017</strong>
 					</div>
 				</div>
 			</div>
@@ -90,7 +90,7 @@
 				    <div class="list-group lista-guardados row">
 				    	<% for (var i = 0;i<usuarios.length;i++) { %>
 				    		<a data-id="<%= usuarios[i].id %>" class="list-group-item usuario-guardado col-sm-8 col-sm-offset-2">
-				    			<%= usuarios[i].name %>
+				    			<%= (usuarios[i].name) ? usuarios[i].name : usuarios[i].id  %>
 				    			<span class="badge delete-guardado" data-id="<%= usuarios[i].id %>"><i class="fa fa-times-circle"></i></span>
 			    			</a>
 				    	<% } %>

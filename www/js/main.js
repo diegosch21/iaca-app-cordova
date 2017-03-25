@@ -4,7 +4,7 @@ require.config({
 
 	paths: {
         app: '../app',
-        lib: '../app/lib',
+        services: '../app/services',
         templates: '../../templates',
         data: '../../data',
         views: '../app/views',
@@ -211,7 +211,7 @@ function eventHandlersPhoneGap() {
 	// se oculta desp de 3 segs
 
 	// registro dispositivo para push notifications
-	// NO IMPLEMENTADO
+	// NO IMPLEMENTADO EN SERVER
 	// Usa plugin PushPlugin
 	// Instalacion: cordova plugin add phonegap-plugin-push --variable SENDER_ID="529178062856"
 	// console.log("device.platform: "+device.platform);
@@ -224,17 +224,16 @@ function exitApp(buttonIndex) {
 		console.log('exitApp');
 		navigator.app.exitApp();
 	}
-
 }
 
+/* Registrar app para recibir notificaciones - desactivado porque no fue implementado en server */
 // function registrarPushNotification(platform) {
-// 	require(['lib/notificaciones'], function(notif) {
+// 	require(['services/notificaciones'], function(notif) {
 // 		if (platform == 'android' || platform == 'Android')
 // 			notif.registrarAndroid();
 // 		else if (platform == "iOS")
 // 			notif.registrarApple();
 // 		else if (platform == 'Win32NT' || platform == 'WinCE')
 // 			notif.registrarWin();
-
 // 	});
 // }

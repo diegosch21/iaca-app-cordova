@@ -4175,6 +4175,11 @@ a:active {
   border-color: transparent;
   color: #eef3fa;
   border-radius: 0;
+  padding: 12px;
+  padding-right: 30px;
+}
+.alert-warning > p {
+  font-size: 14px;
 }
 
 /** Page loading **/

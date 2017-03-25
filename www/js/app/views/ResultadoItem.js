@@ -1,8 +1,7 @@
 define([
 	'text!templates/resultado_item.html',
-	'models/Sesion',
 	'backbone'
-], function (resultadoItemTemplate,Sesion,Backbone) {
+], function (resultadoItemTemplate,Backbone) {
 
 	var ResultadoItemView = Backbone.View.extend({
 
@@ -64,23 +63,28 @@ define([
 		},
 		openPDF: function() {
 			console.log('pressBoton (dragging: '+window.dragging+')');
-			if(!window.dragging)
-				Sesion.checkTimestamp({ success: this._openPDF});
+			if(!window.dragging) {
+				this._openPDF();
+				// Viejo sistema VIANET:
+				// 	se debia chequear token segun timestamp (si se habia invalidado, volver a pedir otro),
+				// 	y luego abrir el PDF
+				// Sesion.checkTimestamp({ success: this._openPDF});
+			}
 		},
 		_openPDF: function() { // param: event
 			var self = this;
-			require(['lib/pdf_downloader'], function(PDFDownloader) {
+			require(['services/pdf_downloader'], function(PDFDownloader) {
 				$('#page-loading').show();
-				//CAMBIA EL TOKEN DEL URL POR EL ACTUAL
 				var url= self.model.get("pdf"),
 					id = self.model.get("id"),
 					filename = 'resultado_analisis_'+id+'.pdf';
-				var i = url.lastIndexOf('token=');
-				if(i>0) {
-					var url_sintoken = url.substring(0,i);
-					url = url_sintoken + 'token=' + Sesion.get('token');
-				}
-				console.log("Open PDF - url token actualizado: "+url);
+				// Viejo sistema VIANET: URL con token, debía cambiar el token del URL por el actual
+				// var i = url.lastIndexOf('token=');
+				// if(i>0) {
+				// 	var url_sintoken = url.substring(0,i);
+				// 	url = url_sintoken + 'token=' + Sesion.get('token');
+				// }
+				// console.log("Open PDF - url token actualizado: "+url);
 				PDFDownloader.download(url,filename,
 					function(){ // Callback exito
 						$('#page-loading').hide();
@@ -92,7 +96,7 @@ define([
 				);
 			});
 		},
-		// El server no entrega más imagenes de los resultados
+		// Viejas funciones para obtener img de resultado con server VIANET
 		// verImgs: function() { // param: event
 		// 	console.log('pressBoton (dragging: '+window.dragging+')');
 		// 	if(!window.dragging)

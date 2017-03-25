@@ -1,9 +1,8 @@
 /* global device, appAvailability */
 define([
 	'text!templates/home.html',
-	'models/Sesion',
 	'backbone'
-], function (homeTemplate,Sesion,Backbone) {
+], function (homeTemplate,Backbone) {
 
 	var HomeView = Backbone.View.extend({
 

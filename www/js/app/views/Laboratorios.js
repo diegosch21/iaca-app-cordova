@@ -3,7 +3,6 @@ define([
 	'text!templates/laboratorios.html',
 	'backbone',
 	'collections/Labos',
-	//'lib/gmaps',
 ], function (laboratoriosTemplate,Backbone) {
 
 	var LaboratoriosView = Backbone.View.extend({
@@ -35,7 +34,7 @@ define([
 			//console.log(6);
 			var self = this;
 			self.$el.find('#loading-map').show();
-			require(['lib/gmaps'],
+			require(['services/gmaps'],
 				function(mapa) {
 					self.$el.find('#reload').hide();
 					self.$el.find('#loading-map').hide();
@@ -60,7 +59,7 @@ define([
 		},
 		reloadMapa: function() {
 			console.log("ReloadMapa");
-			requirejs.undef('lib/gmaps');
+			requirejs.undef('services/gmaps');
 			this.mapaTodos();
 		}
 

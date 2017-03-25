@@ -1,3 +1,7 @@
+/**
+ * [SINGLETON Service]
+ * Ofrece método para descargar PDF, guardarlo en un directorio, y luego abrirlo si es posible
+ */
 /* global device, cordova, FileTransfer */
 define([],function() {
 	var PDFDownloader = function() {
@@ -26,6 +30,17 @@ define([],function() {
 					saveDirectory = cordova.file.dataDirectory;
 				}
 
+				// Define método a ejecutar si ocurre error
+				var errorDescarga = function(error,tipo,url) {
+					console.log("Error "+ tipo + " "+  error);
+					// error: intenta descargar con browser
+					window.open(url, '_system');
+					if (callback_error) {
+						callback_error();
+					}
+				};
+
+				// Obtiene directorio a guardar archivo y realiza el download
 				window.resolveLocalFileSystemURL(saveDirectory,
 					// success resolveLocalFileSystemURL
 					function (dir) {
@@ -82,14 +97,6 @@ define([],function() {
 					}
 				);
 
-				var errorDescarga = function(error,tipo,url) {
-					console.log("Error "+ tipo + " "+  error);
-					// error: intenta descargar con browser
-					window.open(url, '_system');
-					if (callback_error) {
-						callback_error();
-					}
-				};
 			}
 			else {
 				window.open(url, '_blank');
