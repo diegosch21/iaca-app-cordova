@@ -13,8 +13,10 @@ define([
         },
         model: resultadoModel,
 
+        // Define función de comparación para insertar de forma ordenada nuevos elementos
         comparator: function(model) {
-            return -model.get("id");
+            // Ordena por timestamp (generado al crear por fecha hora) de forma inversa (primero los más nuevos)
+            return - model.get("timestamp");
         }
 
 

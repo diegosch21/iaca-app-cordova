@@ -169,7 +169,7 @@ define([
 			// Intenta obtener resultados guardados en storage (si aún no hay, igual ejecuta callback success)
 			this.resultadosGuardados.fetch({
 				success: function() {
-					self.renderList(true,9); // Renderiza los resultados que estaban guardados
+					self.renderList(true,9); // Renderiza los 9 últimos resultados que estaban guardados
 					self.updateLista(); // Hace request al server para obtener resultados
 				},
 				error: function(collection, response) { // otro param: options
@@ -184,72 +184,70 @@ define([
 		updateLista: function() {
 			console.log("Actualizo lista de resultados...");
 			this.updating(true);
-			var self = this;
-			try {
-				ShiftWS.getResultados(Auth.user,{
-					// Defino callbacks luego de obtener los resultados del server (o fallar)
-					success: function(data) {
-						if(data.list !== null) {
-							console.log("Cantidad resultados: "+data.list.length);
-							var result = {};
-							var hayNuevo = false;  //si no hay nuevo no vuelvo a hacer renderList
-							for (var i = data.list.length - 1; i >= 0; i--) {
-								var elem = data.list[i];
-								// Si en la colecc no está el result de ese protocolo (id) lo creo y guardo en storage
-								if(!self.resultadosGuardados.get(elem['protocolo'])) {
-									console.log(elem);
-									if(typeof elem['jpg'] == 'undefined')
-										elem['jpg'] = [];
-									// cambio nombres de algunas keys
-									_.each(elem, function(value, key) {
-									    key = self.mapKeysResultado[key] || key;
-									    result[key] = value;
-									});
-									var fecha = (result['fecha'].replace(/(\d{2})(\d{2})(\d{2})/,'$1-$2-$3'));
-									result['fecha'] = fecha;
-									console.log("Nuevo resultado: ");
-									console.log(result);
-									self.resultadosGuardados.create(result);
-									hayNuevo = true;
-								}
-								// Si ya estaba actualizo direccion pdf e imgs
-								else {
-									self.resultadosGuardados.get(elem['protocolo']).save({
-										pdf: elem['pdf'],
-										jpg: elem['jpg']
-									});
-								}
-							}
-							if(hayNuevo)
-								self.renderList(true,9);
-						}
-					},
-					error: function(errormsj,errorcode) {
-						console.log("Error getResultados: "+errormsj+" "+errorcode);
-						if (window.deviceready && window.plugins && window.plugins.toast) {
-							window.plugins.toast.showLongCenter(error);
-						}
-						else {
-							self.$el.find('#error-get-results').html(self.templateAlert({msj: errormsj}));
-						}
-					},
-					complete: function() {
-						self.updating(false);
-						//console.log(self.itemsViews);
-						_.each(self.itemsViews, function(item) { // otro param: key
-							item.delegateEvents();
-						//	console.log("delegateEvents "+item);
-						});
-					}
+			var _this = this;
 
-				});
-			} catch(err) {
-				console.log(err);
-			}
-		},
-		mapKeysResultado: {
-		    documento: "userID",
-		    protocolo: "id"
+			ShiftWS.getResultados(Auth.user,{
+				// Defino callbacks luego de obtener los resultados del server (o fallar)
+				success: function(resultados) {
+					/** resultados es un arreglo con la lista de resultados obtenidos, parseado por shift_webservice
+					 *   (ordenado del más reciente al más viejo)
+					 * Formato de un resultado:
+					 * 	{
+					 * 		id: codigo de la orden de servicio del resultado,
+					 * 		fecha: fecha (formato dd/mm/yyyy),
+					 * 		hora: hora (formato hh:mm:ss),
+					 * 		nombre: nombre examen/es (codigos)
+					 * 		pdf: url pdf
+					 * 	}
+					 */
+					var hayNuevos = false, result_guardado, new_result;
+					resultados.forEach(function(resultado){
+						// Si en la colecc no está el result de ese protocolo (id) lo creo y guardo en storage
+						result_guardado = _this.resultadosGuardados.get(resultado['id']);
+						if(!result_guardado) {
+							hayNuevos = true;
+							// Crea y persiste en localstorage el nuevo resultado
+							new_result = _this.resultadosGuardados.create(resultado);
+							// console.log("Nuevo resultado: "+JSON.stringify(new_result));
+						}
+						// Si ya estaba, chequeo si cambió URL PDF (y marco como no leído)
+						else {
+							if (resultado['pdf'] != result_guardado.get('pdf')) {
+								result_guardado.save({
+									pdf: resultado['pdf'], leido: false
+								});
+								hayNuevos = true;
+								// console.log("Resultado con URL PDF modificada: "+JSON.stringify(new_result));
+							}
+						}
+					});
+
+					if(hayNuevos) {
+						console.log("Hay nuevos resultados");
+						_this.renderList(true,9); // Renderiza los 9 últimos resultados
+					}
+					else { //si no hay nuevos resultados no vuelvo a hacer renderList
+						console.log("No hay nuevos resultados");
+					}
+				},
+				error: function(errormsj,errorcode) {
+					console.log("Error getResultados: "+errormsj+" "+errorcode);
+					if (window.deviceready && window.plugins && window.plugins.toast) {
+						window.plugins.toast.showLongCenter(error);
+					}
+					else {
+						_this.$el.find('#error-get-results').html(_this.templateAlert({msj: errormsj}));
+					}
+				},
+				complete: function() {
+					_this.updating(false);
+					//console.log(self.itemsViews);
+					_.each(_this.itemsViews, function(item) { // otro param: key
+						item.delegateEvents();
+					//	console.log("delegateEvents "+item);
+					});
+				}
+			});
 		},
 		loading: function(loading) {
 

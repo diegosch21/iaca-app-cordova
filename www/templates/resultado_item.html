@@ -3,17 +3,19 @@
 	<i class="estado_leido--no fa fa-lg fa-envelope texto-gris_oscuro"></i>
 </div>
 
-<div class="col-xs-3 info--resultado text-left-xs">
-	<span class=" fecha texto-negro"><%= fecha %></span>
+<div class="col-xs-3 info--resultado datos text-left-xs">
+	<span class="fecha texto-negro"><%= fecha %></span>
+    <span class="hora texto-negro"><%= hora.substring(0,5) %></span>
 </div>
-<div class="col-xs-5 info--resultado text-left-xs">
+<div class="col-xs-5 info--resultado datos text-left-xs">
 	<span class="protocolo texto-negro"><%= id %></span>
+    <span class="nombre texto-negro"><%= nombre %></span>
 </div>
 
-<!-- no hay más boton para descarga de imagen (el server no las entrega) -->
-
+<% if (pdf) { %>
 <div data-href="<%= pdf %>" class="col-xs-2 info--resultado boton_pdf boton contenedor-con-punta">
 	<i class="texto-invertido fa fa-lg fa-download"></i>
 	<!-- <i class="texto-invertido fa fa-lg fa-file-pdf-o"></i> -->
 	<div class="punta--izquierda hidden-xxs"></div>
 </div>
+<% } %>

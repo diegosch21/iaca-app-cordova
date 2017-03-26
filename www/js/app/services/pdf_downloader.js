@@ -9,6 +9,9 @@ define([],function() {
 		var self = this;
 
 		this.download = function(url,filename,callback_exito,callback_error) {
+
+			console.log('PDFDownloader: download '+url+' destino: '+filename);
+
 			if (window.deviceready && typeof FileTransfer !== undefined) {
 				var platform = device.platform,
 					saveDirectory = "";
@@ -31,12 +34,15 @@ define([],function() {
 				}
 
 				// Define método a ejecutar si ocurre error
-				var errorDescarga = function(error,tipo,url) {
-					console.log("Error "+ tipo + " "+  error);
+				var errorDescarga = function(error,tipo,url,exito) {
+					console.log("PDFDownloader: Error "+ tipo + " "+ JSON.stringify(error));
 					// error: intenta descargar con browser
 					window.open(url, '_system');
-					if (callback_error) {
-						callback_error();
+					if (exito) {
+						if (callback_exito) callback_exito();
+					}
+					else {
+						if (callback_error)	callback_error();
 					}
 				};
 
@@ -55,25 +61,23 @@ define([],function() {
 									uri,
 									fileURL,
 									function(entry) {
-										console.log("download complete: " + entry.toURL());
+										console.log("PDFDownloader: Download complete: " + entry.toURL());
 										// muestra el PDF
 										if (platform == 'android' || platform == "Android" ) {
 											window.cordova.plugins.FileOpener.openFile(entry.toURL(),
-											function() {
-												console.log('PDF abierto');
-												if (callback_exito) {
-													callback_exito();
+												function() {
+													console.log('PDFDownloader: PDF abierto');
+													if (callback_exito)	callback_exito();
+												},
+												function(error) {
+													// Lo descargó pero no puede abrirlo - Ejecuta igualmente callback exito
+													errorDescarga(error,'fileOpener: No puede abrir PDF descargado',url,true);
 												}
-											},
-											function(error) {
-												errorDescarga(error,'fileTransfer.download',url);
-											});
+											);
 										}
-										else {
+										else { // Si es iOS directamente lo abre
 											window.open(entry.toURL(), '_blank', 'location=no,closebuttoncaption=Close,enableViewportScale=yes');
-											if (callback_exito) {
-												callback_exito();
-											}
+											if (callback_exito)	callback_exito();
 										}
 									},
 									function(error) {

@@ -5234,6 +5234,16 @@ ul.lista_resultados .item--resultado_paciente .info--resultado.dont-show {
 ul.lista_resultados .item--resultado_paciente .info--resultado.dont-show > div, ul.lista_resultados .item--resultado_paciente .info--resultado.dont-show span, ul.lista_resultados .item--resultado_paciente .info--resultado.dont-show i {
   display: none;
 }
+ul.lista_resultados .item--resultado_paciente .info--resultado.datos {
+  padding: 4px 0;
+}
+ul.lista_resultados .item--resultado_paciente .info--resultado.datos > span {
+  display: block;
+  line-height: 28px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 ul.lista_resultados .item--resultado_paciente .leido i {
   padding: 16px;
   padding: 1rem;
@@ -5795,12 +5805,14 @@ ul.lista_resultados .item--resultado_paciente .boton_pdf.activo.dont-show, ul.li
 }
 @media (max-width: 399px) and (max-width: 340px) {
   ul.lista_resultados .item--resultado_paciente .info--resultado {
-    line-height: 48px;
+    line-height: 56px;
     font-size: 14px;
   }
+  ul.lista_resultados .item--resultado_paciente .info--resultado.datos > span {
+    line-height: 24px;
+  }
   ul.lista_resultados .item--resultado_paciente .contenedor-con-punta {
-    height: 48px;
-    height: 3rem;
+    height: 56px;
   }
 }
 

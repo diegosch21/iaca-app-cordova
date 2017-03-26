@@ -83,8 +83,7 @@ define([
                 this.user = user;
                 // Actualizo password por si cambió
                 if (user.get("pass") != user_pass) {
-                    user.set("pass",user_pass);
-                    user.save();
+                    user.save({"pass":user_pass});
                 }
             }
             if (this.user.get("name")) {
@@ -161,11 +160,10 @@ define([
         this.setUserName = function(username,eventName) {
             console.log("Auth: setUserName");
             if (eventName) {
-                console.log("Evento: "+eventName)
+                console.log("Evento: "+eventName);
             }
             if (this.username != username) {
-                this.user.set("name",username);
-                this.user.save();
+                this.user.save({"name":username});
                 this.username = username;
                 // Lanza evento (capturado por vista header para actualizarse)
                 this.trigger("change_username","Auth: setUserName");
@@ -176,7 +174,7 @@ define([
         this.logout = function(eventName) {
             console.log("Auth: logout");
             if (eventName) {
-                console.log("Evento: "+eventName)
+                console.log("Evento: "+eventName);
             }
             // Desmarco flag logueado, quito referencia a usuario
             this.logueado = false;

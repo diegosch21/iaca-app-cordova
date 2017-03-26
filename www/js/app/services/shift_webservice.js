@@ -199,6 +199,12 @@ define([
                         // Lanzo evento para setear nombre de usuario (capturado por service Auth)
                         _this.trigger("get_username",$username.text(),"ShiftWS: Se obtuvo nombre de usuario");
                     }
+                    var $resultados = $paciente.find('exames > exame');
+                    console.log("ShiftWS: cantidad total de resultados obtenidos: "+$resultados.length);
+                    // Genero arreglo con data de los resultados de examenes, en el formato esperado por la view. Sólo incluye los que tengan URL de PDF
+                    var resultados = procesarDataResultados($resultados);
+                    console.log("ShiftWS: cantidad resultados procesados (con URL PDF): "+resultados.length);
+                    callbacks.success(resultados);
                 }
                 else {
                     // Lanzo evento para logout (capturado por service Auth que realiza el logout)
@@ -216,6 +222,29 @@ define([
                 callbacks.complete();
             });
         };
+
+        /**
+         * Recorre el xml de los resultados obtenidos
+         *     y genera arreglo de objetos con la data esperada por la vista.
+         * Sólo incluye los resultados que contengan  URL de PDF
+         */
+        function procesarDataResultados($resultados) {
+            var resultados = [], $result, $urlPDF;
+            $resultados.each(function(index, resultado) {
+                $result = $(resultado);
+                $urlPDF = $result.children('urlPDF');
+                if ($urlPDF.length) {
+                    resultados.push({
+                        id: $result.children('osNumero').text(),
+                        fecha: $result.children('data').text(),
+                        hora: $result.children('hora').text(),
+                        nombre: $result.children('nomeExames').text(),
+                        pdf: $urlPDF.text().replace("<![CDATA[", "").replace("]]>", "") // Quito tags CDATA
+                    });
+                }
+            });
+            return resultados;
+        }
 
 	};
 
