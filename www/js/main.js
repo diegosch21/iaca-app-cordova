@@ -53,7 +53,7 @@ define(['jquery', 'underscore', 'backbone', 'iscroll','bootstrap'], //'modernizr
 	   	/* Document ready */
 		$(function(){
 
-			// logger.disableLogger();   // NO DEBUG
+			logger.disableLogger();   // NO DEBUG
 
 			console.log('documentready');
 			// Retrocompatibilidad (sesión y usuarios previos a cambio de sistema Abril2017)

@@ -34,7 +34,7 @@
         "cordova-plugin-file-transfer": {
             "PACKAGE_NAME": "com.imotionconsulting.iacalaboratorios"
         },
-        "cordova-plugin-fileopener": {
+        "cordova-plugin-file-opener2": {
             "PACKAGE_NAME": "com.imotionconsulting.iacalaboratorios"
         }
     },

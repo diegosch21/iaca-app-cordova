@@ -62,20 +62,24 @@ define([],function() {
 									fileURL,
 									function(entry) {
 										console.log("PDFDownloader: Download complete: " + entry.toURL());
-										// muestra el PDF
-										if (platform == 'android' || platform == "Android" ) {
-											window.cordova.plugins.FileOpener.openFile(entry.toURL(),
-												function() {
-													console.log('PDFDownloader: PDF abierto');
-													if (callback_exito)	callback_exito();
-												},
-												function(error) {
-													// Lo descargó pero no puede abrirlo - Ejecuta igualmente callback exito
-													errorDescarga(error,'fileOpener: No puede abrir PDF descargado',url,true);
+										if (cordova.plugins.fileOpener2) {
+											// Intenta abrir el PDF en el lector instalado
+											cordova.plugins.fileOpener2.open(
+												entry.toURL(),
+												'application/pdf',
+												{
+													success: function() {
+														console.log('PDFDownloader: PDF abierto');
+														if (callback_exito)	callback_exito();
+													},
+													error: function(error) {
+														// Lo descargó pero no puede abrirlo - Ejecuta igualmente callback exito
+														errorDescarga(error,'fileOpener: No puede abrir PDF descargado',url,true);
+													}
 												}
 											);
 										}
-										else { // Si es iOS directamente lo abre
+										else { // Si es iOS directamente lo abre con navegador
 											window.open(entry.toURL(), '_blank', 'location=no,closebuttoncaption=Close,enableViewportScale=yes');
 											if (callback_exito)	callback_exito();
 										}
