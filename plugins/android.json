@@ -36,6 +36,9 @@
         },
         "cordova-plugin-file-opener2": {
             "PACKAGE_NAME": "com.imotionconsulting.iacalaboratorios"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.imotionconsulting.iacalaboratorios"
         }
     },
     "dependent_plugins": {
