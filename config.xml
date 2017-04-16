@@ -8,7 +8,7 @@
     versionCode="220"
     android-versionCode="220" >
     <config-file platform="ios" parent="CFBundleVersion">
-        <string>1.2.2.3</string>
+        <string>1.2.2.4</string>
     </config-file>
 
     <name>IACA Lab</name>
@@ -60,24 +60,34 @@
     </config-file>
 
     <platform name="ios">
-        <!-- iPhone icon (1x y 2x)  -->
-        <icon src="res/icon/ios/icon-60.png"  width="60" height="60" />
-        <icon src="res/icon/ios/icon-120.png" width="120" height="120" />
-        <!-- iPhone 6 Plus icon (3x) -->
-        <icon src="res/icon/ios/icon-180.png" width="180" height="180" />
-        <!-- iPad icon (1x y 2x) -->
-        <icon src="res/icon/ios/icon-76.png"  width="76" height="76" />
-        <icon src="res/icon/ios/icon-152.png" width="152" height="152" />
-        <!--  iOS Setting icon -->
-        <icon src="res/icon/ios/icon-29.png"  width="29" height="29" />
-        <icon src="res/icon/ios/icon-58.png"  width="58" height="58" />
-        <!--  iOS Spotlight icon -->
-        <icon src="res/icon/ios/icon-40.png"  width="40" height="40" />
-        <icon src="res/icon/ios/icon-80.png"  width="80" height="80" />
-        <icon src="res/icon/ios/icon-87.png"  width="87" height="87" />
-        <!-- iOS < 7 -->
-        <icon src="res/icon/ios/icon-57.png"  width="57" height="57" />
-        <icon src="res/icon/ios/icon-72.png"  width="72" height="72" />
+        <!-- iOS 8.0+ -->
+        <!-- iPhone 6 Plus  -->
+        <icon src="res/icon/ios/icon-60@3x.png"      width="180" height="180" />
+        <!-- iOS 7.0+ -->
+        <!-- iPhone / iPod Touch  -->
+        <icon src="res/icon/ios/icon-60.png"         width="60" height="60" />
+        <icon src="res/icon/ios/icon-60@2x.png"      width="120" height="120" />
+        <!-- iPad -->
+        <icon src="res/icon/ios/icon-76.png"         width="76" height="76" />
+        <icon src="res/icon/ios/icon-76@2x.png"      width="152" height="152" />
+        <!-- Spotlight Icon -->
+        <icon src="res/icon/ios/icon-40.png"         width="40" height="40" />
+        <icon src="res/icon/ios/icon-40@2x.png"      width="80" height="80" />
+        <!-- iOS 6.1 -->
+        <!-- iPhone / iPod Touch -->
+        <icon src="res/icon/ios/icon.png"            width="57" height="57" />
+        <icon src="res/icon/ios/icon@2x.png"         width="114" height="114" />
+        <!-- iPad -->
+        <icon src="res/icon/ios/icon-72.png"         width="72" height="72" />
+        <icon src="res/icon/ios/icon-72@2x.png"      width="144" height="144" />
+        <!-- iPhone Spotlight and Settings Icon -->
+        <icon src="res/icon/ios/icon-small.png"      width="29" height="29" />
+        <icon src="res/icon/ios/icon-small@2x.png"   width="58" height="58" />
+        <!-- iPad Spotlight and Settings Icon -->
+        <icon src="res/icon/ios/icon-50.png"         width="50" height="50" />
+        <icon src="res/icon/ios/icon-50@2x.png"      width="100" height="100" />
+        <!-- iPad Pro -->
+        <icon src="res/icon/ios/icon-83.5@2x.png"    width="167" height="167" />
 
         <splash src="res/screen/ios/iphone-port.png"            width="320" height="480" />
         <splash src="res/screen/ios/iphone-land.png"            width="480" height="320" />
