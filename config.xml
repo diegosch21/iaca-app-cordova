@@ -8,7 +8,7 @@
     versionCode="220"
     android-versionCode="220" >
     <config-file platform="ios" parent="CFBundleVersion">
-        <string>1.2.2.2</string>
+        <string>1.2.2.3</string>
     </config-file>
 
     <name>IACA Lab</name>
