@@ -8,7 +8,7 @@
     versionCode="220"
     android-versionCode="220" >
     <config-file platform="ios" parent="CFBundleVersion">
-        <string>1.2.3.1</string>
+        <string>1.2.3.2</string>
     </config-file>
 
     <name>IACA Lab</name>
@@ -16,7 +16,7 @@
         IACA Laboratorios - Consulta de resultados de análisis de pacientes
     </description>
     <author email="info@imotionconsulting.com.ar" href="http://imotionconsulting.com.ar">
-        IMotion Consulting
+        Sabrina Lorena Giambelluca
     </author>
     <content src="index.html" />
 
