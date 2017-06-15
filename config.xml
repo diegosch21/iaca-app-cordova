@@ -4,11 +4,11 @@
     xmlns:gap=  "http://phonegap.com/ns/1.0"
     xmlns:android= "http://schemas.android.com/apk/res/android"
     id="com.imotionconsulting.iacalaboratorios"
-    version="1.2.3"
-    versionCode="220"
-    android-versionCode="220" >
+    version="1.2.4"
+    versionCode="240"
+    android-versionCode="240" >
     <config-file platform="ios" parent="CFBundleVersion">
-        <string>1.2.3.3</string>
+        <string>1.2.4.0</string>
     </config-file>
 
     <name>IACA Lab</name>
