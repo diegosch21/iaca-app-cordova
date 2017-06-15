@@ -1,16 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget xmlns="http://www.w3.org/ns/widgets"
-    xmlns:cdv="http://cordova.apache.org/ns/1.0"
-    xmlns:gap=  "http://phonegap.com/ns/1.0"
-    xmlns:android= "http://schemas.android.com/apk/res/android"
-    id="com.imotionconsulting.iacalaboratorios"
-    version="1.2.3"
-    versionCode="220"
-    android-versionCode="220" >
-    <config-file platform="ios" parent="CFBundleVersion">
-        <string>1.2.3.3</string>
+<widget android-versionCode="240" id="com.imotionconsulting.iacalaboratorios" version="1.2.4" versionCode="240" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
+    <config-file parent="CFBundleVersion" platform="ios">
+        <string>1.2.4.0</string>
     </config-file>
-
     <name>IACA Lab</name>
     <description>
         IACA Laboratorios - Consulta de resultados de análisis de pacientes
@@ -19,7 +11,6 @@
         IMotion Consulting
     </author>
     <content src="index.html" />
-
     <access origin="*" />
     <access origin="https://www.iaca.com.ar" />
     <allow-navigation href="https://www.iaca.com.ar/*" />
@@ -29,82 +20,63 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-
     <icon src="icon.png" />
     <splash src="splash.png" />
-
     <platform name="android">
         <preference name="LogLevel" value="DEBUG" />
-
-        <icon src="res/icon/android/icon-ldpi.png"    density="ldpi"  />
-        <icon src="res/icon/android/icon-mdpi.png"    density="mdpi"  />
-        <icon src="res/icon/android/icon-hdpi.png"    density="hdpi" />
-        <icon src="res/icon/android/icon-xhdpi.png"   density="xhdpi"  />
-        <icon src="res/icon/android/icon-xxhdpi.png"  density="xxhdpi" />
-        <icon src="res/icon/android/icon-xxxhdpi.png" density="xxxhdpi" />
-
-        <splash src="res/screen/android/land-320x200.9.png"   density="land-ldpi" />
-        <splash src="res/screen/android/land-480x320.9.png"   density="land-mdpi"  />
-        <splash src="res/screen/android/land-800x480.9.png"   density="land-hdpi" />
-        <splash src="res/screen/android/land-1280x720.9.png"  density="land-xhdpi"  />
-        <splash src="res/screen/android/land-1920x1080.9.png" density="land-xxhdpi"  />
-        <splash src="res/screen/android/port-200x320.9.png"   density="port-ldpi"/>
-        <splash src="res/screen/android/port-320x480.9.png"   density="port-mdpi"  />
-        <splash src="res/screen/android/port-480x800.9.png"   density="port-hdpi"  />
-        <splash src="res/screen/android/port-720x1280.9.png"  density="port-xhdpi"  />
-        <splash src="res/screen/android/port-1080x1920.9.png" density="port-xxhdpi" />
+        <icon density="ldpi" src="res/icon/android/icon-ldpi.png" />
+        <icon density="mdpi" src="res/icon/android/icon-mdpi.png" />
+        <icon density="hdpi" src="res/icon/android/icon-hdpi.png" />
+        <icon density="xhdpi" src="res/icon/android/icon-xhdpi.png" />
+        <icon density="xxhdpi" src="res/icon/android/icon-xxhdpi.png" />
+        <icon density="xxxhdpi" src="res/icon/android/icon-xxxhdpi.png" />
+        <splash density="land-ldpi" src="res/screen/android/land-320x200.9.png" />
+        <splash density="land-mdpi" src="res/screen/android/land-480x320.9.png" />
+        <splash density="land-hdpi" src="res/screen/android/land-800x480.9.png" />
+        <splash density="land-xhdpi" src="res/screen/android/land-1280x720.9.png" />
+        <splash density="land-xxhdpi" src="res/screen/android/land-1920x1080.9.png" />
+        <splash density="port-ldpi" src="res/screen/android/port-200x320.9.png" />
+        <splash density="port-mdpi" src="res/screen/android/port-320x480.9.png" />
+        <splash density="port-hdpi" src="res/screen/android/port-480x800.9.png" />
+        <splash density="port-xhdpi" src="res/screen/android/port-720x1280.9.png" />
+        <splash density="port-xxhdpi" src="res/screen/android/port-1080x1920.9.png" />
     </platform>
-    <config-file platform="android" parent="/manifest">
+    <config-file parent="/manifest" platform="android">
         <application android:theme="@android:style/Theme.NoTitleBar">
         </application>
     </config-file>
-
     <platform name="ios">
-        <!-- iOS 8.0+ -->
-        <!-- iPhone 6 Plus  -->
-        <icon src="res/icon/ios/icon-60@3x.png"      width="180" height="180" />
-        <!-- iOS 7.0+ -->
-        <!-- iPhone / iPod Touch  -->
-        <icon src="res/icon/ios/icon-60.png"         width="60" height="60" />
-        <icon src="res/icon/ios/icon-60@2x.png"      width="120" height="120" />
-        <!-- iPad -->
-        <icon src="res/icon/ios/icon-76.png"         width="76" height="76" />
-        <icon src="res/icon/ios/icon-76@2x.png"      width="152" height="152" />
-        <!-- Spotlight Icon -->
-        <icon src="res/icon/ios/icon-40.png"         width="40" height="40" />
-        <icon src="res/icon/ios/icon-40@2x.png"      width="80" height="80" />
-        <!-- iOS 6.1 -->
-        <!-- iPhone / iPod Touch -->
-        <icon src="res/icon/ios/icon.png"            width="57" height="57" />
-        <icon src="res/icon/ios/icon@2x.png"         width="114" height="114" />
-        <!-- iPad -->
-        <icon src="res/icon/ios/icon-72.png"         width="72" height="72" />
-        <icon src="res/icon/ios/icon-72@2x.png"      width="144" height="144" />
-        <!-- iPhone Spotlight and Settings Icon -->
-        <icon src="res/icon/ios/icon-small.png"      width="29" height="29" />
-        <icon src="res/icon/ios/icon-small@2x.png"   width="58" height="58" />
-        <!-- iPad Spotlight and Settings Icon -->
-        <icon src="res/icon/ios/icon-50.png"         width="50" height="50" />
-        <icon src="res/icon/ios/icon-50@2x.png"      width="100" height="100" />
-        <!-- iPad Pro -->
-        <icon src="res/icon/ios/icon-83.5@2x.png"    width="167" height="167" />
-
-        <splash src="res/screen/ios/iphone-port.png"            width="320" height="480" />
-        <splash src="res/screen/ios/iphone-land.png"            width="480" height="320" />
-        <splash src="res/screen/ios/iphone-port-2x.png"         width="640" height="960" />
-        <splash src="res/screen/ios/iphone-land-2x.png"         width="960" height="640" />
-        <splash src="res/screen/ios/iphone5-port-retina-2x.png" width="640" height="1136" />
-        <splash src="res/screen/ios/iphone5-land-retina-2x.png" width="1136" height="640" />
-        <splash src="res/screen/ios/iphone6-port-2x.png"        width="750" height="1334" />
-        <splash src="res/screen/ios/iphone6-land-2x.png"        width="1334" height="750" />
-        <splash src="res/screen/ios/iphone6p-port-3x.png"       width="1242" height="2208" />
-        <splash src="res/screen/ios/iphone6p-land-3x.png"       width="2208" height="1248" />
-        <splash src="res/screen/ios/ipad-port.png"              width="768" height="1024" />
-        <splash src="res/screen/ios/ipad-land.png"              width="1024" height="768" />
-        <splash src="res/screen/ios/ipad-port-2x.png"           width="1536" height="2048" />
-        <splash src="res/screen/ios/ipad-land-2x.png"           width="2048" height="1536" />
+        <icon height="180" src="res/icon/ios/icon-60@3x.png" width="180" />
+        <icon height="60" src="res/icon/ios/icon-60.png" width="60" />
+        <icon height="120" src="res/icon/ios/icon-60@2x.png" width="120" />
+        <icon height="76" src="res/icon/ios/icon-76.png" width="76" />
+        <icon height="152" src="res/icon/ios/icon-76@2x.png" width="152" />
+        <icon height="40" src="res/icon/ios/icon-40.png" width="40" />
+        <icon height="80" src="res/icon/ios/icon-40@2x.png" width="80" />
+        <icon height="57" src="res/icon/ios/icon.png" width="57" />
+        <icon height="114" src="res/icon/ios/icon@2x.png" width="114" />
+        <icon height="72" src="res/icon/ios/icon-72.png" width="72" />
+        <icon height="144" src="res/icon/ios/icon-72@2x.png" width="144" />
+        <icon height="29" src="res/icon/ios/icon-small.png" width="29" />
+        <icon height="58" src="res/icon/ios/icon-small@2x.png" width="58" />
+        <icon height="50" src="res/icon/ios/icon-50.png" width="50" />
+        <icon height="100" src="res/icon/ios/icon-50@2x.png" width="100" />
+        <icon height="167" src="res/icon/ios/icon-83.5@2x.png" width="167" />
+        <splash height="480" src="res/screen/ios/iphone-port.png" width="320" />
+        <splash height="320" src="res/screen/ios/iphone-land.png" width="480" />
+        <splash height="960" src="res/screen/ios/iphone-port-2x.png" width="640" />
+        <splash height="640" src="res/screen/ios/iphone-land-2x.png" width="960" />
+        <splash height="1136" src="res/screen/ios/iphone5-port-retina-2x.png" width="640" />
+        <splash height="640" src="res/screen/ios/iphone5-land-retina-2x.png" width="1136" />
+        <splash height="1334" src="res/screen/ios/iphone6-port-2x.png" width="750" />
+        <splash height="750" src="res/screen/ios/iphone6-land-2x.png" width="1334" />
+        <splash height="2208" src="res/screen/ios/iphone6p-port-3x.png" width="1242" />
+        <splash height="1248" src="res/screen/ios/iphone6p-land-3x.png" width="2208" />
+        <splash height="1024" src="res/screen/ios/ipad-port.png" width="768" />
+        <splash height="768" src="res/screen/ios/ipad-land.png" width="1024" />
+        <splash height="2048" src="res/screen/ios/ipad-port-2x.png" width="1536" />
+        <splash height="1536" src="res/screen/ios/ipad-land-2x.png" width="2048" />
     </platform>
-
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="4000" />
     <preference name="FadeSplashScreenDuration" value="1000" />
@@ -113,17 +85,16 @@
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="StatusBarOverlaysWebView" value="true" />
     <preference name="StatusBarBackgroundColor" value="#28427e" />
-
     <engine name="android" spec="~6.1.2" />
+    <plugin name="cordova-plugin-appavailability" spec="~0.4.2" />
     <plugin name="cordova-plugin-device" spec="~1.1.5" />
     <plugin name="cordova-plugin-dialogs" spec="~1.3.2" />
-    <plugin name="cordova-plugin-inappbrowser" spec="~1.4.0" />
-    <plugin name="cordova-plugin-appavailability" spec="~0.4.2" />
-    <plugin name="cordova-plugin-x-toast" spec="~2.6.0" />
-    <plugin name="cordova-plugin-splashscreen" spec="~4.0.2" />
-    <plugin name="cordova-plugin-whitelist" spec="~1.3.2" />
     <plugin name="cordova-plugin-file" spec="~4.3.2" />
-    <plugin name="cordova-plugin-file-transfer" spec="~1.6.2" />
     <plugin name="cordova-plugin-file-opener2" spec="~2.0.9" />
+    <plugin name="cordova-plugin-file-transfer" spec="~1.6.2" />
+    <plugin name="cordova-plugin-inappbrowser" spec="~1.4.0" />
+    <plugin name="cordova-plugin-splashscreen" spec="~4.0.2" />
     <plugin name="cordova-plugin-statusbar" spec="~2.2.2" />
+    <plugin name="cordova-plugin-whitelist" spec="~1.3.2" />
+    <plugin name="cordova-plugin-x-toast" spec="~2.6.0" />
 </widget>
